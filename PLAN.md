@@ -48,7 +48,7 @@ De danske udbydere sælger næsten aldrig én pris. Et tilbud består typisk af:
 - **udbetaling / engangsbeløb** (0 kr. hos de fleste)
 - **månedlig afbetaling på telefonen** over 6/12/24 (nogle steder 36) måneder, rente- og gebyrfri
 - **abonnementspris pr. måned**, ofte med **kampagnepris de første N måneder** ("2 mdr. gratis", "69 kr. de første 3 mdr., derefter 149 kr.")
-- **bindingsperiode** der kan være kortere end afbetalingsperioden (fx binding 6 mdr., afbetaling 24 mdr.)
+- **bindingsperiode på 6 måneder** — lovbestemt maksimum, som alle udbydere ligger på. Afbetalingen løber typisk 12–24 mdr., altså langt ud over bindingen
 - **oprettelsesgebyr / fragt**
 - **inkluderede tjenester** (YouSee Play, TV 2 Play, Viaplay) der ofte er gratis i 2 mdr. og derefter koster
 
@@ -83,7 +83,7 @@ type Offer = {
     addons: string[];            // "TV 2 Play (2 mdr.)"
   };
 
-  bindingMonths: number;
+  bindingMonths: number;         // altid 6 — afvigelse = advarsel
   setupFee: number;
   shippingFee: number;
 
@@ -103,61 +103,65 @@ data/history.jsonl               # append-only: én linje pr. (dag, offer-id, n�
 data/reference/cash-prices.json  # markedskontantpriser (Elgiganten/Power/Apple)
 ```
 
-`history.jsonl` holdes smal (dato, id, minPrice, bindingMonths) så repoet ikke
+`history.jsonl` holdes smal (dato, id, minPrice) så repoet ikke
 eksploderer. Ved ~60 tilbud/dag er det ca. 2 MB om året.
 
 ---
 
-## 4. Beregningsmodel — mindstepris pr. bindingsperiode
+## 4. Beregningsmodel — mindstepris for 6 måneder
 
-Hovedtallet på sitet er **mindsteprisen**: hvad tilbuddet mindst koster dig i
-bindingsperioden. Ikke mere, ikke længere ud i fremtiden.
-
-### 4.1 Formlen
+Bindingsperioden er **altid 6 måneder**. Dansk lovgivning tillader ikke længere binding på
+forbrugerabonnementer, og alle fem udbydere ligger på maksimum. Det er ikke en parameter,
+det er en konstant — og dermed er hele modellen én formel:
 
 ```
 mindstepris = udbetaling + oprettelse + fragt
-            + Σ_{m=1..B} abonnementspris(m)              // B = bindingsperioden
-            + afbetalingPrMd × min(B, afbetalingsMdr)    // kun ydelser inden for bindingen
+            + Σ_{m=1..6} abonnementspris(m)
+            + afbetalingPrMd × min(6, afbetalingsMdr)
 
 abonnementspris(m) = campaignMonthly hvis m ≤ campaignMonths, ellers monthly
 ```
 
-Afbetaling der løber ud over bindingsperioden tælles **ikke** med. Horisonten er
-bindingsperioden — punktum.
+Ét tal pr. tilbud, samme vindue for alle, direkte sammenligneligt. Ingen horisontvalg,
+ingen gruppering, ingen fanebladse — bare én sorteret liste pr. telefon.
+
+### 4.1 Kampagnemånederne vejer tungt
+
+Når vinduet kun er 6 måneder, dækker "2 mdr. gratis" en tredjedel af hele
+sammenligningen. Kampagneparsing er derfor ikke en detalje, der kan udskydes — den kan
+flytte rangeringen helt alene. De første snapshots gennemgås manuelt for netop det.
 
 ### 4.2 Udbyderne oplyser tallet selv
 
-"Mindstepris" er et fast begreb i dansk teledetail, og udbyderne er forpligtet til at
-oplyse det på produktsiden ("Mindstepris for 6 mdr.: 4.499 kr."). Det gør indsamlingen
-markant nemmere og mere robust:
+"Mindstepris for 6 mdr." står på produktsiden, fordi udbyderne er forpligtet til at oplyse
+det. Det gør indsamlingen både nemmere og mere robust:
 
-1. **Hent det oplyste tal** direkte fra siden — det er ét felt frem for syv.
+1. **Hent det oplyste tal** direkte fra siden — ét felt frem for syv.
 2. **Regn det selv ud** ud fra komponenterne med formlen ovenfor.
-3. **Sammenlign de to.** Er der afvigelse over ~50 kr., er enten parseren knækket, eller
-   der er et gebyr, vi ikke har fanget. Så markeres tilbuddet til manuel gennemgang.
+3. **Sammenlign de to.** Afviger de mere end ~50 kr., er enten parseren knækket, eller der
+   er et gebyr, vi ikke har fanget. Tilbuddet markeres til manuel gennemgang.
 
-Vi henter altså stadig komponenterne — men de bruges til kontrol og til at forklare
-tallet i UI'et, ikke til at konstruere det fra bunden.
+Komponenterne hentes altså stadig, men de bruges til kontrol og til at forklare tallet i
+UI'et — ikke til at konstruere det fra bunden.
 
-### 4.3 Sammenligning sker inden for samme bindingsperiode
+### 4.3 De 6 måneder er også en fejlsikring
 
-Et tilbud med 6 måneders binding har naturligvis en lavere mindstepris end et med 24
-måneders binding. Det er ikke et bedre tilbud — det er en kortere periode. Tabellen
-grupperes derfor efter bindingslængde (6 / 12 / 24 mdr.), så man kun sammenligner tilbud,
-der binder lige længe. Man kan slå over til en anden gruppe med ét klik.
+Står der en anden bindingslængde end 6 på en side, er det næsten altid tegn på, at
+parseren har fat i noget andet end et forbrugerabonnement — et erhvervsprodukt, en ren
+afbetalingsaftale eller en side, der har ændret struktur. Tilbuddet afvises med advarsel
+frem for at ryge i sammenligningen.
 
 ### 4.4 Er det faktisk billigt?
 
-Hver gruppe har en **referencerække**:
+Tabellen har en **referencerække**:
 
 ```
-reference = markedsKontantpris + billigsteSimOnly × B
+reference = markedsKontantpris + billigsteSimOnly × 6
 ```
 
-altså: køb telefonen kontant og tag det billigste SIM-only abonnement ved siden af i lige
-så mange måneder. Ligger et tilbuds mindstepris under referencen, er det reelt billigere
-end at gøre det selv.
+altså: køb telefonen kontant og tag det billigste SIM-only abonnement ved siden af i 6
+måneder. Ligger et tilbuds mindstepris under referencen, er det reelt billigere end at
+gøre det selv.
 
 - 🟢 **under referencen** — reelt tilbud
 - 🟡 **inden for ±300 kr.** — bekvemt, men ingen gevinst
@@ -168,16 +172,16 @@ selvvalgt værdi i UI'et) — ellers pynter man tilbuddene kunstigt.
 
 ### 4.5 Det ene forbehold, der skal stå på siden
 
-Hvis telefonen afbetales over 24 måneder, mens bindingen kun er 6, er mindsteprisen ikke
-det samme som at eje telefonen frit. Restgælden indgår ikke i tallet — men den vises som
-en oplysning på tilbuddet ("afbetaling løber 18 mdr. efter bindingen ophører"), så den
-ikke kommer bag på nogen. Den påvirker ikke rangeringen.
+Afbetalingen løber næsten altid længere end de 6 måneder — typisk 12 eller 24. Mindsteprisen
+er derfor ikke det samme som at eje telefonen frit. Restgælden indgår ikke i tallet, men
+vises som oplysning på tilbuddet ("afbetaling løber 18 mdr. efter bindingen ophører"), så
+den ikke kommer bag på nogen. Den påvirker ikke rangeringen.
 
 ### 4.6 Hvad der følges over tid
 
-Tidsserien i statistikken er **mindstepris pr. (udbyder × telefonvariant × bindingslængde)**
-— samme tal som i tabellen. Så viser grafen, om tilbuddet som helhed er blevet bedre, og
-ikke bare om listeprisen er faldet.
+Tidsserien i statistikken er **mindstepris pr. (udbyder × telefonvariant)** — samme tal som
+i tabellen. Så viser grafen, om tilbuddet som helhed er blevet bedre, og ikke bare om
+listeprisen er faldet.
 
 ## 5. Sådan hentes data
 
@@ -205,7 +209,8 @@ interface ProviderAdapter {
 
 **Robusthed** (vigtigere end dækning):
 - `zod`-validering af hvert `Offer` før det accepteres
-- fornuftsgrænser: kontantpris 1.000–25.000, månedspris 0–1.500, afbetaling 6–36 mdr.
+- fornuftsgrænser: kontantpris 1.000–25.000, månedspris 0–1.500, afbetaling 6–36 mdr.,
+  bindingsperiode = 6
 - fejler en udbyder → behold gårsdagens data, markér `stale: true`, skriv advarsel i
   Actions-summary. **Aldrig** commit af halve/tomme data.
 - fixture-tests: gemt HTML pr. udbyder i `tests/fixtures/`, så parserne kan testes uden net
@@ -270,9 +275,9 @@ hvilken udbyder, og om det er historisk billigt.
 **Telefonside (`/telefon/samsung-galaxy-s26-ultra-256gb`):**
 - sammenligningstabel over alle udbyderes tilbud, sorteret efter valgt horisont
   (kolonner: udbyder, abonnement, udbetaling, afbetaling/md., abonnement/md.,
-  **mindstepris**, vurdering 🟢🟡🔴) — grupperet efter bindingslængde
-- referencerække: "køb kontant + billigste SIM-only" — alt under den er et reelt tilbud
-- kontroller: bindingslængde (6/12/24 mdr.), databehov (GB), værdi af streaming
+  **mindstepris (6 mdr.)**, vurdering 🟢🟡🔴)
+- referencerække: "køb kontant + billigste SIM-only i 6 mdr." — alt under den er et reelt tilbud
+- kontroller: databehov (GB), værdi af streaming
 - prisgraf: mindstepris over tid, én linje pr. udbyder
 - statistikpanel: laveste mindstepris nogensinde, median 90 dage, percentil for dagens pris,
   "prisen er faldet 3 gange på 60 dage"
@@ -319,7 +324,7 @@ fra Telmore, er resten mekanisk arbejde.
 
 ## 10. Åbne valg (mine standardantagelser, kan ændres)
 
-1. **Horisont:** bindingsperioden. Intet regnes ud over den.
+1. **Horisont:** 6 måneder — den lovbestemte maksimale binding. Konstant, ikke valgfri.
 2. **Restgæld på telefonen efter bindingen indgår ikke i tallet** — den vises kun som
    oplysning på tilbuddet og påvirker ikke rangeringen.
 3. **Streamingværdi:** 0 kr. som standard, valgfrit tilvalg i UI'et.
