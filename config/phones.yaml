@@ -34,6 +34,11 @@ phones:
     slug: iphone-17-pro-256gb
 
 # Pr. udbyder: hvilken produkt-URL svarer til hvilken telefon-slug.
+#
+# URL'er markeret "ikke bekræftet" stammer fra søgeresultater og er ikke set
+# hentet igennem endnu. En forkert URL koster kun en advarsel i kørslens
+# summary — den kan aldrig producere en forkert pris — så de er billigere at
+# afprøve end at gætte sig frem til.
 providers:
   # Telmore bygger produktsiden i browseren. Det serverleverede skelet viser
   # "Mindstepris i 6 måneder 0 kr." og "Udsolgt" som pladsholdere — ingen af
@@ -42,11 +47,18 @@ providers:
     urls:
       iphone-17-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17
       iphone-17-pro-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro
+      # ikke bekræftet — bemærk stort S i "Samsung", som søgeresultatet angav
+      samsung-galaxy-s26-256gb: https://www.telmore.dk/shop/mobiltelefoner/Samsung/galaxy-s26-white-256gb
+      # ikke bekræftet
+      samsung-galaxy-s26-plus-256gb: https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus
+      # ikke bekræftet
+      samsung-galaxy-s26-ultra-256gb: https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra
 
   # Bekræftet: siden oplyser "Mindstepris (6 mdr.) 7.733 kr." i serverleveret HTML.
   telenor:
     urls:
       iphone-17-256gb: https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/
+      samsung-galaxy-s26-ultra-256gb: https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/
 
   # CBB svarer 403 på vores identificerede bot. Vi omgår ikke afvisningen
   # (hverken med et andet User-Agent eller via browseren), så udbyderen
@@ -60,6 +72,11 @@ providers:
   callme:
     urls:
       samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
+      samsung-galaxy-s26-ultra-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/
 
+  # YouSee lægger variant i URL'en, så lager og farve er utvetydige.
   yousee:
-    urls: {}
+    urls:
+      iphone-17-256gb: https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender
+      samsung-galaxy-s26-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26
+      samsung-galaxy-s26-ultra-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black
