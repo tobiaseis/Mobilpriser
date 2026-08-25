@@ -1,76 +1,57 @@
 import type { Offer } from "@mobilpriser/core";
-import { pageText } from "./html.js";
+import type { RetailerPrice } from "./retailers.js";
 
 /**
  * Referencen for "er det faktisk billigt": hvad det koster at købe
- * telefonen kontant og tage et billigt abonnement ved siden af.
+ * telefonen hos en forhandler og tage et billigt abonnement ved siden af.
  *
- * Tallene skrives ikke i hånden. En håndskrevet kontantpris ser rigtig ud
- * for evigt og bliver forældet i stilhed, og hele pointen med projektet er
- * at følge priser, der bevæger sig. I stedet samles de op fra de sider, vi
- * alligevel henter: flere udbydere oplyser telefonens pris uden abonnement,
- * og OiSTER kalder den ligefrem "kontantpris".
+ * Kilden er forhandlere — Elgiganten, POWER, Proshop — og ikke
+ * teleudbyderne selv. En udbyders egen kontantpris er ikke en markedspris:
+ * den ligger typisk over detailhandlens, og bruges den som målestok, kommer
+ * ethvert abonnementstilbud til at se bedre ud, end det er. Forskellen er
+ * ikke akademisk: Proshop havde iPhone 17 til 6.666 kr., mens YouSees pris
+ * uden abonnement stod til 7.499 kr.
+ *
+ * Tallene skrives ikke i hånden. En håndskrevet pris ser rigtig ud for
+ * evigt og bliver forældet i stilhed, og hele pointen med projektet er at
+ * følge priser, der bevæger sig.
  */
-
-/** Kun beløb med en utvetydig etiket accepteres som kontantpris. */
-const CASH_PRICE_PATTERN =
-  /(?:kontantpris|uden abonnement|normalpris)[\s\S]{0,40}?(\d{1,3}(?:\.\d{3})+|\d{4,})\s*kr/gi;
-
-const MIN_CASH = 1000;
-const MAX_CASH = 30000;
-
-export function extractCashPrice(html: string): number | null {
-  const text = pageText(html);
-  CASH_PRICE_PATTERN.lastIndex = 0;
-
-  let match: RegExpExecArray | null;
-  while ((match = CASH_PRICE_PATTERN.exec(text)) !== null) {
-    const value = Number(match[1].replace(/\./g, ""));
-    if (Number.isFinite(value) && value >= MIN_CASH && value <= MAX_CASH) {
-      return value;
-    }
-  }
-  return null;
-}
 
 export interface ReferenceData {
   generatedAt: string;
-  /** Laveste oplyste kontantpris pr. telefon, på tværs af udbydere. */
+  /** Laveste forhandlerpris pr. telefon. */
   cashPrices: Record<string, number>;
-  /** Laveste månedspris set på tværs af alle tilbud. */
+  /** Hvilken forhandler den laveste pris kom fra. */
+  cashPriceSource: Record<string, string>;
+  /** Hvor mange forhandlere prisen bygger på. */
+  cashPriceCount: Record<string, number>;
+  /** Laveste månedspris set blandt de sammenlignede tilbud. */
   cheapestMonthly: number | null;
-  /** Hvor mange udbydere hver kontantpris bygger på. */
-  cashPriceSources: Record<string, number>;
-}
-
-export interface CashPriceObservation {
-  phoneSlug: string;
-  cashPrice: number;
 }
 
 /**
- * Samler observationerne til én reference.
- *
- * Den laveste oplyste kontantpris vinder: referencen skal svare på "kunne
- * jeg gøre det billigere selv", og så er det den bedste pris, man realistisk
- * kan finde, der er den ærlige målestok — ikke et gennemsnit af udbydere,
- * der hver især lægger noget oveni.
+ * Den laveste forhandlerpris vinder: referencen skal svare på "kunne jeg
+ * gøre det billigere selv", og så er det den bedste pris, man realistisk
+ * kan finde, der er den ærlige målestok.
  */
-export function buildReference(
-  observations: CashPriceObservation[],
-  offers: Offer[],
-): ReferenceData {
+export function buildReference(prices: RetailerPrice[], offers: Offer[]): ReferenceData {
   const cashPrices: Record<string, number> = {};
-  const cashPriceSources: Record<string, number> = {};
+  const cashPriceSource: Record<string, string> = {};
+  const cashPriceCount: Record<string, number> = {};
 
-  for (const { phoneSlug, cashPrice } of observations) {
-    cashPriceSources[phoneSlug] = (cashPriceSources[phoneSlug] ?? 0) + 1;
+  for (const { phoneSlug, price, retailer } of prices) {
+    cashPriceCount[phoneSlug] = (cashPriceCount[phoneSlug] ?? 0) + 1;
     const current = cashPrices[phoneSlug];
-    if (current == null || cashPrice < current) {
-      cashPrices[phoneSlug] = cashPrice;
+    if (current == null || price < current) {
+      cashPrices[phoneSlug] = price;
+      cashPriceSource[phoneSlug] = retailer;
     }
   }
 
+  // Bemærk: dette er den laveste månedspris blandt de tilbud, vi
+  // sammenligner — ikke markedets billigste SIM-only. Det er en
+  // konservativ målestok, fordi et billigere abonnement udefra kun ville
+  // gøre referencen lavere og dermed dommen hårdere.
   const monthlies = offers
     .map((offer) => offer.components.planMonthly)
     .filter((value): value is number => typeof value === "number" && value > 0);
@@ -78,7 +59,8 @@ export function buildReference(
   return {
     generatedAt: new Date().toISOString(),
     cashPrices,
+    cashPriceSource,
+    cashPriceCount,
     cheapestMonthly: monthlies.length > 0 ? Math.min(...monthlies) : null,
-    cashPriceSources,
   };
 }

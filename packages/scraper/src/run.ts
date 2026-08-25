@@ -5,7 +5,8 @@ import type { Offer } from "@mobilpriser/core";
 import { closeBrowser } from "./browser.js";
 import { loadConfig } from "./config.js";
 import { allAdapters } from "./providers/index.js";
-import { buildReference, type CashPriceObservation } from "./reference.js";
+import { buildReference } from "./reference.js";
+import { loadRetailers, scrapeRetailers } from "./retailers.js";
 import { dropCrossModelDuplicates } from "./validate.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -45,7 +46,6 @@ async function run(): Promise<void> {
 
   const freshOffers: Offer[] = [];
   const warnings: string[] = [];
-  const cashObservations: CashPriceObservation[] = [];
 
   for (const adapter of adapters) {
     const refs = adapter.discover(config.phones);
@@ -57,9 +57,6 @@ async function run(): Promise<void> {
       const result = await adapter.scrape(ref);
       if (result.offer) freshOffers.push(result.offer);
       if (result.warning) warnings.push(result.warning);
-      if (result.cashPrice != null) {
-        cashObservations.push({ phoneSlug: ref.target.slug, cashPrice: result.cashPrice });
-      }
       await sleep(REQUEST_DELAY_MS);
     }
   }
@@ -96,9 +93,14 @@ async function run(): Promise<void> {
   writeFileSync(LATEST_PATH, serialized);
   writeFileSync(path.join(HISTORY_DIR, `${dateStamp}.json`), serialized);
 
-  // Referencen bygges af de kontantpriser, udbyderne selv oplyser, frem for
-  // af håndskrevne tal, der ville blive forældede uden at nogen opdagede det.
-  const reference = buildReference(cashObservations, acceptedOffers);
+  // Referencen hentes hos forhandlerne, ikke hos udbyderne: en udbyders
+  // egen kontantpris ligger over detailhandlens og ville få ethvert
+  // abonnementstilbud til at se bedre ud, end det er.
+  const retailerResult = await scrapeRetailers(loadRetailers(), {
+    delay: () => sleep(REQUEST_DELAY_MS),
+  });
+  warnings.push(...retailerResult.warnings);
+  const reference = buildReference(retailerResult.prices, acceptedOffers);
   mkdirSync(path.join(DATA_DIR, "reference"), { recursive: true });
   writeFileSync(
     path.join(DATA_DIR, "reference", "cash-prices.json"),

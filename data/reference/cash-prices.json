@@ -1,6 +1,7 @@
 {
   "generatedAt": null,
   "cashPrices": {},
-  "cheapestMonthly": null,
-  "cashPriceSources": {}
+  "cashPriceSource": {},
+  "cashPriceCount": {},
+  "cheapestMonthly": null
 }

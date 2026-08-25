@@ -66,7 +66,8 @@ export interface ReferenceFile {
   cashPrices: Record<string, number>;
   /** Laveste månedspris set på tværs af alle tilbud. */
   cheapestMonthly: number | null;
-  cashPriceSources: Record<string, number>;
+  cashPriceSource: Record<string, string>;
+  cashPriceCount: Record<string, number>;
   generatedAt: string | null;
 }
 
@@ -90,7 +91,8 @@ export function loadReference(): ReferenceFile {
   return {
     cashPrices: parsed.cashPrices ?? {},
     cheapestMonthly: parsed.cheapestMonthly ?? null,
-    cashPriceSources: parsed.cashPriceSources ?? {},
+    cashPriceSource: parsed.cashPriceSource ?? {},
+    cashPriceCount: parsed.cashPriceCount ?? {},
     generatedAt: parsed.generatedAt ?? null,
   };
 }

@@ -112,15 +112,29 @@ sprunget over af scraperen (advarsel i kørslens summary) frem for at gætte en 
 
 ## Referencedata ("er det faktisk billigt")
 
-`data/reference/cash-prices.json` skrives af scraperen selv, ikke i hånden. Flere udbydere
-oplyser telefonens pris uden abonnement — OiSTER kalder den ligefrem "kontantpris" — og de
-tal samles op fra de sider, vi alligevel henter. Den laveste oplyste kontantpris pr. telefon
-bliver referencen, sammen med den laveste månedspris set på tværs af tilbuddene:
+`data/reference/cash-prices.json` skrives af scraperen selv, ikke i hånden. Kilden er
+**forhandlere**, ikke teleudbyderne: en udbyders egen kontantpris ligger typisk over
+detailhandlens, og bruges den som målestok, kommer ethvert abonnementstilbud til at se
+bedre ud, end det er. Forskellen er ikke akademisk — Proshop havde iPhone 17 til 6.666 kr.,
+mens YouSees pris uden abonnement stod til 7.499 kr.
+
+PriceRunner er den primære kilde, fordi de allerede sammenligner på tværs af butikker;
+Elgiganten og POWER hentes som supplement. Priserne læses fra JSON-LD, som webshops
+udgiver til Google Shopping og har en interesse i holde korrekt.
 
 ```
-reference = laveste kontantpris + laveste månedspris x 6
+reference = laveste forhandlerpris + laveste månedspris x 6
 ```
 
 Et tilbud under det beløb er billigere end at købe telefonen selv og tage det billigste
-abonnement ved siden af. Kun beløb med en utvetydig etiket accepteres som kontantpris — et
-umærket tal kan lige så godt være en førpris i en kampagne.
+abonnement ved siden af. Månedsprisen er den laveste blandt de sammenlignede tilbud, ikke
+markedets billigste SIM-only — en konservativ målestok, for et billigere abonnement udefra
+ville kun gøre dommen hårdere.
+
+### robots.txt
+
+Før hver hentning hos en forhandler spørges domænets `robots.txt`, og forbyder den os,
+springes siden over med en advarsel. Kan filen ikke læses, hentes der ikke — at gætte på et
+ja er præcis den antagelse, reglen findes for at undgå. Udbydernes sider er endnu ikke
+omfattet af tjekket; det er et bevidst valg om ikke at slå noget fra, der virker, uden at
+det er besluttet.

@@ -1,0 +1,43 @@
+# Forhandlere, der sælger telefonerne fritstående. Deres priser er
+# referencen for "er tilbuddet faktisk billigt".
+#
+# En teleudbyders egen kontantpris duer ikke som reference: den er typisk
+# højere end detailhandlens, og bruger man den, kommer ethvert
+# abonnementstilbud til at se bedre ud, end det er. Referencen skal svare
+# på "kunne jeg gøre det billigere selv", og så er det den pris, man
+# faktisk kan købe telefonen til, der er målestokken.
+#
+# Farve og lager står i URL'en hos alle tre, så varianten er utvetydig.
+# Manglende kombinationer springes over med en advarsel frem for at blive
+# gættet — en forkert reference ville forplante sig til hver eneste
+# vurdering på telefonens side.
+
+retailers:
+  # PriceRunner sammenligner allerede på tværs af butikker, så deres
+  # laveste pris er en bedre reference end en enkelt forhandlers — og ét
+  # sted at hente i stedet for otte. Deres prisdata er samtidig deres
+  # produkt, så robots.txt spørges før hver hentning; forbyder den os,
+  # springes siden over med en advarsel frem for at blive omgået.
+  pricerunner:
+    name: PriceRunner
+    urls:
+      iphone-17-256gb: https://www.pricerunner.dk/pl/1-3431242036/Mobiltelefoner/Apple-iPhone-17-256GB-Black-Sammenlign-Priser
+      samsung-galaxy-s26-ultra-256gb: https://www.pricerunner.dk/pl/1-3457318435/Mobiltelefoner/Samsung-Galaxy-S26-Ultra-5G-Smartphone-12-256-GB-Sammenlign-Priser
+
+  elgiganten:
+    name: Elgiganten
+    urls:
+      iphone-17-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/iphone-17-5g-smartphone-256gb-sort/982749
+      iphone-17-pro-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/iphone-17-pro-5g-smartphone-256gb-solv/982718
+      samsung-galaxy-s26-ultra-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-ultra-5g-smartphone-12256gb-sort/1039737
+
+  power:
+    name: POWER
+    urls:
+      iphone-17-256gb: https://www.power.dk/mobil-og-foto/mobiltelefoner/apple-iphone-17-256-gb-sort/p-4157177/
+
+  # Proshop havde de laveste priser i researchen (iPhone 17 256 GB til
+  # 6.666 kr.), men produktsidernes URL'er er ikke bekræftet endnu.
+  proshop:
+    name: Proshop
+    urls: {}
