@@ -40,44 +40,45 @@ function report(out: Report, line = ""): void {
 }
 
 /**
- * Ord, der står tæt på de tal, en mindstepris er sat sammen af. Skal en
- * udbyders mindstepris regnes ud frem for læses, er det disse afsnit, man
- * har brug for at se — og de er umulige at gætte sig til udefra.
+ * Beløb store nok til at kunne være en telefon- eller totalpris. Konteksten
+ * ankres på beløbene selv frem for på nøgleord: et forsøg med ord som
+ * "afbetaling" og "oprettelse" gav ingenting på YouSees sider, fordi
+ * ordene ikke stod tæt nok på tallene. Tallene kan man derimod altid finde.
  */
-const PRICE_KEYWORDS =
-  /(afbetaling|betal her og nu|kontant|udbetaling|oprettelse|pr\.? ?md|om måneden|i 6 mdr|bindingsperiode|abonnement)/gi;
+const LARGE_AMOUNT = /(\d{1,3}(?:\.\d{3})+|\d{4,})\s*kr/gi;
 
-const PRICE_CONTEXT_BEFORE = 70;
-const PRICE_CONTEXT_AFTER = 150;
-const MAX_PRICE_CONTEXTS = 10;
+const AMOUNT_CONTEXT_BEFORE = 120;
+const AMOUNT_CONTEXT_AFTER = 120;
+const MAX_AMOUNT_CONTEXTS = 12;
 
 function reportPriceContext(out: Report, text: string): void {
   const windows: string[] = [];
   let coveredUntil = 0;
 
-  PRICE_KEYWORDS.lastIndex = 0;
+  LARGE_AMOUNT.lastIndex = 0;
   let match: RegExpExecArray | null;
-  while ((match = PRICE_KEYWORDS.exec(text)) !== null && windows.length < MAX_PRICE_CONTEXTS) {
-    // Nøgleordene står tæt, så uden dette ville hvert vindue gentage det
-    // forrige med få tegns forskydning og drukne rapporten.
+  while ((match = LARGE_AMOUNT.exec(text)) !== null && windows.length < MAX_AMOUNT_CONTEXTS) {
+    // Uden dette gentager hvert vindue det forrige med få tegns forskydning.
     if (match.index < coveredUntil) continue;
-
-    const start = Math.max(0, match.index - PRICE_CONTEXT_BEFORE);
-    const end = match.index + PRICE_CONTEXT_AFTER;
-    const snippet = text.slice(start, end).trim();
-    // Kun afsnit med et beløb er interessante.
-    if (!/\d[\d.]*\s*kr/i.test(snippet)) continue;
-
-    windows.push(snippet);
+    const end = match.index + match[0].length + AMOUNT_CONTEXT_AFTER;
+    windows.push(text.slice(Math.max(0, match.index - AMOUNT_CONTEXT_BEFORE), end).trim());
     coveredUntil = end;
   }
 
   if (windows.length === 0) return;
   report(out);
-  report(out, "Prisrelateret kontekst (til at regne mindsteprisen ud af komponenter):");
+  report(out, "Kontekst omkring større beløb (til at regne mindsteprisen ud af komponenter):");
   for (const w of windows) {
     report(out, `- "${w}"`);
   }
+}
+
+/** JSON-LD's Product.offers oplyser ofte kontantprisen utvetydigt. */
+function reportProductOffers(out: Report, product: Record<string, unknown> | undefined): void {
+  if (!product) return;
+  const offers = product.offers;
+  if (!offers) return;
+  report(out, `JSON-LD Product.offers: ${JSON.stringify(offers).slice(0, 400)}`);
 }
 
 async function diagnoseUrl(out: Report, label: string, url: string): Promise<void> {
@@ -107,6 +108,7 @@ async function diagnoseUrl(out: Report, label: string, url: string): Promise<voi
     `JSON-LD: ${jsonLd.length} node(r)${product ? `, Product fundet ("${String(product.name ?? "?")}")` : ", ingen Product"}`,
   );
   report(out, `__NEXT_DATA__: ${extractNextData(html) ? "til stede" : "ikke til stede"}`);
+  reportProductOffers(out, product);
 
   // Er ordet der overhovedet? Skelner mellem "forkert ordlyd" og
   // "prisen findes først efter JavaScript-kørsel".
