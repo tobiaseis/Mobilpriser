@@ -6,6 +6,7 @@ import {
   type ProviderId,
 } from "@mobilpriser/core";
 import { fetchRenderedHtml } from "../browser.js";
+import { deriveComponents } from "../components.js";
 import {
   extractJsonLd,
   fetchHtml as defaultFetchHtml,
@@ -128,13 +129,25 @@ export function createGenericAdapter(
 
       const product = findProductLd(extractJsonLd(html));
 
+      // Mindsteprisen er aflæst og troværdig; komponenterne udledes af den,
+      // så tabellen kan vise hvad kunden betaler ved køb og pr. måned. Går
+      // regnestykket ikke op, står felterne tomme frem for at gætte.
+      const derived = deriveComponents(html, chosen.value);
+
       const candidate: Offer = {
         id: `${id}:${ref.target.slug}`,
         provider: id,
         phone: ref.target,
         url: ref.url,
         minPrice: chosen.value,
-        components: {},
+        components: derived
+          ? {
+              upfront: derived.upfront,
+              planMonthly: derived.planMonthly,
+              setupFee: derived.fees,
+              deviceMonthly: 0,
+            }
+          : {},
         computedMinPrice: null,
         bindingMonths: BINDING_MONTHS,
         scrapedAt: new Date().toISOString(),

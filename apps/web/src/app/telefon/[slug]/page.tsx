@@ -68,7 +68,9 @@ export default async function PhonePage({ params }: PhonePageProps) {
       </h1>
       <p className="lede">
         Mindstepris for de 6 måneders binding hos hver udbyder, sorteret fra billigst til
-        dyrest.
+        dyrest. Beløbet ved køb plus seks måneders abonnement og eventuelle gebyrer giver
+        mindsteprisen — står felterne tomme, kunne opdelingen ikke udledes med sikkerhed
+        fra udbyderens side.
       </p>
       <p className="meta-line">Data hentet: {formatDate(latest.generatedAt)}</p>
 
@@ -97,11 +99,10 @@ export default async function PhonePage({ params }: PhonePageProps) {
               <tr>
                 <th>Udbyder</th>
                 <th>Abonnement</th>
-                <th>Data</th>
-                <th>Udbetaling</th>
-                <th>Afbetaling</th>
-                <th>Pr. måned</th>
-                <th>Mindstepris</th>
+                <th>Betal ved køb</th>
+                <th>Abonnement pr. md.</th>
+                <th>Gebyrer</th>
+                <th>Mindstepris 6 mdr.</th>
                 <th>Vurdering</th>
               </tr>
             </thead>
@@ -114,20 +115,22 @@ export default async function PhonePage({ params }: PhonePageProps) {
                     </a>
                     {offer.stale && <span className="badge badge-stale" style={{ marginLeft: 8 }}>Ikke opdateret i dag</span>}
                   </td>
-                  <td>{offer.components.planName ?? "—"}</td>
-                  <td>{formatDataGb(offer.components.dataGb)}</td>
-                  <td className="num">
-                    {offer.components.upfront != null ? formatKr(offer.components.upfront) : "—"}
+                  <td>
+                    {offer.components.planName ??
+                      (offer.components.dataGb != null
+                        ? formatDataGb(offer.components.dataGb)
+                        : "—")}
                   </td>
                   <td className="num">
-                    {offer.components.deviceMonthly != null
-                      ? `${formatKr(offer.components.deviceMonthly)}/md.`
-                      : "—"}
+                    {offer.components.upfront != null ? formatKr(offer.components.upfront) : "—"}
                   </td>
                   <td className="num">
                     {offer.components.planMonthly != null
                       ? `${formatKr(offer.components.planMonthly)}/md.`
                       : "—"}
+                  </td>
+                  <td className="num">
+                    {offer.components.setupFee ? formatKr(offer.components.setupFee) : "—"}
                   </td>
                   <td className="num min-price">
                     {formatKr(offer.minPrice)}
