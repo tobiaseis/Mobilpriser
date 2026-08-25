@@ -9,7 +9,15 @@ import { parse as parseYaml } from "yaml";
  */
 const REPO_ROOT = path.join(process.cwd(), "..", "..");
 
-export type ProviderId = "yousee" | "telenor" | "telmore" | "cbb" | "callme";
+export type ProviderId =
+  | "yousee"
+  | "telenor"
+  | "telmore"
+  | "cbb"
+  | "callme"
+  | "oister"
+  | "norlys"
+  | "tre";
 
 export interface PhoneTarget {
   brand: string;
@@ -54,8 +62,12 @@ export interface LatestFile {
 }
 
 export interface ReferenceFile {
+  /** Laveste kontantpris pr. telefon, oplyst af udbyderne selv. */
   cashPrices: Record<string, number>;
-  cheapestSimOnlyByDataGb: Record<string, number>;
+  /** Laveste månedspris set på tværs af alle tilbud. */
+  cheapestMonthly: number | null;
+  cashPriceSources: Record<string, number>;
+  generatedAt: string | null;
 }
 
 export function loadPhones(): PhoneTarget[] {
@@ -77,7 +89,9 @@ export function loadReference(): ReferenceFile {
   const parsed = JSON.parse(raw) as Partial<ReferenceFile>;
   return {
     cashPrices: parsed.cashPrices ?? {},
-    cheapestSimOnlyByDataGb: parsed.cheapestSimOnlyByDataGb ?? {},
+    cheapestMonthly: parsed.cheapestMonthly ?? null,
+    cashPriceSources: parsed.cashPriceSources ?? {},
+    generatedAt: parsed.generatedAt ?? null,
   };
 }
 
@@ -93,4 +107,7 @@ export const PROVIDER_NAMES: Record<ProviderId, string> = {
   telmore: "Telmore",
   cbb: "CBB",
   callme: "Call me",
+  oister: "OiSTER",
+  norlys: "Norlys",
+  tre: "3",
 };

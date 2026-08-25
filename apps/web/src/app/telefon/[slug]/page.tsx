@@ -21,20 +21,16 @@ const VERDICT_LABEL: Record<Verdict, string> = {
   bad: "Over reference",
 };
 
-function VerdictBadge({ offer, cashPrices, cheapestSimOnlyByDataGb }: {
+function VerdictBadge({ offer, cashPrice, cheapestMonthly }: {
   offer: Offer;
-  cashPrices: Record<string, number>;
-  cheapestSimOnlyByDataGb: Record<string, number>;
+  cashPrice: number | undefined;
+  cheapestMonthly: number | null;
 }) {
-  const cashPrice = cashPrices[offer.phone.slug];
-  const dataGbKey = offer.components.dataGb != null ? String(offer.components.dataGb) : undefined;
-  const simOnlyMonthly = dataGbKey ? cheapestSimOnlyByDataGb[dataGbKey] : undefined;
-
-  if (cashPrice == null || simOnlyMonthly == null) {
+  if (cashPrice == null || cheapestMonthly == null) {
     return <span className="badge badge-unknown">Ingen reference endnu</span>;
   }
 
-  const reference = calculateReference(cashPrice, simOnlyMonthly);
+  const reference = calculateReference(cashPrice, cheapestMonthly);
   const verdict = verdictFor(offer.minPrice, reference);
   const className =
     verdict === "good" ? "badge-good" : verdict === "bad" ? "badge-bad" : "badge-neutral";
@@ -56,7 +52,11 @@ export default async function PhonePage({ params }: PhonePageProps) {
   const reference = loadReference();
   const offers = offersForPhone(latest.offers, slug);
 
-  const hasAnyReference = Object.keys(reference.cashPrices).length > 0;
+  const cashPrice = reference.cashPrices[slug];
+  const referenceTotal =
+    cashPrice != null && reference.cheapestMonthly != null
+      ? calculateReference(cashPrice, reference.cheapestMonthly)
+      : null;
 
   return (
     <>
@@ -82,11 +82,17 @@ export default async function PhonePage({ params }: PhonePageProps) {
         </div>
       )}
 
-      {!hasAnyReference && (
+      {referenceTotal != null ? (
+        <p className="meta-line">
+          Reference: {formatKr(reference.cashPrices[slug]!)} kontant for telefonen plus{" "}
+          {formatKr(reference.cheapestMonthly!)}/md. i 6 mdr. ={" "}
+          <strong>{formatKr(referenceTotal)}</strong>. Et tilbud under det beløb er billigere
+          end at købe telefonen selv og tage det billigste abonnement ved siden af.
+        </p>
+      ) : (
         <div className="warning-box">
-          Referencepriser (kontant + billigste SIM-only) er endnu ikke indsamlet, så
-          vurderingskolonnen kan ikke sige noget om, hvorvidt tilbuddene reelt er billige — kun
-          hvordan de rangerer indbyrdes.
+          Ingen kontantpris er endnu opsamlet for denne telefon, så vurderingskolonnen kan ikke
+          sige, om tilbuddene reelt er billige — kun hvordan de rangerer indbyrdes.
         </div>
       )}
 
@@ -143,8 +149,8 @@ export default async function PhonePage({ params }: PhonePageProps) {
                   <td>
                     <VerdictBadge
                       offer={offer}
-                      cashPrices={reference.cashPrices}
-                      cheapestSimOnlyByDataGb={reference.cheapestSimOnlyByDataGb}
+                      cashPrice={reference.cashPrices[offer.phone.slug]}
+                      cheapestMonthly={reference.cheapestMonthly}
                     />
                   </td>
                 </tr>

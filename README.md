@@ -102,6 +102,7 @@ parser ikke rammer.
 | Call me | Virker via browser-gengivelse. Sælger telefonen til fuld betaling nu, ikke afbetaling — derfor lavere mindstepriser |
 | Telenor / Telmore | Bekræftet mod eksterne tal: Telmore iPhone 17 = 7.543 kr., S26 Ultra = 12.293 kr. |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
+| OiSTER, Norlys, 3 | Tilføjet — afventer første kørsel |
 | YouSee | Mindsteprisen regnes ud (telefonpris fra JSON-LD + 6 x månedspris), fordi siden ikke oplyser den. Markeret "beregnet" og lav konfidens |
 
 ## Tilføj flere telefoner eller udbyder-URLs
@@ -111,6 +112,15 @@ sprunget over af scraperen (advarsel i kørslens summary) frem for at gætte en 
 
 ## Referencedata ("er det faktisk billigt")
 
-`data/reference/cash-prices.json` er tom fra start. Så snart den udfyldes med
-markedskontantpriser og billigste SIM-only-priser pr. databehov, viser websitet automatisk
-en vurdering (🟢/🟡/🔴) i sammenligningstabellen — se PLAN.md, fase 4.
+`data/reference/cash-prices.json` skrives af scraperen selv, ikke i hånden. Flere udbydere
+oplyser telefonens pris uden abonnement — OiSTER kalder den ligefrem "kontantpris" — og de
+tal samles op fra de sider, vi alligevel henter. Den laveste oplyste kontantpris pr. telefon
+bliver referencen, sammen med den laveste månedspris set på tværs af tilbuddene:
+
+```
+reference = laveste kontantpris + laveste månedspris x 6
+```
+
+Et tilbud under det beløb er billigere end at købe telefonen selv og tage det billigste
+abonnement ved siden af. Kun beløb med en utvetydig etiket accepteres som kontantpris — et
+umærket tal kan lige så godt være en førpris i en kampagne.

@@ -7,6 +7,7 @@ import {
 } from "@mobilpriser/core";
 import { fetchRenderedHtml } from "../browser.js";
 import { deriveComponents } from "../components.js";
+import { extractCashPrice } from "../reference.js";
 import {
   extractJsonLd,
   fetchHtml as defaultFetchHtml,
@@ -27,6 +28,8 @@ export interface ScrapeResult {
   offer: Offer | null;
   /** Sat når intet tilbud blev udtrukket — vises i kørslens Actions-summary. */
   warning?: string;
+  /** Telefonens pris uden abonnement, når udbyderen oplyser den. */
+  cashPrice?: number;
 }
 
 /**
@@ -161,7 +164,7 @@ export function createGenericAdapter(
         return { offer: null, warning: `${label}: tilbud fejlede validering (${issues})` };
       }
 
-      return { offer: parsed.data };
+      return { offer: parsed.data, cashPrice: extractCashPrice(html) ?? undefined };
     },
   };
 }

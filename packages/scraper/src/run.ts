@@ -5,6 +5,7 @@ import type { Offer } from "@mobilpriser/core";
 import { closeBrowser } from "./browser.js";
 import { loadConfig } from "./config.js";
 import { allAdapters } from "./providers/index.js";
+import { buildReference, type CashPriceObservation } from "./reference.js";
 import { dropCrossModelDuplicates } from "./validate.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -44,6 +45,7 @@ async function run(): Promise<void> {
 
   const freshOffers: Offer[] = [];
   const warnings: string[] = [];
+  const cashObservations: CashPriceObservation[] = [];
 
   for (const adapter of adapters) {
     const refs = adapter.discover(config.phones);
@@ -55,6 +57,9 @@ async function run(): Promise<void> {
       const result = await adapter.scrape(ref);
       if (result.offer) freshOffers.push(result.offer);
       if (result.warning) warnings.push(result.warning);
+      if (result.cashPrice != null) {
+        cashObservations.push({ phoneSlug: ref.target.slug, cashPrice: result.cashPrice });
+      }
       await sleep(REQUEST_DELAY_MS);
     }
   }
@@ -91,6 +96,15 @@ async function run(): Promise<void> {
   writeFileSync(LATEST_PATH, serialized);
   writeFileSync(path.join(HISTORY_DIR, `${dateStamp}.json`), serialized);
 
+  // Referencen bygges af de kontantpriser, udbyderne selv oplyser, frem for
+  // af håndskrevne tal, der ville blive forældede uden at nogen opdagede det.
+  const reference = buildReference(cashObservations, acceptedOffers);
+  mkdirSync(path.join(DATA_DIR, "reference"), { recursive: true });
+  writeFileSync(
+    path.join(DATA_DIR, "reference", "cash-prices.json"),
+    JSON.stringify(reference, null, 2) + "\n",
+  );
+
   const jsonlLines = offers
     .filter((offer) => !offer.stale)
     .map((offer) =>
@@ -101,7 +115,8 @@ async function run(): Promise<void> {
   }
 
   console.log(
-    `Hentede ${acceptedOffers.length} tilbud, ${carriedOver.length} videreført fra i går (stale).`,
+    `Hentede ${acceptedOffers.length} tilbud, ${carriedOver.length} videreført fra i går (stale). ` +
+      `Kontantpriser for ${Object.keys(reference.cashPrices).length} telefon(er).`,
   );
   if (warnings.length > 0) {
     console.log("\nAdvarsler:");
@@ -116,6 +131,7 @@ async function run(): Promise<void> {
       `- Hentede tilbud: **${acceptedOffers.length}**`,
       `- Videreført fra i går (stale): **${carriedOver.length}**`,
       `- Advarsler: **${warnings.length}**`,
+      `- Kontantpriser opsamlet: **${Object.keys(reference.cashPrices).length}** telefon(er)`,
     ];
     if (warnings.length > 0) {
       lines.push("", "### Advarsler", "", ...warnings.map((warning) => `- ${warning}`));
