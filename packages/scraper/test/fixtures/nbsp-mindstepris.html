@@ -1,0 +1,14 @@
+<!--
+  SYNTETISK TEST-FIXTURE — gengiver den fejl, der ramte i produktion:
+  beløbet er adskilt fra "kr." af &nbsp;, og der står en månedsydelse
+  i samme sætning, som en naiv parser griber i stedet.
+-->
+<!DOCTYPE html>
+<html lang="da">
+  <head><title>Testtelefon 300</title></head>
+  <body>
+    <p class="price-note">
+      Mindstepris ved 299&nbsp;kr./md. i 6 mdr.: 4.499&nbsp;kr.
+    </p>
+  </body>
+</html>

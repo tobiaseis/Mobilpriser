@@ -5,7 +5,13 @@ import {
   type PhoneTarget,
   type ProviderId,
 } from "@mobilpriser/core";
-import { extractJsonLd, extractStatedMinPrice, fetchHtml, findProductLd } from "../html.js";
+import {
+  extractJsonLd,
+  fetchHtml,
+  findMinPriceCandidates,
+  findProductLd,
+  isPlausibleMinPrice,
+} from "../html.js";
 
 export interface ProductRef {
   target: PhoneTarget;
@@ -57,12 +63,14 @@ export function createGenericAdapter(
         };
       }
 
-      const statedMinPrice = extractStatedMinPrice(html);
-      if (statedMinPrice == null) {
-        return {
-          offer: null,
-          warning: `${label}: fandt ingen "mindstepris" på siden — parser eller side kan være ændret`,
-        };
+      // Alle beløb nær ordet "mindstepris" hentes, ikke bare det første, så
+      // en advarsel kan fortælle præcis hvad der stod på siden. Uden det er
+      // en fejlende parser umulig at rette uden selv at kunne åbne siden.
+      const candidates = findMinPriceCandidates(html);
+      const chosen = candidates.find((c) => !c.perMonth && isPlausibleMinPrice(c.value));
+
+      if (!chosen) {
+        return { offer: null, warning: `${label}: ${describeFailure(candidates)}` };
       }
 
       const product = findProductLd(extractJsonLd(html));
@@ -72,7 +80,7 @@ export function createGenericAdapter(
         provider: id,
         phone: ref.target,
         url: ref.url,
-        statedMinPrice,
+        statedMinPrice: chosen.value,
         components: {},
         computedMinPrice: null,
         bindingMonths: BINDING_MONTHS,
@@ -90,4 +98,21 @@ export function createGenericAdapter(
       return { offer: parsed.data };
     },
   };
+}
+
+/**
+ * Forklarer hvorfor ingen mindstepris blev valgt, med de tal der faktisk
+ * stod på siden. Advarslen ender i kørslens summary, så den er ofte det
+ * eneste, der er til rådighed, når en parser skal rettes.
+ */
+function describeFailure(candidates: ReturnType<typeof findMinPriceCandidates>): string {
+  if (candidates.length === 0) {
+    return 'fandt ingen "mindstepris" på siden — enten er ordlyden en anden, eller også indlæses prisen med JavaScript';
+  }
+  const described = candidates
+    .slice(0, 5)
+    .map((c) => `${c.value} kr.${c.perMonth ? " (pr. md.)" : ""}`)
+    .join(", ");
+  const context = candidates[0].context;
+  return `fandt "mindstepris", men intet brugbart beløb — kandidater: ${described}. Kontekst: "${context}"`;
 }
