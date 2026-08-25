@@ -102,58 +102,81 @@ data/history.jsonl               # append-only: én linje pr. (dag, offer-id, n�
 data/reference/cash-prices.json  # markedskontantpriser (Elgiganten/Power/Apple)
 ```
 
-`history.jsonl` holdes smal (dato, id, tco24, tco36, effectivePhonePrice) så repoet ikke
+`history.jsonl` holdes smal (dato, id, effectivePhonePrice, bindingMonths) så repoet ikke
 eksploderer. Ved ~60 tilbud/dag er det ca. 2 MB om året.
 
 ---
 
-## 4. Beregningsmodel — kernen i "hvad er bedst"
+## 4. Beregningsmodel — effektiv telefonpris
 
-### 4.1 Samlet pris over horisont N måneder
+Hovedtallet på sitet er **den effektive telefonpris**: hvad tilbuddet i alt koster dig i
+kroner, fra du trykker køb, til bindingen er ovre og telefonen er betalt.
 
-```
-TCO(N) = upfront + setupFee + shippingFee
-       + deviceMonthly × min(N, deviceMonths)
-       + Σ_{m=1..N} planPris(m)
-
-planPris(m) = campaignMonthly hvis m ≤ campaignMonths, ellers monthly
-```
-
-Standardhorisont: **24 måneder** (skifter til 36 hvis afbetalingen er længere). Horisonten
-skal kunne vælges i UI'et, fordi rangeringen ændrer sig med den.
-
-### 4.2 Effektiv telefonpris — det tal projektet handler om
+### 4.1 Formlen
 
 ```
-effektivTelefonpris(N) = TCO(N) − (referenceAbonnement × N)
+effektivTelefonpris = udbetaling + oprettelse + fragt
+                    + Σ_{m=1..B} abonnementspris(m)        // B = bindingsperioden
+                    + afbetalingPrMd × afbetalingsMdr       // hele afbetalingen
+
+abonnementspris(m) = campaignMonthly hvis m ≤ campaignMonths, ellers monthly
 ```
 
-`referenceAbonnement` = billigste SIM-only abonnement på markedet i samme datakategori
-(fx 50 GB). Det svarer på: *hvad koster telefonen mig reelt, når jeg trækker det fra, jeg
-alligevel skulle bruge på et abonnement?*
+Ét tal pr. tilbud, i kroner, direkte sammenligneligt med at gå ind i en butik og lægge
+pengene på disken.
 
-### 4.3 Er det faktisk billigt?
+### 4.2 To ting formlen skal have styr på
+
+**Restgæld når afbetalingen er længere end bindingen.** Det er almindeligt at binde sig i
+6 måneder på et abonnement, mens telefonen afbetales over 24. Når bindingen slutter,
+skylder du stadig 18 ydelser — dem kan du ikke gå fra ved at opsige abonnementet. Derfor
+tælles **hele** afbetalingsperioden med, ikke kun de måneder der ligger inden for
+bindingen. Restgælden vises som sin egen kolonne i tabellen, så det er synligt hvor stor
+en del af prisen der ligger efter bindingen.
+
+**Tilbud uden separat afbetaling.** Nogle udbydere lægger telefonen ind i
+abonnementsprisen i stedet for en synlig afbetaling. Så er `afbetalingPrMd = 0`, og hele
+beløbet ligger i abonnementsleddet. Formlen håndterer begge former uden særtilfælde — det
+er netop derfor komponenterne hentes hver for sig frem for en færdig "pris pr. måned".
+
+### 4.3 Sammenligning på tværs af forskellige bindingsperioder
+
+Et tilbud med 6 måneders binding vil altid se billigere ud end et med 24 måneders binding,
+fordi der tælles 18 måneders abonnement mindre med. Det er korrekt — men kun hvis man
+rent faktisk skifter væk efter 6 måneder. Sitet har derfor to visninger:
+
+- **Egen bindingsperiode** (standard). Tallet er præcis det, du binder dig til. Tabellen
+  viser bindingslængden tydeligt ved siden af beløbet, så man ikke sammenligner 6 mdr.
+  med 24 mdr. i blinde.
+- **Fælles horisont** (12/24/36 mdr.). Måneder ud over bindingen tælles med til
+  normalprisen, så tilbud med forskellig bindingslængde kan stilles op mod hinanden.
+
+### 4.4 Er det faktisk billigt?
+
+Ud over udbydernes rækker indeholder tabellen en **referencerække**:
 
 ```
-besparelse = markedsKontantpris − effektivTelefonpris
+reference = markedsKontantpris + billigsteSimOnly × B
 ```
 
-Positiv besparelse = reelt tilbud. Negativ = du betaler overpris for telefonen gennem
-abonnementet. Det er den udbredte fælde: lav afbetaling kombineret med et abonnement,
-der er 60–80 kr. dyrere end nødvendigt — over 24 mdr. er det 1.500–2.000 kr. skjult.
+altså: køb telefonen kontant og tag det billigste SIM-only abonnement ved siden af.
+Et tilbud der ligger under referencen, er reelt billigere end at gøre det selv.
 
-Sitet flagger eksplicit:
-- 🟢 billigere end kontant + billigste SIM-only
-- 🟡 nogenlunde neutralt (±300 kr.)
-- 🔴 dyrere end at købe telefonen kontant
+- 🟢 **under referencen** — reelt tilbud
+- 🟡 **inden for ±300 kr.** — bekvemt, men ingen gevinst
+- 🔴 **over referencen** — du betaler overpris for telefonen gennem abonnementet
 
-Inkluderede streamingtjenester værdisættes til **0 kr. som standard** (kan slås til i
-UI'et med en brugerdefineret værdi) — ellers pynter man tilbuddene kunstigt.
+Fælden er lav afbetaling kombineret med et abonnement, der er 60–80 kr. dyrere end
+nødvendigt. Over 24 måneder er det 1.500–2.000 kr., der er gemt i månedsprisen.
 
-Ekstra advarsler: binding kortere end afbetaling (kan man opsige og beholde afbetalingen?),
-kampagnepris der udløber, gebyrer.
+Inkluderede streamingtjenester værdisættes til **0 kr. som standard** (kan slås til med en
+selvvalgt værdi i UI'et) — ellers pynter man tilbuddene kunstigt.
 
----
+### 4.5 Hvad der følges over tid
+
+Tidsserien i statistikken er **effektiv telefonpris pr. (udbyder × telefonvariant)** —
+samme tal som i tabellen. Så viser grafen ikke bare om listeprisen er faldet, men om
+tilbuddet som helhed er blevet bedre.
 
 ## 5. Sådan hentes data
 
@@ -245,9 +268,10 @@ hvilken udbyder, og om det er historisk billigt.
 
 **Telefonside (`/telefon/samsung-galaxy-s26-ultra-256gb`):**
 - sammenligningstabel over alle udbyderes tilbud, sorteret efter valgt horisont
-  (kolonner: udbyder, abonnement, udbetaling, afbetaling/md., abonnement/md.,
-  **samlet 24 mdr.**, **effektiv telefonpris**, vurdering 🟢🟡🔴)
-- kontroller: horisont (12/24/36), databehov (GB), værdi af streaming, vis/skjul binding
+  (kolonner: udbyder, abonnement, binding, udbetaling, afbetaling/md., abonnement/md.,
+  restgæld efter binding, **effektiv telefonpris**, vurdering 🟢🟡🔴)
+- referencerække: "køb kontant + billigste SIM-only" — alt under den er et reelt tilbud
+- kontroller: egen binding / fælles horisont (12/24/36), databehov (GB), værdi af streaming
 - prisgraf: effektiv telefonpris over tid, én linje pr. udbyder
 - statistikpanel: laveste nogensinde, median 90 dage, percentil for dagens pris,
   "prisen er faldet 3 gange på 60 dage"
@@ -264,7 +288,7 @@ vigtigere end selve grafen.
 | Fase | Indhold | Resultat |
 |---|---|---|
 | **0** | Repo-skelet, TypeScript, pnpm workspace, `config/phones.yaml`, datamodel + zod i `packages/core` | Kan bygge og teste |
-| **1** | Beregningsmodel + tests (TCO, effektiv pris, kampagneperioder, gebyrer) | Kernen virker, verificeret med håndregnede eksempler |
+| **1** | Beregningsmodel + tests (effektiv telefonpris, restgæld, kampagneperioder, gebyrer) | Kernen virker, verificeret med håndregnede eksempler |
 | **2** | **Én** udbyder ende-til-ende (Telmore — enkle produkt-URLs) inkl. fixture-test | Bevis for at metoden holder |
 | **3** | De 4 øvrige udbydere, én ad gangen | `data/latest.json` med rigtige tal |
 | **4** | Referencedata: billigste SIM-only pr. datakategori + markedskontantpriser | Kan svare på "er det billigt" |
@@ -294,13 +318,15 @@ fra Telmore, er resten mekanisk arbejde.
 
 ## 10. Åbne valg (mine standardantagelser, kan ændres)
 
-1. **Horisont:** 24 mdr. som standard — matcher den mest udbredte afbetaling.
-2. **Streamingværdi:** 0 kr. som standard, valgfrit tilvalg i UI'et.
-3. **Referenceabonnement:** billigste SIM-only i samme GB-kategori, hentet fra samme
-   udbyderes SIM-only-sider (ekstra scraping, men uden det kan vi ikke svare på
-   "er det billigt").
-4. **Repo offentligt** (gratis Actions + gennemsigtighed) — kan også køre privat.
-5. **Kun nye kunder, privat, uden mersalg** (forsikring, tilbehør) i første omgang.
+1. **Horisont:** hvert tilbuds egen bindingsperiode som standard, med fælles horisont
+   (12/24/36 mdr.) som ekstra visning.
+2. **Restgæld på telefonen efter bindingen tælles med** i den effektive telefonpris —
+   den kan man ikke gå fra ved at opsige abonnementet.
+3. **Streamingværdi:** 0 kr. som standard, valgfrit tilvalg i UI'et.
+4. **Referencerække:** markedskontantpris + billigste SIM-only i samme GB-kategori
+   (kræver ekstra scraping, men uden den kan vi ikke svare på "er det billigt").
+5. **Repo offentligt** (gratis Actions + gennemsigtighed) — kan også køre privat.
+6. **Kun nye kunder, privat, uden mersalg** (forsikring, tilbehør) i første omgang.
 
 ---
 
