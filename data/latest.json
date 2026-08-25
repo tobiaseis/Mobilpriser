@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T19:23:13.730Z",
+  "generatedAt": "2026-08-25T19:25:13.924Z",
   "offers": [
     {
       "id": "telenor:iphone-17-256gb",
@@ -15,7 +15,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:22:44.164Z",
+      "scrapedAt": "2026-08-25T19:24:45.031Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -33,7 +33,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:22:53.929Z",
+      "scrapedAt": "2026-08-25T19:24:54.622Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -51,7 +51,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:23:02.494Z",
+      "scrapedAt": "2026-08-25T19:25:03.359Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -69,7 +69,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:23:12.727Z",
+      "scrapedAt": "2026-08-25T19:25:12.921Z",
       "source": "text-pattern",
       "confidence": "low"
     }
