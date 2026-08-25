@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T19:43:00.935Z",
+  "generatedAt": "2026-08-25T20:44:10.235Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -11,13 +11,19 @@
         "slug": "samsung-galaxy-s26-256gb"
       },
       "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26",
-      "minPrice": 1813,
-      "components": {},
-      "computedMinPrice": null,
+      "minPrice": 4313,
+      "components": {
+        "upfront": 2999,
+        "deviceMonthly": 0,
+        "planName": "50 GB Mobil",
+        "planMonthly": 219,
+        "dataGb": 50
+      },
+      "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:41:46.976Z",
-      "source": "text-pattern",
-      "confidence": "medium"
+      "scrapedAt": "2026-08-25T20:42:45.426Z",
+      "source": "computed",
+      "confidence": "low"
     },
     {
       "id": "yousee:samsung-galaxy-s26-ultra-256gb",
@@ -29,13 +35,43 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black",
-      "minPrice": 1813,
-      "components": {},
-      "computedMinPrice": null,
+      "minPrice": 7313,
+      "components": {
+        "upfront": 5999,
+        "deviceMonthly": 0,
+        "planName": "50 GB Mobil",
+        "planMonthly": 219,
+        "dataGb": 50
+      },
+      "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:41:48.903Z",
-      "source": "text-pattern",
-      "confidence": "medium"
+      "scrapedAt": "2026-08-25T20:42:47.421Z",
+      "source": "computed",
+      "confidence": "low"
+    },
+    {
+      "id": "yousee:iphone-17-256gb",
+      "provider": "yousee",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender",
+      "minPrice": 7693,
+      "components": {
+        "upfront": 5899,
+        "deviceMonthly": 0,
+        "planName": "Fri Data Mobil",
+        "planMonthly": 299,
+        "dataGb": "unlimited"
+      },
+      "computedMinPrice": 7693,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T20:42:49.308Z",
+      "source": "computed",
+      "confidence": "low"
     },
     {
       "id": "telenor:samsung-galaxy-s26-ultra-256gb",
@@ -51,7 +87,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:41:52.467Z",
+      "scrapedAt": "2026-08-25T20:42:52.068Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -69,7 +105,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:41:53.708Z",
+      "scrapedAt": "2026-08-25T20:42:56.463Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -87,7 +123,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:05.950Z",
+      "scrapedAt": "2026-08-25T20:43:08.949Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -105,7 +141,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:14.497Z",
+      "scrapedAt": "2026-08-25T20:43:18.841Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -123,7 +159,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:23.805Z",
+      "scrapedAt": "2026-08-25T20:43:28.620Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -141,7 +177,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:32.524Z",
+      "scrapedAt": "2026-08-25T20:43:38.276Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -159,7 +195,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:41.343Z",
+      "scrapedAt": "2026-08-25T20:43:47.542Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -177,7 +213,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:50.611Z",
+      "scrapedAt": "2026-08-25T20:43:58.211Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -195,13 +231,12 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:42:59.933Z",
+      "scrapedAt": "2026-08-25T20:44:09.233Z",
       "source": "text-pattern",
       "confidence": "low"
     }
   ],
   "warnings": [
-    "yousee/iphone-17-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig"
   ]
 }
