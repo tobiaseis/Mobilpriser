@@ -7,6 +7,8 @@ import {
   extractStatedMinPrice,
   findMinPriceCandidates,
   findProductLd,
+  looksClientRendered,
+  looksOutOfStock,
   pageText,
   parseDanishAmount,
 } from "../src/html.js";
@@ -104,5 +106,35 @@ describe("extractJsonLd / findProductLd", () => {
 
   it("returnerer tom liste, når der ikke er JSON-LD på siden", () => {
     expect(extractJsonLd(fixture("no-mindstepris.html"))).toEqual([]);
+  });
+});
+
+describe("looksOutOfStock", () => {
+  it("genkender en udsolgt side", () => {
+    // Telmore viser "Mindstepris i 6 måneder 0 kr. Udsolgt" — nul kroner er
+    // her en lagerstatus, ikke et parserproblem.
+    const html = fixture("sold-out.html");
+    expect(looksOutOfStock(html)).toBe(true);
+    expect(extractStatedMinPrice(html)).toBeNull();
+  });
+
+  it("markerer ikke en normal side som udsolgt", () => {
+    expect(looksOutOfStock(fixture("sample-product.html"))).toBe(false);
+  });
+});
+
+describe("looksClientRendered", () => {
+  it("genkender en side, der næsten ingen synlig tekst har", () => {
+    expect(looksClientRendered("<html><body><div id='app'></div></body></html>")).toBe(true);
+  });
+
+  it("markerer ikke en tekstrig side som klient-tegnet", () => {
+    expect(looksClientRendered(`<p>${"tekst ".repeat(1200)}</p>`)).toBe(false);
+  });
+});
+
+describe("pageText", () => {
+  it("lader ikke doctype-erklæringen sive ind i teksten", () => {
+    expect(pageText("<!DOCTYPE html><html><body><p>Hej</p></body></html>")).toBe("Hej");
   });
 });

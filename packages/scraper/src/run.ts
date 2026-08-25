@@ -2,6 +2,7 @@ import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } fr
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Offer } from "@mobilpriser/core";
+import { closeBrowser } from "./browser.js";
 import { loadConfig } from "./config.js";
 import { allAdapters } from "./providers/index.js";
 
@@ -116,7 +117,9 @@ async function run(): Promise<void> {
   }
 }
 
-run().catch((err: unknown) => {
-  console.error("Scraper fejlede uventet:", err);
-  process.exitCode = 1;
-});
+run()
+  .catch((err: unknown) => {
+    console.error("Scraper fejlede uventet:", err);
+    process.exitCode = 1;
+  })
+  .finally(closeBrowser);

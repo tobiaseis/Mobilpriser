@@ -38,6 +38,9 @@ jobs:
       - name: Byg core-pakken
         run: pnpm --filter @mobilpriser/core build
 
+      - name: Installer Chromium til sider, der bygges i browseren
+        run: pnpm --filter @mobilpriser/scraper exec playwright install --with-deps chromium
+
       - name: Kør scraperen
         run: pnpm --filter @mobilpriser/scraper run scrape
 

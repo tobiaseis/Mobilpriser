@@ -1,4 +1,5 @@
 import { appendFileSync } from "node:fs";
+import { closeBrowser, fetchRenderedHtml } from "./browser.js";
 import { loadConfig } from "./config.js";
 import {
   extractJsonLd,
@@ -7,6 +8,8 @@ import {
   findMinPriceCandidates,
   findProductLd,
   isPlausibleMinPrice,
+  looksClientRendered,
+  looksOutOfStock,
   pageText,
   pageTitle,
 } from "./html.js";
@@ -93,6 +96,39 @@ async function diagnoseUrl(out: Report, label: string, url: string): Promise<voi
     report(out, "```");
   }
 
+  report(out, `Ser udsolgt ud: ${looksOutOfStock(html) ? "ja" : "nej"}`);
+
+  // Bekræfter om en browser rent faktisk løser problemet, frem for at
+  // gætte. Kun relevant når den serverleverede side hverken har prisen
+  // eller nævneværdig tekst.
+  if (candidates.length === 0 && looksClientRendered(html)) {
+    report(out);
+    report(out, "Siden ser klient-tegnet ud — prøver igen med browser:");
+    try {
+      const rendered = await fetchRenderedHtml(url);
+      const renderedText = pageText(rendered);
+      const renderedCandidates = findMinPriceCandidates(rendered);
+      report(out, `- Synlig tekst efter gengivelse: ${renderedText.length} tegn`);
+      report(
+        out,
+        `- Ordet "mindstepris": ${renderedText.match(/mindstepris/gi)?.length ?? 0} gang(e)`,
+      );
+      if (renderedCandidates.length > 0) {
+        for (const c of renderedCandidates.slice(0, 8)) {
+          report(out, `- **${c.value} kr.**${c.perMonth ? " (pr. md.)" : ""} — "${c.context}"`);
+        }
+      } else {
+        const amounts = renderedText.match(/\d[\d.]*(?:,\d{1,2})?\s*kr\b/gi) ?? [];
+        report(
+          out,
+          `- Stadig ingen mindstepris. Beløb på siden: ${[...new Set(amounts)].slice(0, 12).join(", ") || "ingen"}`,
+        );
+      }
+    } catch (err) {
+      report(out, `- Gengivelse fejlede: ${(err as Error).message}`);
+    }
+  }
+
   if (occurrences === 0) {
     // Uden ordet er det mest nyttige at se, om der overhovedet er priser
     // på siden — er der ingen, indlæses de sandsynligvis med JavaScript.
@@ -146,7 +182,9 @@ async function run(): Promise<void> {
   }
 }
 
-run().catch((err: unknown) => {
-  console.error("Diagnose fejlede uventet:", err);
-  process.exitCode = 1;
-});
+run()
+  .catch((err: unknown) => {
+    console.error("Diagnose fejlede uventet:", err);
+    process.exitCode = 1;
+  })
+  .finally(closeBrowser);

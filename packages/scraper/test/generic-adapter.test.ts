@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createGenericAdapter } from "../src/providers/generic.js";
 import type { PhoneTarget } from "@mobilpriser/core";
 
@@ -18,71 +18,119 @@ const phone: PhoneTarget = {
   slug: "testtelefon-100-256gb",
 };
 
-afterEach(() => {
-  vi.unstubAllGlobals();
+const URL = "https://example.dk/testtelefon-100";
+const urls = { "testtelefon-100-256gb": URL };
+const ref = { target: phone, url: URL };
+
+/** Kaster, hvis den bliver kaldt — bruges når browseren ikke må røres. */
+const renderMustNotRun = vi.fn(async () => {
+  throw new Error("browser-gengivelse skulle ikke have været brugt");
 });
 
 describe("createGenericAdapter.discover", () => {
   it("finder kun telefoner der har en konfigureret URL", () => {
-    const adapter = createGenericAdapter("telmore", {
-      "testtelefon-100-256gb": "https://example.dk/testtelefon-100",
-    });
+    const adapter = createGenericAdapter("telmore", urls);
     const other: PhoneTarget = { ...phone, slug: "ikke-konfigureret" };
 
     const refs = adapter.discover([phone, other]);
 
     expect(refs).toHaveLength(1);
-    expect(refs[0].url).toBe("https://example.dk/testtelefon-100");
+    expect(refs[0].url).toBe(URL);
   });
 });
 
 describe("createGenericAdapter.scrape", () => {
   it("bygger et gyldigt tilbud ud fra den oplyste mindstepris", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => new Response(fixture("sample-product.html"), { status: 200 })),
-    );
-
-    const adapter = createGenericAdapter("telmore", {
-      "testtelefon-100-256gb": "https://example.dk/testtelefon-100",
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => fixture("sample-product.html"),
+      renderHtml: renderMustNotRun,
     });
-    const result = await adapter.scrape({ target: phone, url: "https://example.dk/testtelefon-100" });
+
+    const result = await adapter.scrape(ref);
 
     expect(result.warning).toBeUndefined();
-    expect(result.offer).not.toBeNull();
     expect(result.offer?.statedMinPrice).toBe(2688);
     expect(result.offer?.provider).toBe("telmore");
     expect(result.offer?.bindingMonths).toBe(6);
     expect(result.offer?.confidence).toBe("medium"); // JSON-LD Product fundet
   });
 
-  it("returnerer en advarsel, når mindsteprisen ikke kan findes", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => new Response(fixture("no-mindstepris.html"), { status: 200 })),
-    );
-
-    const adapter = createGenericAdapter("telmore", {
-      "testtelefon-100-256gb": "https://example.dk/testtelefon-100",
+  it("rapporterer udsolgt som lagerstatus, ikke som en parserfejl", async () => {
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => fixture("sold-out.html"),
+      renderHtml: renderMustNotRun,
     });
-    const result = await adapter.scrape({ target: phone, url: "https://example.dk/testtelefon-100" });
+
+    const result = await adapter.scrape(ref);
 
     expect(result.offer).toBeNull();
-    expect(result.warning).toMatch(/mindstepris/i);
+    expect(result.warning).toMatch(/udsolgt/i);
   });
 
-  it("returnerer en advarsel ved HTTP-fejl i stedet for at kaste", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => new Response("ikke fundet", { status: 404 })),
-    );
-
-    const adapter = createGenericAdapter("telmore", {
-      "testtelefon-100-256gb": "https://example.dk/testtelefon-100",
+  it("henter siden igen med browser, når den bygges i browseren", async () => {
+    const renderHtml = vi.fn(async () => fixture("sample-product.html"));
+    const adapter = createGenericAdapter("callme", urls, {
+      // Serverleveret side uden pris og næsten uden tekst — som Call me's.
+      fetchHtml: async () => "<html><body><div id='app'></div></body></html>",
+      renderHtml,
     });
-    const result = await adapter.scrape({ target: phone, url: "https://example.dk/testtelefon-100" });
+
+    const result = await adapter.scrape(ref);
+
+    expect(renderHtml).toHaveBeenCalledOnce();
+    expect(result.offer?.statedMinPrice).toBe(2688);
+  });
+
+  it("bruger ikke browseren, når den statiske side allerede har prisen", async () => {
+    const adapter = createGenericAdapter("telenor", urls, {
+      fetchHtml: async () => fixture("sample-product.html"),
+      renderHtml: renderMustNotRun,
+    });
+
+    await adapter.scrape(ref);
+
+    expect(renderMustNotRun).not.toHaveBeenCalled();
+  });
+
+  it("markerer udbyderen som utilgængelig ved 403 uden at prøve browseren", async () => {
+    // En 403 er en udtrykkelig afvisning af vores bot. Den omgås ikke.
+    const adapter = createGenericAdapter("cbb", urls, {
+      fetchHtml: async () => {
+        throw new Error(`HTTP 403 for ${URL}`);
+      },
+      renderHtml: renderMustNotRun,
+    });
+
+    const result = await adapter.scrape(ref);
 
     expect(result.offer).toBeNull();
-    expect(result.warning).toMatch(/404/);
+    expect(result.warning).toMatch(/403.*ikke tilgængelig/i);
+    expect(renderMustNotRun).not.toHaveBeenCalled();
+  });
+
+  it("returnerer en advarsel med de beløb, der faktisk stod på siden", async () => {
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => `<p>${"fyld ".repeat(1200)}Mindstepris: 12 kr.</p>`,
+      renderHtml: renderMustNotRun,
+    });
+
+    const result = await adapter.scrape(ref);
+
+    expect(result.offer).toBeNull();
+    expect(result.warning).toContain("12 kr.");
+  });
+
+  it("returnerer en advarsel ved andre HTTP-fejl i stedet for at kaste", async () => {
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => {
+        throw new Error(`HTTP 500 for ${URL}`);
+      },
+      renderHtml: renderMustNotRun,
+    });
+
+    const result = await adapter.scrape(ref);
+
+    expect(result.offer).toBeNull();
+    expect(result.warning).toMatch(/500/);
   });
 });

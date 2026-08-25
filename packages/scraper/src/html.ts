@@ -4,7 +4,7 @@ import { parse as parseHtml } from "node-html-parser";
  * Ærlig User-Agent med link til projektet, som beskrevet i planens afsnit
  * om god opførsel — ingen forsøg på at udgive sig for en almindelig browser.
  */
-const USER_AGENT =
+export const USER_AGENT =
   "Mobilpriser-bot/1.0 (+https://github.com/tobiaseis/Mobilpriser; " +
   "ikke-kommercielt prissammenligningsprojekt, én kørsel i døgnet)";
 
@@ -49,6 +49,7 @@ export function pageText(html: string): string {
     el.remove();
   }
   return root.textContent
+    .replace(/<!doctype[^>]*>/gi, " ")
     .replace(/\u00a0/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -202,4 +203,25 @@ export function extractNextData(html: string): unknown | null {
 export function pageTitle(html: string): string | null {
   const root = parseHtml(html);
   return root.querySelector("title")?.textContent?.trim() ?? null;
+}
+
+/**
+ * Telmore viser "Mindstepris i 6 måneder 0 kr. Udsolgt" på en udsolgt
+ * telefon. Nul kroner er altså ikke en parserfejl — der er bare ikke
+ * noget tilbud at hente. Det skal rapporteres som en lagerstatus, ikke
+ * som en knækket parser, ellers jager man en fejl, der ikke findes.
+ */
+const OUT_OF_STOCK_PATTERN = /\b(udsolgt|ikke på lager|midlertidigt udsolgt)\b/i;
+
+export function looksOutOfStock(html: string): boolean {
+  return OUT_OF_STOCK_PATTERN.test(pageText(html));
+}
+
+/**
+ * Sider, der bygger indholdet i browseren, udleverer meget HTML men næsten
+ * ingen synlig tekst. Bruges til at afgøre, om det er værd at hente siden
+ * igen med en rigtig browser.
+ */
+export function looksClientRendered(html: string): boolean {
+  return pageText(html).length < 5000;
 }

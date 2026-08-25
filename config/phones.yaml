@@ -40,14 +40,20 @@ providers:
       iphone-17-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17
       iphone-17-pro-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro
 
+  # Bekræftet: siden oplyser "Mindstepris (6 mdr.) 7.733 kr." i serverleveret HTML.
   telenor:
     urls:
       iphone-17-256gb: https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/
 
+  # CBB svarer 403 på vores identificerede bot. Vi omgår ikke afvisningen
+  # (hverken med et andet User-Agent eller via browseren), så udbyderen
+  # markeres som "ikke tilgængelig" i hver kørsel, indtil det ændrer sig.
   cbb:
     urls:
       samsung-galaxy-s26-256gb: https://www.cbb.dk/shop/mobiltelefoner/samsung/galaxy-s26/
 
+  # Call me bygger produktsiden i browseren — serveren udleverer kun menuen.
+  # Scraperen falder derfor automatisk tilbage til browser-gengivelse her.
   callme:
     urls:
       samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
