@@ -92,15 +92,19 @@ export function createGenericAdapter(
       // en advarsel kan fortælle præcis hvad der stod på siden. Uden det er
       // en fejlende parser umulig at rette uden selv at kunne åbne siden.
       let candidates = findMinPriceCandidates(html);
+      let chosen = pickMinPrice(candidates);
       let renderedInBrowser = false;
 
-      // Kun når den serverleverede side hverken har prisen eller nævneværdig
-      // tekst, er det værd at bruge en browser. Statisk hentning er hurtigere
-      // og belaster udbyderen mindre, så den bliver ved med at komme først.
-      if (candidates.length === 0 && looksClientRendered(html)) {
+      // Afgørende at betingelsen er "ingen brugbar pris" og ikke "ingen tal
+      // fundet": et klient-tegnet skelet indeholder gerne pladsholdere som
+      // "Mindstepris i 6 måneder 0 kr.", og så ville et krav om nul fund
+      // aldrig udløse gengivelsen. Statisk hentning kommer stadig først,
+      // fordi den er hurtigere og belaster udbyderen mindre.
+      if (!chosen && looksClientRendered(html)) {
         try {
           html = await renderHtml(ref.url);
           candidates = findMinPriceCandidates(html);
+          chosen = pickMinPrice(candidates);
           renderedInBrowser = true;
         } catch (err) {
           return {
@@ -110,10 +114,10 @@ export function createGenericAdapter(
         }
       }
 
-      const chosen = candidates.find((c) => !c.perMonth && isPlausibleMinPrice(c.value));
-
       if (!chosen) {
-        if (looksOutOfStock(html)) {
+        // Lagerstatus må kun tros, når vi ser den færdige side. I et skelet
+        // står "Udsolgt" som pladsholder, uanset om varen er på lager.
+        if (looksOutOfStock(html) && !looksClientRendered(html)) {
           return { offer: null, warning: `${label}: udsolgt hos udbyderen` };
         }
         return {
@@ -147,6 +151,11 @@ export function createGenericAdapter(
       return { offer: parsed.data };
     },
   };
+}
+
+/** Den første kandidat, der hverken er en månedsydelse eller urimelig. */
+function pickMinPrice(candidates: MinPriceCandidate[]): MinPriceCandidate | undefined {
+  return candidates.find((c) => !c.perMonth && isPlausibleMinPrice(c.value));
 }
 
 /**

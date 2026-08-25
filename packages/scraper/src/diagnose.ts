@@ -98,6 +98,22 @@ async function diagnoseUrl(out: Report, label: string, url: string): Promise<voi
 
   report(out, `Ser udsolgt ud: ${looksOutOfStock(html) ? "ja" : "nej"}`);
 
+  // Står ordet i den rå HTML uden at være synligt, ligger prisen sandsynligvis
+  // i en indlejret JSON-payload. Så kan den hentes uden browser — hurtigere og
+  // mindre skrøbeligt — og det er værd at vide, før man griber til Playwright.
+  const rawOccurrences = html.match(/mindstepris/gi)?.length ?? 0;
+  if (rawOccurrences > occurrences) {
+    report(out);
+    report(
+      out,
+      `Ordet står ${rawOccurrences} gang(e) i den rå HTML mod ${occurrences} i den synlige tekst — prisen kan ligge i en indlejret payload.`,
+    );
+    const idx = html.toLowerCase().indexOf("mindstepris");
+    report(out, "```");
+    report(out, html.slice(Math.max(0, idx - 100), idx + 300).replace(/\s+/g, " "));
+    report(out, "```");
+  }
+
   // Bekræfter om en browser rent faktisk løser problemet, frem for at
   // gætte. Kun relevant når den serverleverede side hverken har prisen
   // eller nævneværdig tekst.

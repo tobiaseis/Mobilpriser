@@ -55,9 +55,10 @@ describe("createGenericAdapter.scrape", () => {
     expect(result.offer?.confidence).toBe("medium"); // JSON-LD Product fundet
   });
 
-  it("rapporterer udsolgt som lagerstatus, ikke som en parserfejl", async () => {
+  it("rapporterer udsolgt som lagerstatus på en færdig side", async () => {
     const adapter = createGenericAdapter("telmore", urls, {
-      fetchHtml: async () => fixture("sold-out.html"),
+      // Tekstrig side, så lagerstatus kan tros — den er ikke et skelet.
+      fetchHtml: async () => fixture("sold-out.html") + `<p>${"tekst ".repeat(1200)}</p>`,
       renderHtml: renderMustNotRun,
     });
 
@@ -65,6 +66,36 @@ describe("createGenericAdapter.scrape", () => {
 
     expect(result.offer).toBeNull();
     expect(result.warning).toMatch(/udsolgt/i);
+  });
+
+  it("tror ikke på 'Udsolgt' i et klient-tegnet skelet, men gengiver siden", async () => {
+    // Telmores skelet indeholder både "0 kr." og "Udsolgt" som pladsholdere.
+    // Tages de for pålydende, rapporteres en udsolgt telefon, der er på lager.
+    const renderHtml = vi.fn(async () => fixture("rendered-product.html"));
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => fixture("client-skeleton.html"),
+      renderHtml,
+    });
+
+    const result = await adapter.scrape(ref);
+
+    expect(renderHtml).toHaveBeenCalledOnce();
+    expect(result.warning).toBeUndefined();
+    expect(result.offer?.statedMinPrice).toBe(7543);
+  });
+
+  it("gengiver siden, selv når skelettet indeholder et ubrugeligt beløb", async () => {
+    // Regressionstest: betingelsen for gengivelse må ikke være "ingen tal
+    // fundet", for skelettet indeholder pladsholderen "0 kr.".
+    const renderHtml = vi.fn(async () => fixture("rendered-product.html"));
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => "<div id='app'><p>Mindstepris i 6 måneder 0 kr.</p></div>",
+      renderHtml,
+    });
+
+    await adapter.scrape(ref);
+
+    expect(renderHtml).toHaveBeenCalledOnce();
   });
 
   it("henter siden igen med browser, når den bygges i browseren", async () => {

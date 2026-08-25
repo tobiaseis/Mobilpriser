@@ -90,7 +90,7 @@ parser ikke rammer.
 | Udbyder | Status |
 |---|---|
 | Telenor | Virker — mindsteprisen står i serverleveret HTML |
-| Telmore | Siden læses fint, men telefonerne var udsolgt ved sidste kørsel |
+| Telmore | Kræver browser-gengivelse; det serverleverede skelet viser "0 kr." og "Udsolgt" som pladsholdere |
 | Call me | Kræver browser-gengivelse; prisen indlæses med JavaScript |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
 | YouSee | Ingen URL'er konfigureret endnu |

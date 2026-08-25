@@ -35,6 +35,9 @@ phones:
 
 # Pr. udbyder: hvilken produkt-URL svarer til hvilken telefon-slug.
 providers:
+  # Telmore bygger produktsiden i browseren. Det serverleverede skelet viser
+  # "Mindstepris i 6 måneder 0 kr." og "Udsolgt" som pladsholdere — ingen af
+  # delene er sande, før JavaScript har udfyldt den valgte variant.
   telmore:
     urls:
       iphone-17-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17
