@@ -1,0 +1,5 @@
+{
+  "_comment": "Reference-data til 'er det faktisk billigt': markedskontantpris pr. telefon-slug og billigste SIM-only-abonnement pr. databehov. Udfyldes i fase 4 (se PLAN.md) — indtil da viser sitet sammenligningstabellen uden referencerække.",
+  "cashPrices": {},
+  "cheapestSimOnlyByDataGb": {}
+}

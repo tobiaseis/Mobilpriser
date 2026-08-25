@@ -1,0 +1,33 @@
+<!--
+  SYNTETISK TEST-FIXTURE — ikke hentet fra nogen rigtig hjemmeside.
+  Bruges udelukkende til at teste extractJsonLd/extractStatedMinPrice mod
+  en realistisk sidestruktur (JSON-LD Product + en tekstlig mindstepris).
+-->
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <title>Testtelefon 100 – Test Mobil</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Testtelefon 100",
+        "brand": "Testmærke",
+        "offers": {
+          "@type": "Offer",
+          "price": "6499",
+          "priceCurrency": "DKK"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Testtelefon 100 – 256 GB</h1>
+    <section class="pricing">
+      <p>Udbetaling: 0 kr.</p>
+      <p>Afbetaling: 299 kr./md. i 24 mdr.</p>
+      <p>Abonnement Test 50 GB: 149 kr./md.</p>
+      <p class="min-price">Mindstepris for 6 mdr. binding: 2.688 kr.</p>
+    </section>
+  </body>
+</html>

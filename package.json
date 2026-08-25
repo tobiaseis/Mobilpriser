@@ -1,0 +1,19 @@
+{
+  "name": "mobilpriser",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* build",
+    "test": "pnpm -r --filter=./packages/* test",
+    "typecheck": "pnpm -r --filter=./packages/* typecheck",
+    "lint": "pnpm -r --filter=./packages/* lint",
+    "scrape": "pnpm --filter @mobilpriser/scraper run scrape"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

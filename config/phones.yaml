@@ -1,0 +1,56 @@
+# Telefoner der følges, og de produkt-URLs vi indtil videre har bekræftet
+# ved research. En udbyder uden en URL for en given telefon bliver
+# stille sprunget over af scraperen (markeret "ikke konfigureret") frem for
+# at gætte en URL, der kan vise sig at være forkert.
+#
+# Flere varianter (farve, 512 GB osv.) og flere udbyder-URLs tilføjes
+# efterhånden som de bekræftes mod de rigtige sider — det kræver netadgang
+# til de fem sites, som først er til rådighed i selve GitHub Actions-kørslen.
+
+phones:
+  - brand: Samsung
+    model: Galaxy S26
+    storage: 256
+    slug: samsung-galaxy-s26-256gb
+
+  - brand: Samsung
+    model: Galaxy S26+
+    storage: 256
+    slug: samsung-galaxy-s26-plus-256gb
+
+  - brand: Samsung
+    model: Galaxy S26 Ultra
+    storage: 256
+    slug: samsung-galaxy-s26-ultra-256gb
+
+  - brand: Apple
+    model: iPhone 17
+    storage: 256
+    slug: iphone-17-256gb
+
+  - brand: Apple
+    model: iPhone 17 Pro
+    storage: 256
+    slug: iphone-17-pro-256gb
+
+# Pr. udbyder: hvilken produkt-URL svarer til hvilken telefon-slug.
+providers:
+  telmore:
+    urls:
+      iphone-17-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17
+      iphone-17-pro-256gb: https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro
+
+  telenor:
+    urls:
+      iphone-17-256gb: https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/
+
+  cbb:
+    urls:
+      samsung-galaxy-s26-256gb: https://www.cbb.dk/shop/mobiltelefoner/samsung/galaxy-s26/
+
+  callme:
+    urls:
+      samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
+
+  yousee:
+    urls: {}
