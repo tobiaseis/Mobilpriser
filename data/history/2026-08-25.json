@@ -11,7 +11,7 @@
         "slug": "samsung-galaxy-s26-256gb"
       },
       "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26",
-      "statedMinPrice": 1813,
+      "minPrice": 1813,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -29,7 +29,7 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black",
-      "statedMinPrice": 1813,
+      "minPrice": 1813,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -47,7 +47,7 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
-      "statedMinPrice": 11633,
+      "minPrice": 11633,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -65,7 +65,7 @@
         "slug": "iphone-17-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
-      "statedMinPrice": 7733,
+      "minPrice": 7733,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -83,7 +83,7 @@
         "slug": "samsung-galaxy-s26-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/Samsung/galaxy-s26-white-256gb",
-      "statedMinPrice": 9293,
+      "minPrice": 9293,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -101,7 +101,7 @@
         "slug": "samsung-galaxy-s26-plus-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
-      "statedMinPrice": 10793,
+      "minPrice": 10793,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -119,7 +119,7 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra",
-      "statedMinPrice": 12293,
+      "minPrice": 12293,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -137,7 +137,7 @@
         "slug": "iphone-17-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17",
-      "statedMinPrice": 7543,
+      "minPrice": 7543,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -155,7 +155,7 @@
         "slug": "iphone-17-pro-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
-      "statedMinPrice": 10993,
+      "minPrice": 10993,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -173,7 +173,7 @@
         "slug": "samsung-galaxy-s26-256gb"
       },
       "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
-      "statedMinPrice": 7142,
+      "minPrice": 7142,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
@@ -191,7 +191,7 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "statedMinPrice": 7642,
+      "minPrice": 7642,
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,

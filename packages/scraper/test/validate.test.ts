@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import { BINDING_MONTHS, type Offer, type ProviderId } from "@mobilpriser/core";
 import { dropCrossModelDuplicates } from "../src/validate.js";
 
-function offer(provider: ProviderId, slug: string, statedMinPrice: number): Offer {
+function offer(provider: ProviderId, slug: string, minPrice: number): Offer {
   return {
     id: `${provider}:${slug}`,
     provider,
     phone: { brand: "Samsung", model: slug, storage: 256, slug },
     url: `https://example.dk/${slug}`,
-    statedMinPrice,
+    minPrice,
     components: {},
     computedMinPrice: null,
     bindingMonths: BINDING_MONTHS,

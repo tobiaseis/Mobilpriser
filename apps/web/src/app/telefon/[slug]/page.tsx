@@ -35,7 +35,7 @@ function VerdictBadge({ offer, cashPrices, cheapestSimOnlyByDataGb }: {
   }
 
   const reference = calculateReference(cashPrice, simOnlyMonthly);
-  const verdict = verdictFor(offer.statedMinPrice, reference);
+  const verdict = verdictFor(offer.minPrice, reference);
   const className =
     verdict === "good" ? "badge-good" : verdict === "bad" ? "badge-bad" : "badge-neutral";
 
@@ -71,6 +71,14 @@ export default async function PhonePage({ params }: PhonePageProps) {
         dyrest.
       </p>
       <p className="meta-line">Data hentet: {formatDate(latest.generatedAt)}</p>
+
+      {offers.some((offer) => offer.source === "computed") && (
+        <div className="warning-box">
+          Tal mærket <strong>beregnet</strong> er ikke oplyst af udbyderen, men regnet ud af
+          telefonpris og abonnement. De er mere usikre end de aflæste: en forkert månedspris
+          slår igennem med seks gange fejlen.
+        </div>
+      )}
 
       {!hasAnyReference && (
         <div className="warning-box">
@@ -121,7 +129,14 @@ export default async function PhonePage({ params }: PhonePageProps) {
                       ? `${formatKr(offer.components.planMonthly)}/md.`
                       : "—"}
                   </td>
-                  <td className="num min-price">{formatKr(offer.statedMinPrice)}</td>
+                  <td className="num min-price">
+                    {formatKr(offer.minPrice)}
+                    {offer.source === "computed" && (
+                      <span className="badge badge-computed" title="Udbyderen oplyser ikke en samlet mindstepris. Tallet er regnet ud af telefonpris og abonnement.">
+                        beregnet
+                      </span>
+                    )}
+                  </td>
                   <td>
                     <VerdictBadge
                       offer={offer}

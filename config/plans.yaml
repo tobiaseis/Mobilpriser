@@ -1,0 +1,23 @@
+# Månedspriser på de abonnementer, udbyderne binder telefontilbud til.
+#
+# Bruges kun til udbydere, der IKKE selv oplyser en samlet mindstepris, og
+# hvor den derfor skal regnes ud: mindstepris = telefonpris + 6 x månedspris.
+# For alle andre udbydere læses mindsteprisen direkte fra siden, og denne
+# fil rører dem ikke.
+#
+# Abonnementspriser ændrer sig langsomt sammenlignet med telefontilbud, men
+# de ændrer sig. Er en pris her forkert, bliver den beregnede mindstepris
+# forkert med 6 gange fejlen — derfor står kilden til hvert tal, og derfor
+# markeres beregnede tilbud med lavere konfidens end aflæste.
+
+providers:
+  yousee:
+    plans:
+      # Udledt af YouSees egen side: en Galaxy Buds4 Pro til 499 kr. med
+      # dette abonnement oplyses til "Mindstepris 6 mdr. 1.813 kr.", altså
+      # (1813 - 499) / 6 = 219 kr./md. Passer i spændet mellem YouSees
+      # 25 GB til 179 kr. og Fri Data til 299 kr.
+      "50 GB Mobil": 219
+
+      # Fra YouSees prisoversigt.
+      "Fri Data Mobil": 299

@@ -94,7 +94,7 @@ async function run(): Promise<void> {
   const jsonlLines = offers
     .filter((offer) => !offer.stale)
     .map((offer) =>
-      JSON.stringify({ date: dateStamp, id: offer.id, statedMinPrice: offer.statedMinPrice }),
+      JSON.stringify({ date: dateStamp, id: offer.id, minPrice: offer.minPrice }),
     );
   if (jsonlLines.length > 0) {
     appendFileSync(HISTORY_JSONL_PATH, jsonlLines.join("\n") + "\n");

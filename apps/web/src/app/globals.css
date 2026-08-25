@@ -230,6 +230,14 @@ td.min-price {
   background: var(--rule-soft);
   color: var(--ink-3);
 }
+.badge-computed {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.7rem;
+  margin-left: 8px;
+  vertical-align: middle;
+}
 .badge-stale {
   background: var(--rule-soft);
   color: var(--ink-3);

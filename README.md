@@ -29,6 +29,12 @@ mindstepris = udbetaling + oprettelse + fragt
             + afbetaling × 6 måneder
 ```
 
+De fleste udbydere oplyser mindsteprisen selv, og så læses den direkte.
+YouSee gør ikke, og der regnes den ud af komponenterne med samme formel
+(`source: "computed"`). Beregnede tal er mere skrøbelige — en forkert
+månedspris i `config/plans.yaml` slår igennem med seks gange fejlen — så de
+markeres i UI'et og får lav konfidens.
+
 Udbyderne er forpligtet til selv at oplyse denne mindstepris på produktsiden, så
 scraperen henter det oplyste tal som hovedkilde og regner det samtidig ud fra
 komponenterne som krydstjek. Se `packages/core/src/pricing.ts` og PLAN.md §4 for detaljer.
@@ -96,7 +102,7 @@ parser ikke rammer.
 | Call me | Virker via browser-gengivelse. Sælger telefonen til fuld betaling nu, ikke afbetaling — derfor lavere mindstepriser |
 | Telenor / Telmore | Bekræftet mod eksterne tal: Telmore iPhone 17 = 7.543 kr., S26 Ultra = 12.293 kr. |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
-| YouSee | Slået fra: siden oplyser kun abonnementets egen mindstepris, ikke telefon + abonnement |
+| YouSee | Mindsteprisen regnes ud (telefonpris fra JSON-LD + 6 x månedspris), fordi siden ikke oplyser den. Markeret "beregnet" og lav konfidens |
 
 ## Tilføj flere telefoner eller udbyder-URLs
 

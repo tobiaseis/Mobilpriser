@@ -1,0 +1,33 @@
+<!--
+  SYNTETISK TEST-FIXTURE — gengiver YouSees produktside, som diagnosen
+  afdækkede den: telefonens pris med abonnement står i JSON-LD, abonnementet
+  nævnes i teksten som "Med 50 GB Mobil", og det eneste "Mindstepris" på
+  siden hører til tilbehør i en "Andre har købt"-karrusel.
+-->
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <title>Samsung Galaxy S26 256GB Black - Køb den her</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Samsung Galaxy S26 256GB Black",
+        "offers": {
+          "sku": "0e59503c-0839-4db4-9df3-2dea7086b35d",
+          "price": "2999.00",
+          "priceCurrency": "DKK",
+          "@type": "Offer"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Samsung Galaxy S26</h1>
+    <p>Summer Sale Tilbud 7.999 kr. 2.999 kr. Rabat 5.000 kr. Med 50 GB Mobil</p>
+    <section class="andre-har-koebt">
+      <p>Samsung Galaxy Buds4 Pro 1.899 kr. 499 kr. Rabat 1.400 kr.
+         Mindstepris 6 mdr. 1.813 kr. med 50 GB Mobil</p>
+    </section>
+  </body>
+</html>

@@ -133,7 +133,7 @@ export function createGenericAdapter(
         provider: id,
         phone: ref.target,
         url: ref.url,
-        statedMinPrice: chosen.value,
+        minPrice: chosen.value,
         components: {},
         computedMinPrice: null,
         bindingMonths: BINDING_MONTHS,

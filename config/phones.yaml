@@ -80,17 +80,14 @@ providers:
       samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
       samsung-galaxy-s26-ultra-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/
 
-  # YouSee oplyser IKKE en samlet mindstepris for telefon + abonnement på
-  # produktsiden. Den ene "Mindstepris 6 mdr. 1.813 kr." på Samsung-siderne
-  # står som "med 50 GB Mobil" og er abonnementets egen mindstepris — derfor
-  # var beløbet identisk på både S26 og S26 Ultra, og iPhone 17-siden nævner
-  # slet ikke ordet. Tallet, sammenligningen rangerer på, findes ikke i deres
-  # HTML, så URL'erne er slået fra frem for at hente et beløb, der ser rigtigt
-  # ud og ikke er det. Skal YouSee med, skal mindsteprisen regnes ud af
-  # komponenterne (telefonpris + afbetaling + abonnement) — se PLAN.md §4.1.
-  # URL'erne er bevaret her, fordi de er bekræftet korrekte.
+  # YouSee oplyser ikke en samlet mindstepris for telefon + abonnement på
+  # produktsiden — det eneste "Mindstepris" dér hører til tilbehør i en
+  # "Andre har købt"-karrusel. Til gengæld står telefonens pris med
+  # abonnement utvetydigt i JSON-LD'ens Product.offers.price, så YouSees
+  # mindstepris regnes ud: telefonpris + 6 x månedspris fra config/plans.yaml.
+  # Derfor har YouSee sin egen adapter og markeres med lav konfidens.
   yousee:
-    urls: {}
-    # iphone-17-256gb: https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender
-    # samsung-galaxy-s26-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26
-    # samsung-galaxy-s26-ultra-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black
+    urls:
+      iphone-17-256gb: https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender
+      samsung-galaxy-s26-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26
+      samsung-galaxy-s26-ultra-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black

@@ -36,7 +36,7 @@ export interface Offer {
   provider: ProviderId;
   phone: PhoneTarget;
   url: string;
-  statedMinPrice: number;
+  minPrice: number;
   components: OfferComponents;
   computedMinPrice: number | null;
   bindingMonths: 6;
@@ -84,7 +84,7 @@ export function loadReference(): ReferenceFile {
 export function offersForPhone(offers: Offer[], slug: string): Offer[] {
   return offers
     .filter((offer) => offer.phone.slug === slug)
-    .sort((a, b) => a.statedMinPrice - b.statedMinPrice);
+    .sort((a, b) => a.minPrice - b.minPrice);
 }
 
 export const PROVIDER_NAMES: Record<ProviderId, string> = {

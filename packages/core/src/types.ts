@@ -50,6 +50,8 @@ export const OfferSourceSchema = z.enum([
   "next-data",
   "api",
   "dom",
+  /** Regnet ud af komponenterne, fordi udbyderen ikke oplyser tallet. */
+  "computed",
 ]);
 export type OfferSource = z.infer<typeof OfferSourceSchema>;
 
@@ -59,10 +61,16 @@ export type OfferConfidence = z.infer<typeof OfferConfidenceSchema>;
 /**
  * Et normaliseret tilbud: én udbyder × én telefonvariant × ét abonnement.
  *
- * `statedMinPrice` er hovedtallet og det eneste, sammenligningen rangerer
- * på — det er den mindstepris, udbyderen selv er forpligtet til at oplyse
- * for de 6 måneders binding. `components` + `computedMinPrice` bruges kun
- * til at forklare og krydstjekke tallet, aldrig til selv at konstruere det.
+ * `minPrice` er hovedtallet og det eneste, sammenligningen rangerer på:
+ * mindsteprisen for de 6 måneders binding.
+ *
+ * `source` fortæller, hvor tallet kommer fra, og det er ikke en detalje.
+ * De fleste udbydere oplyser mindsteprisen selv, og så er den læst direkte.
+ * YouSee gør ikke, og der er tallet regnet ud af komponenterne
+ * (`source: "computed"`) — det er mere skrøbeligt, fordi enhver komponent,
+ * vi misforstår, forplanter sig til resultatet. Feltet hed tidligere
+ * `statedMinPrice`, hvilket blev misvisende i det øjeblik et beregnet tal
+ * kunne stå i det.
  */
 export const OfferSchema = z.object({
   id: z.string().min(1),
@@ -70,7 +78,7 @@ export const OfferSchema = z.object({
   phone: PhoneTargetSchema,
   url: z.string().url(),
 
-  statedMinPrice: z.number().min(500).max(30000),
+  minPrice: z.number().min(500).max(30000),
   components: OfferComponentsSchema.default({}),
   /** udfyldes af beregningsmodellen ud fra `components`, når muligt. */
   computedMinPrice: z.number().min(0).max(30000).nullable().default(null),

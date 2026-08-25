@@ -23,7 +23,7 @@ export interface ValidationResult {
 export function dropCrossModelDuplicates(offers: Offer[]): ValidationResult {
   const groups = new Map<string, Offer[]>();
   for (const offer of offers) {
-    const key = `${offer.provider}:${offer.statedMinPrice}`;
+    const key = `${offer.provider}:${offer.minPrice}`;
     groups.set(key, [...(groups.get(key) ?? []), offer]);
   }
 
@@ -33,9 +33,9 @@ export function dropCrossModelDuplicates(offers: Offer[]): ValidationResult {
   for (const group of groups.values()) {
     const distinctPhones = new Set(group.map((offer) => offer.phone.slug));
     if (distinctPhones.size > 1) {
-      const { provider, statedMinPrice } = group[0];
+      const { provider, minPrice } = group[0];
       warnings.push(
-        `${provider}: kasserede ${statedMinPrice} kr., som blev fundet identisk for ` +
+        `${provider}: kasserede ${minPrice} kr., som blev fundet identisk for ` +
           `${[...distinctPhones].join(", ")} — et beløb, der er ens på tværs af modeller, ` +
           `hører til siden og ikke til telefonen`,
       );

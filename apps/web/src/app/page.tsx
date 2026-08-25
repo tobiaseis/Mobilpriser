@@ -27,7 +27,7 @@ export default function HomePage() {
               </h2>
               {cheapest ? (
                 <>
-                  <p className="price">{formatKr(cheapest.statedMinPrice)}</p>
+                  <p className="price">{formatKr(cheapest.minPrice)}</p>
                   <p className="provider">{PROVIDER_NAMES[cheapest.provider]}</p>
                 </>
               ) : (

@@ -12,7 +12,7 @@ function validOffer(overrides: Record<string, unknown> = {}) {
       slug: "iphone-17-256gb",
     },
     url: "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17",
-    statedMinPrice: 2688,
+    minPrice: 2688,
     bindingMonths: BINDING_MONTHS,
     scrapedAt: new Date().toISOString(),
     source: "text-pattern",
@@ -32,12 +32,12 @@ describe("OfferSchema", () => {
   });
 
   it("afviser en mindstepris under fornuftsgrænsen", () => {
-    const result = OfferSchema.safeParse(validOffer({ statedMinPrice: 10 }));
+    const result = OfferSchema.safeParse(validOffer({ minPrice: 10 }));
     expect(result.success).toBe(false);
   });
 
   it("afviser en mindstepris over fornuftsgrænsen", () => {
-    const result = OfferSchema.safeParse(validOffer({ statedMinPrice: 100000 }));
+    const result = OfferSchema.safeParse(validOffer({ minPrice: 100000 }));
     expect(result.success).toBe(false);
   });
 

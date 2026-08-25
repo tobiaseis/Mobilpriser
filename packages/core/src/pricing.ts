@@ -59,12 +59,12 @@ export function computeMinPriceFromComponents(
  * Returnerer null, hvis der ikke er nok komponenter til at beregne noget.
  */
 export function crossCheckDeltaKr(
-  statedMinPrice: number,
+  minPrice: number,
   components: OfferComponents,
 ): number | null {
   const computed = computeMinPriceFromComponents(components);
   if (computed == null) return null;
-  return Math.round(computed - statedMinPrice);
+  return Math.round(computed - minPrice);
 }
 
 export function crossCheckPasses(deltaKr: number | null): boolean {
@@ -82,8 +82,8 @@ export function calculateReference(
 /**
  * 🟢 under referencen, 🟡 inden for ±300 kr., 🔴 over referencen.
  */
-export function verdictFor(statedMinPrice: number, reference: number): Verdict {
-  const diff = statedMinPrice - reference;
+export function verdictFor(minPrice: number, reference: number): Verdict {
+  const diff = minPrice - reference;
   if (diff < -VERDICT_NEUTRAL_BAND_KR) return "good";
   if (diff > VERDICT_NEUTRAL_BAND_KR) return "bad";
   return "neutral";

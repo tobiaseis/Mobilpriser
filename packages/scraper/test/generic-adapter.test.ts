@@ -49,7 +49,7 @@ describe("createGenericAdapter.scrape", () => {
     const result = await adapter.scrape(ref);
 
     expect(result.warning).toBeUndefined();
-    expect(result.offer?.statedMinPrice).toBe(2688);
+    expect(result.offer?.minPrice).toBe(2688);
     expect(result.offer?.provider).toBe("telmore");
     expect(result.offer?.bindingMonths).toBe(6);
     expect(result.offer?.confidence).toBe("medium"); // JSON-LD Product fundet
@@ -81,7 +81,7 @@ describe("createGenericAdapter.scrape", () => {
 
     expect(renderHtml).toHaveBeenCalledOnce();
     expect(result.warning).toBeUndefined();
-    expect(result.offer?.statedMinPrice).toBe(7543);
+    expect(result.offer?.minPrice).toBe(7543);
   });
 
   it("gengiver siden, selv når skelettet indeholder et ubrugeligt beløb", async () => {
@@ -109,7 +109,7 @@ describe("createGenericAdapter.scrape", () => {
     const result = await adapter.scrape(ref);
 
     expect(renderHtml).toHaveBeenCalledOnce();
-    expect(result.offer?.statedMinPrice).toBe(2688);
+    expect(result.offer?.minPrice).toBe(2688);
   });
 
   it("bruger ikke browseren, når den statiske side allerede har prisen", async () => {
