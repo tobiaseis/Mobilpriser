@@ -46,9 +46,9 @@ varianter* på produktsiden.
 De danske udbydere sælger næsten aldrig én pris. Et tilbud består typisk af:
 
 - **udbetaling / engangsbeløb** (0 kr. hos de fleste)
-- **månedlig afbetaling på telefonen** over 6/12/24 (nogle steder 36) måneder, rente- og gebyrfri
+- **månedlig afbetaling på telefonen**, rente- og gebyrfri
 - **abonnementspris pr. måned**, ofte med **kampagnepris de første N måneder** ("2 mdr. gratis", "69 kr. de første 3 mdr., derefter 149 kr.")
-- **bindingsperiode på 6 måneder** — lovbestemt maksimum, som alle udbydere ligger på. Afbetalingen løber typisk 12–24 mdr., altså langt ud over bindingen
+- **bindingsperiode på 6 måneder** — lovbestemt maksimum, som alle udbydere ligger på
 - **oprettelsesgebyr / fragt**
 - **inkluderede tjenester** (YouSee Play, TV 2 Play, Viaplay) der ofte er gratis i 2 mdr. og derefter koster
 
@@ -72,7 +72,6 @@ type Offer = {
   cashPrice: number | null;      // kontantpris uden abonnement, hvis den findes
   upfront: number;               // udbetaling
   deviceMonthly: number;         // afbetaling pr. md.
-  deviceMonths: number;          // 6 | 12 | 24 | 36
 
   plan: {
     name: string;
@@ -117,7 +116,7 @@ det er en konstant — og dermed er hele modellen én formel:
 ```
 mindstepris = udbetaling + oprettelse + fragt
             + Σ_{m=1..6} abonnementspris(m)
-            + afbetalingPrMd × min(6, afbetalingsMdr)
+            + afbetalingPrMd × 6
 
 abonnementspris(m) = campaignMonthly hvis m ≤ campaignMonths, ellers monthly
 ```
@@ -170,14 +169,7 @@ gøre det selv.
 Inkluderede streamingtjenester værdisættes til **0 kr. som standard** (kan slås til med en
 selvvalgt værdi i UI'et) — ellers pynter man tilbuddene kunstigt.
 
-### 4.5 Det ene forbehold, der skal stå på siden
-
-Afbetalingen løber næsten altid længere end de 6 måneder — typisk 12 eller 24. Mindsteprisen
-er derfor ikke det samme som at eje telefonen frit. Restgælden indgår ikke i tallet, men
-vises som oplysning på tilbuddet ("afbetaling løber 18 mdr. efter bindingen ophører"), så
-den ikke kommer bag på nogen. Den påvirker ikke rangeringen.
-
-### 4.6 Hvad der følges over tid
+### 4.5 Hvad der følges over tid
 
 Tidsserien i statistikken er **mindstepris pr. (udbyder × telefonvariant)** — samme tal som
 i tabellen. Så viser grafen, om tilbuddet som helhed er blevet bedre, og ikke bare om
@@ -209,8 +201,7 @@ interface ProviderAdapter {
 
 **Robusthed** (vigtigere end dækning):
 - `zod`-validering af hvert `Offer` før det accepteres
-- fornuftsgrænser: kontantpris 1.000–25.000, månedspris 0–1.500, afbetaling 6–36 mdr.,
-  bindingsperiode = 6
+- fornuftsgrænser: kontantpris 1.000–25.000, månedspris 0–1.500, bindingsperiode = 6
 - fejler en udbyder → behold gårsdagens data, markér `stale: true`, skriv advarsel i
   Actions-summary. **Aldrig** commit af halve/tomme data.
 - fixture-tests: gemt HTML pr. udbyder i `tests/fixtures/`, så parserne kan testes uden net
@@ -325,13 +316,11 @@ fra Telmore, er resten mekanisk arbejde.
 ## 10. Åbne valg (mine standardantagelser, kan ændres)
 
 1. **Horisont:** 6 måneder — den lovbestemte maksimale binding. Konstant, ikke valgfri.
-2. **Restgæld på telefonen efter bindingen indgår ikke i tallet** — den vises kun som
-   oplysning på tilbuddet og påvirker ikke rangeringen.
-3. **Streamingværdi:** 0 kr. som standard, valgfrit tilvalg i UI'et.
-4. **Referencerække:** markedskontantpris + billigste SIM-only i samme GB-kategori
+2. **Streamingværdi:** 0 kr. som standard, valgfrit tilvalg i UI'et.
+3. **Referencerække:** markedskontantpris + billigste SIM-only i samme GB-kategori
    (kræver ekstra scraping, men uden den kan vi ikke svare på "er det billigt").
-5. **Repo offentligt** (gratis Actions + gennemsigtighed) — kan også køre privat.
-6. **Kun nye kunder, privat, uden mersalg** (forsikring, tilbehør) i første omgang.
+4. **Repo offentligt** (gratis Actions + gennemsigtighed) — kan også køre privat.
+5. **Kun nye kunder, privat, uden mersalg** (forsikring, tilbehør) i første omgang.
 
 ---
 
