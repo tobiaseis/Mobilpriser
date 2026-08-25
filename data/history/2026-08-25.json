@@ -1,6 +1,60 @@
 {
-  "generatedAt": "2026-08-25T19:25:13.924Z",
+  "generatedAt": "2026-08-25T19:43:00.935Z",
   "offers": [
+    {
+      "id": "yousee:samsung-galaxy-s26-256gb",
+      "provider": "yousee",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26",
+      "statedMinPrice": 1813,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:41:46.976Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "yousee:samsung-galaxy-s26-ultra-256gb",
+      "provider": "yousee",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black",
+      "statedMinPrice": 1813,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:41:48.903Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telenor:samsung-galaxy-s26-ultra-256gb",
+      "provider": "telenor",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
+      "statedMinPrice": 11633,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:41:52.467Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
     {
       "id": "telenor:iphone-17-256gb",
       "provider": "telenor",
@@ -15,9 +69,63 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:24:45.031Z",
+      "scrapedAt": "2026-08-25T19:41:53.708Z",
       "source": "text-pattern",
       "confidence": "low"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/Samsung/galaxy-s26-white-256gb",
+      "statedMinPrice": 9293,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:42:05.950Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-plus-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-plus-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
+      "statedMinPrice": 10793,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:42:14.497Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-ultra-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra",
+      "statedMinPrice": 12293,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:42:23.805Z",
+      "source": "text-pattern",
+      "confidence": "medium"
     },
     {
       "id": "telmore:iphone-17-256gb",
@@ -33,7 +141,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:24:54.622Z",
+      "scrapedAt": "2026-08-25T19:42:32.524Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -51,7 +159,7 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:25:03.359Z",
+      "scrapedAt": "2026-08-25T19:42:41.343Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -69,13 +177,31 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T19:25:12.921Z",
+      "scrapedAt": "2026-08-25T19:42:50.611Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-ultra-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "statedMinPrice": 7642,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:42:59.933Z",
       "source": "text-pattern",
       "confidence": "low"
     }
   ],
   "warnings": [
-    "yousee: ingen telefoner konfigureret med URL endnu",
+    "yousee/iphone-17-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig"
   ]
 }
