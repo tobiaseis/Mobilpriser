@@ -10,6 +10,10 @@ on:
         description: "Begræns til én udbyder (yousee, telenor, telmore, cbb, callme). Tom = alle."
         required: false
         default: ""
+      url:
+        description: "Undersøg bestemte URL'er i stedet, kommasepareret. Virker også for sider, der er slået fra i config."
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -44,4 +48,5 @@ jobs:
       - name: Diagnosticér siderne
         env:
           PROVIDER: ${{ inputs.provider }}
+          URL: ${{ inputs.url }}
         run: pnpm --filter @mobilpriser/scraper run diagnose

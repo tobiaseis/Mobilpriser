@@ -80,8 +80,10 @@ pnpm --filter @mobilpriser/scraper run diagnose
 ```
 
 Rapporterer per side: HTTP-status, sidetitel, JSON-LD, om ordet "mindstepris" findes,
-hvilke beløb der står omkring det, om siden ser udsolgt ud, og om browser-gengivelse
-hjælper. Findes også som workflowet **"Diagnosticer udbydersider"**, der kun kan køres
+hvilke beløb der står omkring det, om siden ser udsolgt ud, prisrelateret kontekst til at
+regne mindsteprisen ud af komponenter, og om browser-gengivelse hjælper.
+`PROVIDER=callme` begrænser til én udbyder; `URL=<a>,<b>` undersøger vilkårlige sider,
+også dem der er slået fra i config. Findes også som workflowet **"Diagnosticer udbydersider"**, der kun kan køres
 manuelt og ikke skriver til `data/`. Det er den hurtigste vej til at forstå, hvorfor en
 parser ikke rammer.
 
@@ -91,7 +93,7 @@ parser ikke rammer.
 |---|---|
 | Telenor | Virker — mindsteprisen står i serverleveret HTML |
 | Telmore | Kræver browser-gengivelse; det serverleverede skelet viser "0 kr." og "Udsolgt" som pladsholdere |
-| Call me | Kræver browser-gengivelse; prisen indlæses med JavaScript |
+| Call me | Virker via browser-gengivelse. Sælger telefonen til fuld betaling nu, ikke afbetaling — derfor lavere mindstepriser |
 | Telenor / Telmore | Bekræftet mod eksterne tal: Telmore iPhone 17 = 7.543 kr., S26 Ultra = 12.293 kr. |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
 | YouSee | Slået fra: siden oplyser kun abonnementets egen mindstepris, ikke telefon + abonnement |

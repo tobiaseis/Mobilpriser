@@ -69,6 +69,12 @@ providers:
 
   # Call me bygger produktsiden i browseren — serveren udleverer kun menuen.
   # Scraperen falder derfor automatisk tilbage til browser-gengivelse her.
+  #
+  # Bekræftet: siden oplyser "Mindstepris i bindingsperioden" efter gengivelse.
+  # Call me sælger telefonen til fuld betaling nu ("betal her og nu 6.499 kr.")
+  # frem for afbetaling, plus 6 x 99 kr. abonnement. Derfor ligger deres
+  # mindstepriser lavere end konkurrenternes, og S26 og S26 Ultra kun ~500 kr.
+  # fra hinanden — forskellen sidder i telefonprisen, ikke i en afbetaling.
   callme:
     urls:
       samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
