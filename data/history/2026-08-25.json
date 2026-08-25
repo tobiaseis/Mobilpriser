@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T18:30:27.236Z",
+  "generatedAt": "2026-08-25T19:23:13.730Z",
   "offers": [
     {
       "id": "telenor:iphone-17-256gb",
@@ -15,16 +15,67 @@
       "components": {},
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-25T18:30:17.791Z",
+      "scrapedAt": "2026-08-25T19:22:44.164Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "telmore:iphone-17-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17",
+      "statedMinPrice": 7543,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:22:53.929Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:iphone-17-pro-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
+        "storage": 256,
+        "slug": "iphone-17-pro-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
+      "statedMinPrice": 10993,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:23:02.494Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
+      "statedMinPrice": 7142,
+      "components": {},
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-25T19:23:12.727Z",
       "source": "text-pattern",
       "confidence": "low"
     }
   ],
   "warnings": [
     "yousee: ingen telefoner konfigureret med URL endnu",
-    "telmore/iphone-17-256gb: tilbud fejlede validering (Number must be greater than or equal to 500)",
-    "telmore/iphone-17-pro-256gb: tilbud fejlede validering (Number must be greater than or equal to 500)",
-    "cbb/samsung-galaxy-s26-256gb: kunne ikke hente siden (HTTP 403 for https://www.cbb.dk/shop/mobiltelefoner/samsung/galaxy-s26/)",
-    "callme/samsung-galaxy-s26-256gb: fandt ingen \"mindstepris\" på siden — parser eller side kan være ændret"
+    "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig"
   ]
 }
