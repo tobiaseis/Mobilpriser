@@ -5,6 +5,7 @@ import type { Offer } from "@mobilpriser/core";
 import { closeBrowser } from "./browser.js";
 import { loadConfig } from "./config.js";
 import { allAdapters } from "./providers/index.js";
+import { dropCrossModelDuplicates } from "./validate.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../../..");
@@ -58,11 +59,17 @@ async function run(): Promise<void> {
     }
   }
 
+  // Et beløb, der er ens på tværs af modeller hos samme udbyder, hører til
+  // siden og ikke til telefonen. Det kasseres, før det kan nå sitet.
+  const validated = dropCrossModelDuplicates(freshOffers);
+  warnings.push(...validated.warnings);
+  const acceptedOffers = validated.kept;
+
   // Fejler en udbyder i dag, beholder vi gårsdagens tal for det tilbud
   // frem for at lade det forsvinde fra sitet — men markerer det tydeligt.
   const previous = loadPreviousLatest();
   const previousById = new Map((previous?.offers ?? []).map((offer) => [offer.id, offer]));
-  const freshIds = new Set(freshOffers.map((offer) => offer.id));
+  const freshIds = new Set(acceptedOffers.map((offer) => offer.id));
 
   const carriedOver: StaleOffer[] = [];
   for (const [id, old] of previousById) {
@@ -72,7 +79,7 @@ async function run(): Promise<void> {
     }
   }
 
-  const offers: StaleOffer[] = [...freshOffers, ...carriedOver];
+  const offers: StaleOffer[] = [...acceptedOffers, ...carriedOver];
   const generatedAt = new Date().toISOString();
   const dateStamp = generatedAt.slice(0, 10);
 
@@ -94,7 +101,7 @@ async function run(): Promise<void> {
   }
 
   console.log(
-    `Hentede ${freshOffers.length} tilbud, ${carriedOver.length} videreført fra i går (stale).`,
+    `Hentede ${acceptedOffers.length} tilbud, ${carriedOver.length} videreført fra i går (stale).`,
   );
   if (warnings.length > 0) {
     console.log("\nAdvarsler:");
@@ -106,7 +113,7 @@ async function run(): Promise<void> {
     const lines = [
       "## Mobilpriser — dagens indsamling",
       "",
-      `- Hentede tilbud: **${freshOffers.length}**`,
+      `- Hentede tilbud: **${acceptedOffers.length}**`,
       `- Videreført fra i går (stale): **${carriedOver.length}**`,
       `- Advarsler: **${warnings.length}**`,
     ];

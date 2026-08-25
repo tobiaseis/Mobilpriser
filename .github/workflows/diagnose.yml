@@ -4,7 +4,12 @@ name: Diagnosticer udbydersider
 # så en fejlende parser kan rettes uden selv at kunne åbne dem. Skriver
 # intet til data/ og committer ikke.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: "Begræns til én udbyder (yousee, telenor, telmore, cbb, callme). Tom = alle."
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -37,4 +42,6 @@ jobs:
         run: pnpm --filter @mobilpriser/scraper exec playwright install --with-deps chromium
 
       - name: Diagnosticér siderne
+        env:
+          PROVIDER: ${{ inputs.provider }}
         run: pnpm --filter @mobilpriser/scraper run diagnose

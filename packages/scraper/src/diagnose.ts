@@ -171,10 +171,16 @@ async function run(): Promise<void> {
   const config = loadConfig();
   const out: Report = { lines: [] };
 
+  // Med alle udbydere bliver rapporten lang. PROVIDER=yousee begrænser den
+  // til én, så det, man faktisk undersøger, kan læses uden at scrolle.
+  const only = process.env.PROVIDER?.trim().toLowerCase();
+
   report(out, "## Mobilpriser — diagnose af udbydersider");
+  if (only) report(out, `\nBegrænset til: **${only}**`);
   report(out);
 
   for (const adapter of allAdapters()) {
+    if (only && adapter.id !== only) continue;
     const refs = adapter.discover(config.phones);
     if (refs.length === 0) {
       report(out, `### ${adapter.id}`);
