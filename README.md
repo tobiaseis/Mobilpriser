@@ -92,8 +92,9 @@ parser ikke rammer.
 | Telenor | Virker — mindsteprisen står i serverleveret HTML |
 | Telmore | Kræver browser-gengivelse; det serverleverede skelet viser "0 kr." og "Udsolgt" som pladsholdere |
 | Call me | Kræver browser-gengivelse; prisen indlæses med JavaScript |
+| Telenor / Telmore | Bekræftet mod eksterne tal: Telmore iPhone 17 = 7.543 kr., S26 Ultra = 12.293 kr. |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
-| YouSee | Ingen URL'er konfigureret endnu |
+| YouSee | Slået fra: siden oplyser kun abonnementets egen mindstepris, ikke telefon + abonnement |
 
 ## Tilføj flere telefoner eller udbyder-URLs
 
