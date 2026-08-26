@@ -1,7 +1,19 @@
 {
-  "generatedAt": null,
-  "cashPrices": {},
-  "cashPriceSource": {},
-  "cashPriceCount": {},
-  "cheapestMonthly": null
+  "generatedAt": "2026-08-26T05:50:26.542Z",
+  "cashPrices": {
+    "iphone-17-256gb": 6999,
+    "iphone-17-pro-256gb": 9399,
+    "samsung-galaxy-s26-ultra-256gb": 11499
+  },
+  "cashPriceSource": {
+    "iphone-17-256gb": "power",
+    "iphone-17-pro-256gb": "elgiganten",
+    "samsung-galaxy-s26-ultra-256gb": "elgiganten"
+  },
+  "cashPriceCount": {
+    "iphone-17-256gb": 2,
+    "iphone-17-pro-256gb": 1,
+    "samsung-galaxy-s26-ultra-256gb": 1
+  },
+  "cheapestMonthly": 99
 }
