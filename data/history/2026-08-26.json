@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T06:51:19.247Z",
+  "generatedAt": "2026-08-26T08:18:43.696Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:20.258Z",
+      "scrapedAt": "2026-08-26T08:16:15.880Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:22.338Z",
+      "scrapedAt": "2026-08-26T08:16:17.877Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,54 +69,8 @@
       },
       "computedMinPrice": 7693,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:24.353Z",
+      "scrapedAt": "2026-08-26T08:16:19.661Z",
       "source": "computed",
-      "confidence": "low"
-    },
-    {
-      "id": "telenor:samsung-galaxy-s26-ultra-256gb",
-      "provider": "telenor",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
-      "minPrice": 11633,
-      "components": {
-        "upfront": 9899,
-        "deviceMonthly": 0,
-        "planMonthly": 289,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:26.431Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "telenor:iphone-17-256gb",
-      "provider": "telenor",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
-      "minPrice": 7733,
-      "components": {
-        "upfront": 5999,
-        "deviceMonthly": 0,
-        "planMonthly": 289,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:29.839Z",
-      "source": "text-pattern",
       "confidence": "low"
     },
     {
@@ -138,7 +92,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:43.177Z",
+      "scrapedAt": "2026-08-26T08:16:38.306Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -161,7 +115,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:53.787Z",
+      "scrapedAt": "2026-08-26T08:16:46.690Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -184,7 +138,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:49:03.787Z",
+      "scrapedAt": "2026-08-26T08:16:55.188Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -207,7 +161,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:49:13.813Z",
+      "scrapedAt": "2026-08-26T08:17:04.125Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -230,7 +184,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:49:23.970Z",
+      "scrapedAt": "2026-08-26T08:17:12.759Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -253,7 +207,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:49:35.079Z",
+      "scrapedAt": "2026-08-26T08:17:22.500Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -276,7 +230,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:49:45.962Z",
+      "scrapedAt": "2026-08-26T08:17:31.329Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -299,7 +253,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:50:20.601Z",
+      "scrapedAt": "2026-08-26T08:17:55.416Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -322,7 +276,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:50:32.793Z",
+      "scrapedAt": "2026-08-26T08:18:05.794Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -345,7 +299,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:50:47.987Z",
+      "scrapedAt": "2026-08-26T08:18:16.240Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -368,7 +322,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:51:01.245Z",
+      "scrapedAt": "2026-08-26T08:18:25.958Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -391,7 +345,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:51:13.272Z",
+      "scrapedAt": "2026-08-26T08:18:38.425Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -414,7 +368,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:51:16.091Z",
+      "scrapedAt": "2026-08-26T08:18:40.989Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -437,15 +391,67 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:51:18.246Z",
+      "scrapedAt": "2026-08-26T08:18:42.694Z",
       "source": "text-pattern",
       "confidence": "medium"
+    },
+    {
+      "id": "telenor:samsung-galaxy-s26-ultra-256gb",
+      "provider": "telenor",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
+      "minPrice": 11633,
+      "components": {
+        "upfront": 9899,
+        "deviceMonthly": 0,
+        "planMonthly": 289,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:48:26.431Z",
+      "source": "text-pattern",
+      "confidence": "low",
+      "stale": true
+    },
+    {
+      "id": "telenor:iphone-17-256gb",
+      "provider": "telenor",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
+      "minPrice": 7733,
+      "components": {
+        "upfront": 5999,
+        "deviceMonthly": 0,
+        "planMonthly": 289,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:48:29.839Z",
+      "source": "text-pattern",
+      "confidence": "low",
+      "stale": true
     }
   ],
   "warnings": [
+    "telenor/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
+    "telenor/iphone-17-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "oister/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
     "oister/iphone-17-256gb: udsolgt hos udbyderen",
-    "oister/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden"
+    "oister/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
+    "telenor:samsung-galaxy-s26-ultra-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
+    "telenor:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)"
   ]
 }
