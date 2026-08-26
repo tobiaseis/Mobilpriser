@@ -15,7 +15,6 @@ export type ProviderId =
   | "telmore"
   | "cbb"
   | "callme"
-  | "oister"
   | "norlys"
   | "tre";
 
@@ -111,7 +110,6 @@ export const PROVIDER_NAMES: Record<ProviderId, string> = {
   telmore: "Telmore",
   cbb: "CBB",
   callme: "Call me",
-  oister: "OiSTER",
   norlys: "Norlys",
   tre: "3",
 };

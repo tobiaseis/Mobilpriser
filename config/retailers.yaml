@@ -36,6 +36,20 @@ retailers:
     urls:
       iphone-17-256gb: https://www.power.dk/mobil-og-foto/mobiltelefoner/apple-iphone-17-256-gb-sort/p-4157177/
 
+  # OiSTER er en forhandler i denne sammenhæng, ikke en udbyder, vi
+  # sammenligner. Deres "Mindstepris" er identisk med deres kontantpris —
+  # 10.000,- for en iPhone 17 Pro, hvor JSON-LD siger det samme — så den
+  # dækker kun telefonen og ikke seks måneders abonnement. Stillet ved
+  # siden af de øvrige udbyderes mindstepriser ville de fremstå kunstigt
+  # billige, af nøjagtig samme grund som en udbyders kontantpris ikke duer
+  # som reference.
+  oister:
+    name: OiSTER
+    urls:
+      iphone-17-256gb: https://www.oister.dk/kundeshop/mobiler/apple/iphone-17-256gb/
+      iphone-17-pro-256gb: https://www.oister.dk/kundeshop/mobiler/apple/iphone-17-pro-256gb/
+      samsung-galaxy-s26-ultra-256gb: https://www.oister.dk/kundeshop/mobiler/samsung/samsung-galaxy-s26-ultra-256gb/
+
   # Proshop havde de laveste priser i researchen (iPhone 17 256 GB til
   # 6.666 kr.), men produktsidernes URL'er er ikke bekræftet endnu.
   proshop:

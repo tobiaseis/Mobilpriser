@@ -102,7 +102,8 @@ parser ikke rammer.
 | Call me | Virker via browser-gengivelse. Sælger telefonen til fuld betaling nu, ikke afbetaling — derfor lavere mindstepriser |
 | Telenor / Telmore | Bekræftet mod eksterne tal: Telmore iPhone 17 = 7.543 kr., S26 Ultra = 12.293 kr. |
 | CBB | Svarer 403 på vores bot. Afvisningen omgås ikke — markeres som utilgængelig |
-| OiSTER, Norlys, 3 | Tilføjet — afventer første kørsel |
+| Norlys, 3 | Virker |
+| OiSTER | Flyttet til referencekilde: deres "Mindstepris" er identisk med kontantprisen og dækker kun telefonen |
 | YouSee | Mindsteprisen regnes ud (telefonpris fra JSON-LD + 6 x månedspris), fordi siden ikke oplyser den. Markeret "beregnet" og lav konfidens |
 
 ## Tilføj flere telefoner eller udbyder-URLs
@@ -119,7 +120,7 @@ bedre ud, end det er. Forskellen er ikke akademisk — Proshop havde iPhone 17 t
 mens YouSees pris uden abonnement stod til 7.499 kr.
 
 PriceRunner er den primære kilde, fordi de allerede sammenligner på tværs af butikker;
-Elgiganten og POWER hentes som supplement. Priserne læses fra JSON-LD, som webshops
+Elgiganten, POWER og OiSTER hentes som supplement. Priserne læses fra JSON-LD, som webshops
 udgiver til Google Shopping og har en interesse i holde korrekt.
 
 ```

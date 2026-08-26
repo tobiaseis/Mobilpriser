@@ -92,16 +92,6 @@ providers:
       samsung-galaxy-s26-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26
       samsung-galaxy-s26-ultra-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black
 
-  # Oister lægger lager i URL'en, så varianten er utvetydig. Bemærk at de
-  # tilbyder afbetaling over op til 40 måneder — deres mindstepris skal
-  # derfor efterses ved første kørsel: dækker den de 6 måneders binding
-  # eller hele afbetalingen?
-  oister:
-    urls:
-      iphone-17-256gb: https://www.oister.dk/kundeshop/mobiler/apple/iphone-17-256gb/
-      iphone-17-pro-256gb: https://www.oister.dk/kundeshop/mobiler/apple/iphone-17-pro-256gb/
-      samsung-galaxy-s26-ultra-256gb: https://www.oister.dk/kundeshop/mobiler/samsung/samsung-galaxy-s26-ultra-256gb/
-
   # Norlys sælger kun telefoner sammen med et abonnement med 6 mdr. binding,
   # hvilket passer præcis til sammenligningen.
   norlys:

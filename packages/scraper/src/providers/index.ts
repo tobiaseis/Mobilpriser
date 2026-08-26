@@ -1,7 +1,6 @@
 import type { ProviderAdapter } from "./generic.js";
 import { callmeAdapter } from "./callme.js";
 import { norlysAdapter } from "./norlys.js";
-import { oisterAdapter } from "./oister.js";
 import { treAdapter } from "./tre.js";
 import { cbbAdapter } from "./cbb.js";
 import { telenorAdapter } from "./telenor.js";
@@ -18,7 +17,6 @@ export function allAdapters(): ProviderAdapter[] {
     telmoreAdapter(),
     cbbAdapter(),
     callmeAdapter(),
-    oisterAdapter(),
     norlysAdapter(),
     treAdapter(),
   ];

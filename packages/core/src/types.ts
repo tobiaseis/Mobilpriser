@@ -13,7 +13,6 @@ export const ProviderIdSchema = z.enum([
   "telmore",
   "cbb",
   "callme",
-  "oister",
   "norlys",
   // "3" ville være det rigtige navn, men et rent tal er upraktisk som
   // nøgle i id'er og filnavne. Vises som "3" i UI'et.
