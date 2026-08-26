@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T05:50:14.474Z",
+  "generatedAt": "2026-08-26T06:51:19.247Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:37.997Z",
+      "scrapedAt": "2026-08-26T06:48:20.258Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:39.988Z",
+      "scrapedAt": "2026-08-26T06:48:22.338Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 7693,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:41.705Z",
+      "scrapedAt": "2026-08-26T06:48:24.353Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -92,7 +92,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:44.115Z",
+      "scrapedAt": "2026-08-26T06:48:26.431Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -115,7 +115,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:45.635Z",
+      "scrapedAt": "2026-08-26T06:48:29.839Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -138,7 +138,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:48:59.329Z",
+      "scrapedAt": "2026-08-26T06:48:43.177Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -161,7 +161,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:07.849Z",
+      "scrapedAt": "2026-08-26T06:48:53.787Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -184,7 +184,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:16.776Z",
+      "scrapedAt": "2026-08-26T06:49:03.787Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -207,7 +207,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:25.218Z",
+      "scrapedAt": "2026-08-26T06:49:13.813Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -230,7 +230,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:34.080Z",
+      "scrapedAt": "2026-08-26T06:49:23.970Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -253,7 +253,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:43.406Z",
+      "scrapedAt": "2026-08-26T06:49:35.079Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -276,7 +276,122 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:49:52.335Z",
+      "scrapedAt": "2026-08-26T06:49:45.962Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26/",
+      "minPrice": 4772,
+      "components": {
+        "upfront": 3299,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:50:20.601Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-plus-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-plus-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/",
+      "minPrice": 9772,
+      "components": {
+        "upfront": 8299,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:50:32.793Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-ultra-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "minPrice": 11472,
+      "components": {
+        "upfront": 9999,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:50:47.987Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
+      "minPrice": 8072,
+      "components": {
+        "upfront": 6599,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:51:01.245Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-pro-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
+        "storage": 256,
+        "slug": "iphone-17-pro-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/",
+      "minPrice": 9472,
+      "components": {
+        "upfront": 7999,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T06:51:13.272Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -299,7 +414,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:50:11.682Z",
+      "scrapedAt": "2026-08-26T06:51:16.091Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -322,20 +437,15 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T05:50:13.472Z",
+      "scrapedAt": "2026-08-26T06:51:18.246Z",
       "source": "text-pattern",
       "confidence": "medium"
     }
   ],
   "warnings": [
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
-    "oister/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
+    "oister/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
     "oister/iphone-17-256gb: udsolgt hos udbyderen",
-    "oister/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
-    "norlys/samsung-galaxy-s26-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
-    "norlys/samsung-galaxy-s26-plus-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
-    "norlys/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
-    "norlys/iphone-17-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden",
-    "norlys/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden — ordlyden kan være en anden"
+    "oister/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden"
   ]
 }
