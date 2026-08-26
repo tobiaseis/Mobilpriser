@@ -23,6 +23,12 @@ retailers:
     urls:
       iphone-17-256gb: https://www.pricerunner.dk/pl/1-3431242036/Mobiltelefoner/Apple-iPhone-17-256GB-Black-Sammenlign-Priser
       samsung-galaxy-s26-ultra-256gb: https://www.pricerunner.dk/pl/1-3457318435/Mobiltelefoner/Samsung-Galaxy-S26-Ultra-5G-Smartphone-12-256-GB-Sammenlign-Priser
+      # Søgeresultaternes titler og URL'er stemte ikke overens for S26-serien,
+      # så her er kun valgt dem, hvor modellen står utvetydigt i URL'en.
+      # Rammer en af dem alligevel forkert, vil prisen afvige groft fra
+      # Elgigantens for samme telefon, og springet noteres i kørslen.
+      samsung-galaxy-s26-256gb: https://www.pricerunner.dk/pl/1-3457402935/Mobiltelefoner/Samsung-Galaxy-S26-256GB-Sky-Blue-Sammenlign-Priser
+      samsung-galaxy-s26-plus-256gb: https://www.pricerunner.dk/pl/1-3456297043/Mobiltelefoner/Samsung-Galaxy-S26-Plus-SM-S947-256GB-12GB-Sammenlign-Priser
 
   elgiganten:
     name: Elgiganten
@@ -30,6 +36,8 @@ retailers:
       iphone-17-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/iphone-17-5g-smartphone-256gb-sort/982749
       iphone-17-pro-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/iphone-17-pro-5g-smartphone-256gb-solv/982718
       samsung-galaxy-s26-ultra-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-ultra-5g-smartphone-12256gb-sort/1039737
+      samsung-galaxy-s26-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-5g-smartphone-12256gb-sort/1039743
+      samsung-galaxy-s26-plus-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-plus-5g-smartphone-12256gb-sort/1039738
 
   power:
     name: POWER
