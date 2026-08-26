@@ -106,6 +106,44 @@ parser ikke rammer.
 | OiSTER | Flyttet til referencekilde: deres "Mindstepris" er identisk med kontantprisen og dækker kun telefonen |
 | YouSee | Mindsteprisen regnes ud (telefonpris fra JSON-LD + 6 x månedspris), fordi siden ikke oplyser den. Markeret "beregnet" og lav konfidens |
 
+## Udrulning på Vercel
+
+Sitet er statisk. Siderne indeholder de priser, der lå i `data/` **da bygningen kørte** —
+en ny kørsel af scraperen ændrer ikke noget for de besøgende, før Vercel har bygget om.
+Sker den bygning ikke, står gamle tal tilbage og ser lige så rigtige ud som nye. Det er
+den fejl, opsætningen her er indrettet mod:
+
+| Foranstaltning | Hvad den forhindrer |
+|---|---|
+| `vercel.json` med `ignoreCommand: "exit 1"` | At Vercel springer bygningen over, fordi commit'et kun rørte `data/` eller `config/` og ikke `apps/web/`. Her ændrer begge dele, hvad siden viser, så der bygges altid. |
+| `VERCEL_DEPLOY_HOOK` kaldt fra `scrape.yml` | At bygningen udebliver, fordi push'et kom fra en robot og ikke fra et menneske. Kørslen beder om bygningen direkte i stedet for at stole på, at push'et udløser den. |
+| `Cache-Control: public, max-age=0, must-revalidate` på HTML | At browseren viser en gemt udgave af siden efter en ny bygning. Filerne under `_next/static` beholder Next.js' immutable-cache — de får nyt navn ved hver bygning. |
+| Alderen på priserne vises på siden | At det overhovedet kan ske ubemærket. Er tallene over 30 timer gamle, siger siden det selv. |
+
+`vercel.json` ligger både i repo-roden og i `apps/web/`. Vercel læser filen fra projektets
+Root Directory, og hvilken af de to der er sat, står kun i dashboardet — to identiske filer
+er billigere end at gætte forkert.
+
+### Deploy hook
+
+Vercel → Settings → Git → Deploy Hooks → opret én på den branch, projektet bygger fra.
+Læg den URL i GitHub under Settings → Secrets and variables → Actions som
+`VERCEL_DEPLOY_HOOK`. Uden den fejler kørslen ikke — den skriver en advarsel i sit summary
+og lader bygningen være op til Vercels egen reaktion på push'et.
+
+### Når siden alligevel står stille
+
+Sammenlign de to tidspunkter, siden selv viser:
+
+- **Begge gamle** → sitet er ikke bygget om. Se Deployments i Vercel: kom der en bygning,
+  og lykkedes den? Byg om med *Redeploy*.
+- **"Sitet bygget" er nyt, "priser hentet" er gammelt** → bygningen kører, men scraperen
+  leverer ikke. Se seneste kørsel af **Scrape mobilpriser** i GitHub Actions.
+
+Bygger Vercel fra en anden branch end repoets default (`claude/danish-phone-price-comparison-96clka`),
+når intet af det frem — Production Branch under Settings → Git skal pege på den branch,
+kørslen committer til.
+
 ## Tilføj flere telefoner eller udbyder-URLs
 
 Rediger `config/phones.yaml`. En telefon uden en URL for en given udbyder bliver stille

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { calculateReference, verdictFor, type Verdict } from "@mobilpriser/core";
-import { formatDataGb, formatDate, formatKr } from "@/lib/format";
+import { formatDataGb, formatKr } from "@/lib/format";
+import { Freshness } from "../../Freshness";
 import {
   loadLatest,
   loadPhones,
@@ -72,7 +73,7 @@ export default async function PhonePage({ params }: PhonePageProps) {
         mindsteprisen — står felterne tomme, kunne opdelingen ikke udledes med sikkerhed
         fra udbyderens side.
       </p>
-      <p className="meta-line">Data hentet: {formatDate(latest.generatedAt)}</p>
+      <Freshness generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
 
       {offers.some((offer) => offer.source === "computed") && (
         <div className="warning-box">

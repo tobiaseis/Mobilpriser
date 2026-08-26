@@ -45,13 +45,33 @@ jobs:
         run: pnpm --filter @mobilpriser/scraper run scrape
 
       - name: Commit og push opdaterede priser
+        id: commit
         run: |
           git config user.name "mobilpriser-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/
           if git diff --cached --quiet; then
             echo "Ingen ændringer i data/ — springer commit over."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Opdater priser $(date -u +%Y-%m-%d)"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Committet alene er ikke nok. Sitet er statisk: priserne står i
+      # siderne fra dengang de blev bygget, så nye tal bliver først synlige,
+      # når Vercel har bygget om. Et deploy hook beder om den bygning
+      # direkte i stedet for at stole på, at push'et fra denne kørsel
+      # udløser den af sig selv.
+      - name: Bed Vercel bygge sitet med de nye priser
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::warning::VERCEL_DEPLOY_HOOK mangler. Priserne er committet, men sitet bygges kun om, hvis Vercel selv reagerer på push'et. Opret et deploy hook i Vercel og læg URL'en i repoets secrets."
+            exit 0
+          fi
+          curl -fsS --retry 3 --retry-delay 5 -X POST "$DEPLOY_HOOK" -o /dev/null
+          echo "Bygning bestilt hos Vercel."

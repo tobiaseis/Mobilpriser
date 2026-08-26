@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { formatKr, formatDate } from "@/lib/format";
+import { formatKr } from "@/lib/format";
+import { Freshness } from "./Freshness";
 import { loadLatest, loadPhones, offersForPhone, PROVIDER_NAMES } from "@/lib/data";
 
 export default function HomePage() {
@@ -13,7 +14,7 @@ export default function HomePage() {
         Mindstepris for de 6 måneders binding, hos den billigste udbyder lige nu. Klik på en
         telefon for at se alle udbydernes tilbud side om side.
       </p>
-      <p className="meta-line">Data hentet: {formatDate(latest.generatedAt)}</p>
+      <Freshness generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
 
       <div className="phone-grid">
         {phones.map((phone) => {
