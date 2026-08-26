@@ -1,10 +1,13 @@
 {
-  "generatedAt": "2026-08-26T09:57:01.196Z",
+  "generatedAt": "2026-08-26T13:00:03.666Z",
   "cashPrices": {
     "iphone-17-256gb": 6890,
     "samsung-galaxy-s26-ultra-256gb": 7198,
     "samsung-galaxy-s26-256gb": 4883,
     "samsung-galaxy-s26-plus-256gb": 5999,
+    "google-pixel-11-256gb": 7699,
+    "google-pixel-11-pro-256gb": 9338,
+    "google-pixel-11-pro-xl-256gb": 10838,
     "iphone-17-pro-256gb": 9399
   },
   "cashPriceSource": {
@@ -12,6 +15,9 @@
     "samsung-galaxy-s26-ultra-256gb": "pricerunner",
     "samsung-galaxy-s26-256gb": "pricerunner",
     "samsung-galaxy-s26-plus-256gb": "pricerunner",
+    "google-pixel-11-256gb": "pricerunner",
+    "google-pixel-11-pro-256gb": "pricerunner",
+    "google-pixel-11-pro-xl-256gb": "pricerunner",
     "iphone-17-pro-256gb": "elgiganten"
   },
   "cashPriceCount": {
@@ -19,6 +25,9 @@
     "samsung-galaxy-s26-ultra-256gb": 3,
     "samsung-galaxy-s26-256gb": 2,
     "samsung-galaxy-s26-plus-256gb": 2,
+    "google-pixel-11-256gb": 1,
+    "google-pixel-11-pro-256gb": 2,
+    "google-pixel-11-pro-xl-256gb": 2,
     "iphone-17-pro-256gb": 2
   },
   "cheapestMonthly": 99,
