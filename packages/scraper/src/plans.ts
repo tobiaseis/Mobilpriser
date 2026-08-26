@@ -29,13 +29,23 @@ export function loadPlans(
 /**
  * Finder det abonnement, en produktside binder tilbuddet til.
  *
- * Siderne skriver det som "Rabat 5.000 kr. Med 50 GB Mobil", så navnet
- * søges direkte i teksten frem for at parse sætningen. Findes flere navne,
- * returneres intet: at gætte hvilket der hører til telefonen ville lægge
- * en fejl på 6 x månedsprisen ind i mindsteprisen.
+ * Siden siger det selv med ordet "Med": "Rabat 5.000 kr. Med 50 GB Mobil".
+ * Den formulering søges først, fordi den udpeger netop det abonnement,
+ * prisen forudsætter. Et opslag i hele teksten duer ikke alene — siderne
+ * nævner også de øvrige abonnementer i en vælger, og så ville et krav om
+ * ét entydigt fund afvise en side, der faktisk oplyser svaret tydeligt.
+ *
+ * Kan det stadig ikke afgøres, returneres intet. At gætte ville lægge en
+ * fejl på 6 x forskellen i månedspris ind i mindsteprisen.
  */
 export function findPlanInText(text: string, plans: Plan[]): Plan | null {
   const haystack = text.toLowerCase();
-  const found = plans.filter((plan) => haystack.includes(plan.name.toLowerCase()));
-  return found.length === 1 ? found[0] : null;
+
+  const boundToOffer = plans.filter((plan) =>
+    haystack.includes(`med ${plan.name.toLowerCase()}`),
+  );
+  if (boundToOffer.length === 1) return boundToOffer[0];
+
+  const mentioned = plans.filter((plan) => haystack.includes(plan.name.toLowerCase()));
+  return mentioned.length === 1 ? mentioned[0] : null;
 }

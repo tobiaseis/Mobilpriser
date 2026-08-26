@@ -39,8 +39,30 @@ describe("loadPlans / findPlanInText", () => {
     expect(plan?.monthly).toBe(219);
   });
 
-  it("vælger ikke, når flere abonnementer nævnes", () => {
+  it("vælger det abonnement, tilbuddet er bundet til med ordet 'Med'", () => {
+    // YouSees side nævner begge abonnementer i en vælger, men binder
+    // prisen til ét af dem. Uden dette faldt hele tilbuddet ud.
+    const plans = [
+      { name: "50 GB Mobil", monthly: 219 },
+      { name: "Fri Data Mobil", monthly: 299 },
+    ];
+    const text =
+      "Tilbud 7.499 kr. 5.899 kr. Rabat 1.600 kr. Med Fri Data Mobil " +
+      "Vælg abonnement 50 GB Mobil Fri Data Mobil";
+
+    expect(findPlanInText(text, plans)?.monthly).toBe(299);
+  });
+
+  it("vælger ikke, når flere abonnementer er bundet til tilbuddet", () => {
     // At gætte ville lægge 6 x forskellen i månedspris ind i mindsteprisen.
+    const plans = [
+      { name: "50 GB Mobil", monthly: 219 },
+      { name: "Fri Data Mobil", monthly: 299 },
+    ];
+    expect(findPlanInText("Med 50 GB Mobil eller Med Fri Data Mobil", plans)).toBeNull();
+  });
+
+  it("vælger ikke, når flere nævnes uden at nogen er bundet", () => {
     const plans = [
       { name: "50 GB Mobil", monthly: 219 },
       { name: "Fri Data Mobil", monthly: 299 },

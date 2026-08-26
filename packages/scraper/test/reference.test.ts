@@ -54,10 +54,11 @@ describe("buildReference", () => {
 });
 
 describe("buildReference — udslag i forhandlerpriser", () => {
-  it("kasserer en pris, der ligger langt under den næstlaveste", () => {
-    // PriceRunner gav S26 Ultra til 7.198 kr., mens Elgiganten havde den
-    // til 11.499. En prissammenligning viser også brugte varer, og bruges
-    // deres laveste pris, vender den dommen på hvert eneste tilbud.
+  it("bruger en markant lavere pris, men noterer den", () => {
+    // PriceRunner gav S26 Ultra til 7.198 kr. mod Elgigantens 11.499.
+    // Forskellen er parallelimport, ikke brugte telefoner — telefonen er
+    // ny og fungerer, så prisen er en ærlig målestok for hvad det koster
+    // at skaffe den selv. Springet noteres, så tallet kan efterprøves.
     const result = buildReference(
       [
         { retailer: "pricerunner", phoneSlug: "ultra", price: 7198, url: "https://p/x" },
@@ -66,9 +67,9 @@ describe("buildReference — udslag i forhandlerpriser", () => {
       [],
     );
 
-    expect(result.cashPrices.ultra).toBe(11499);
-    expect(result.cashPriceSource.ultra).toBe("elgiganten");
-    expect(result.warnings[0]).toContain("7198");
+    expect(result.cashPrices.ultra).toBe(7198);
+    expect(result.cashPriceSource.ultra).toBe("pricerunner");
+    expect(result.warnings[0]).toContain("parallelimport");
   });
 
   it("beholder en pris, der blot er lidt lavere", () => {

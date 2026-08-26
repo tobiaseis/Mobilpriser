@@ -18,11 +18,13 @@ import type { RetailerPrice } from "./retailers.js";
  */
 
 /**
- * En laveste pris, der ligger under denne andel af den næstlaveste,
- * regnes som en anden vare — brugt, parallelimporteret eller en anden
- * variant — frem for et udsalg.
+ * Ligger den laveste pris under denne andel af den næstlaveste, noteres
+ * det — men prisen bruges. En prissammenligning viser også
+ * parallelimporterede telefoner, og de er nye og fungerer som alle andre.
+ * Kan man reelt købe telefonen til det beløb, er det dét, "kunne jeg gøre
+ * det billigere selv" koster, og så er det den ærlige målestok.
  */
-const OUTLIER_RATIO = 0.7;
+const NOTABLY_LOWER_RATIO = 0.7;
 
 export interface ReferenceData {
   generatedAt: string;
@@ -58,24 +60,16 @@ export function buildReference(prices: RetailerPrice[], offers: Offer[]): Refere
     const sorted = [...observations].sort((a, b) => a.price - b.price);
     cashPriceCount[phoneSlug] = sorted.length;
 
-    // En prissammenligning viser også brugte og parallelimporterede varer,
-    // og deres laveste pris kan ligge langt under, hvad telefonen koster ny
-    // i en dansk butik. Bruges den som reference, vender den dommen på
-    // hvert eneste tilbud for telefonen.
-    let chosen = sorted[0];
-    while (
-      sorted.length > 1 &&
-      chosen === sorted[0] &&
-      sorted[1].price > 0 &&
-      sorted[0].price < sorted[1].price * OUTLIER_RATIO
-    ) {
+    const chosen = sorted[0];
+
+    // Et stort spring er værd at nævne, så et påfaldende tal kan
+    // efterprøves — men det bruges, for parallelimport er nye telefoner.
+    if (sorted.length > 1 && sorted[1].price > 0 && chosen.price < sorted[1].price * NOTABLY_LOWER_RATIO) {
       warnings.push(
-        `${phoneSlug}: kasserede ${sorted[0].price} kr. fra ${sorted[0].retailer}, ` +
-          `som ligger langt under næstlaveste ${sorted[1].price} kr. fra ${sorted[1].retailer} — ` +
-          `sandsynligvis en brugt eller anden variant`,
+        `${phoneSlug}: referencen ${chosen.price} kr. fra ${chosen.retailer} ligger markant ` +
+          `under næstlaveste ${sorted[1].price} kr. fra ${sorted[1].retailer} — ` +
+          `sandsynligvis parallelimport`,
       );
-      sorted.shift();
-      chosen = sorted[0];
     }
 
     cashPrices[phoneSlug] = chosen.price;

@@ -128,7 +128,9 @@ reference = laveste forhandlerpris + laveste månedspris x 6
 ```
 
 Et tilbud under det beløb er billigere end at købe telefonen selv og tage det billigste
-abonnement ved siden af. Månedsprisen er den laveste blandt de sammenlignede tilbud, ikke
+abonnement ved siden af. Ligger den laveste forhandlerpris markant under de øvrige, noteres
+det i kørslens advarsler — men prisen bruges: forskellen er typisk parallelimport, og de
+telefoner er nye og fungerer som alle andre. Månedsprisen er den laveste blandt de sammenlignede tilbud, ikke
 markedets billigste SIM-only — en konservativ målestok, for et billigere abonnement udefra
 ville kun gøre dommen hårdere.
 
