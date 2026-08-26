@@ -61,7 +61,7 @@ export interface LatestFile {
 }
 
 export interface ReferenceFile {
-  /** Laveste kontantpris pr. telefon, oplyst af udbyderne selv. */
+  /** Laveste forhandlerpris pr. telefon — fra PriceRunner, Elgiganten m.fl., ikke fra udbyderne. */
   cashPrices: Record<string, number>;
   /** Laveste månedspris set på tværs af alle tilbud. */
   cheapestMonthly: number | null;
