@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { extractJsonLd, fetchHtml as defaultFetchHtml, findProductLd } from "./html.js";
+import { fetchRenderedHtml } from "./browser.js";
 import { isUrlAllowed } from "./robots.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -78,6 +79,7 @@ export interface RetailerDeps {
   delay: () => Promise<void>;
   /** Kan slås fra i tests; i produktion spørges robots.txt altid. */
   checkRobots: (url: string, fetchText: (url: string) => Promise<string>) => Promise<boolean>;
+  renderHtml: (url: string) => Promise<string>;
 }
 
 export async function scrapeRetailers(
@@ -87,6 +89,7 @@ export async function scrapeRetailers(
   const fetchHtml = deps.fetchHtml ?? defaultFetchHtml;
   const delay = deps.delay ?? (() => Promise.resolve());
   const checkRobots = deps.checkRobots ?? isUrlAllowed;
+  const renderHtml = deps.renderHtml ?? fetchRenderedHtml;
 
   const prices: RetailerPrice[] = [];
   const warnings: string[] = [];
@@ -109,10 +112,18 @@ export async function scrapeRetailers(
           continue;
         }
 
-        const html = await fetchHtml(url);
-        const price = priceFromProductLd(html);
+        let price = priceFromProductLd(await fetchHtml(url));
+
+        // Prissammenligninger og større webshops bygger ofte siden i
+        // browseren, og så er der ingen JSON-LD i det, serveren udleverer.
+        // Gengivelse er den eneste mulighed tilbage, når den statiske side
+        // ikke havde prisen.
         if (price == null) {
-          warnings.push(`${label}: fandt ingen pris i JSON-LD på forhandlerens side`);
+          price = priceFromProductLd(await renderHtml(url));
+        }
+
+        if (price == null) {
+          warnings.push(`${label}: fandt ingen pris i JSON-LD, heller ikke efter gengivelse`);
         } else {
           prices.push({ retailer: retailer.id, phoneSlug, price, url });
         }

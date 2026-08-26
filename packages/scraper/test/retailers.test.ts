@@ -8,6 +8,8 @@ const retailer: Retailer = {
 };
 
 const allow = vi.fn(async () => true);
+/** Gengivelse hjælper ikke i disse tilfælde; siden ser ens ud. */
+const renderSame = (html: string) => async () => html;
 
 describe("priceFromProductLd", () => {
   it("læser prisen fra en Product-node", () => {
@@ -50,7 +52,11 @@ describe("scrapeRetailers", () => {
         `<script type="application/ld+json">{"@type":"Product","offers":{"price":"6666"}}</script>`,
     );
 
-    const result = await scrapeRetailers([retailer], { fetchHtml, checkRobots: allow });
+    const result = await scrapeRetailers([retailer], {
+      fetchHtml,
+      checkRobots: allow,
+      renderHtml: fetchHtml,
+    });
 
     expect(result.prices).toEqual([
       {
@@ -60,6 +66,20 @@ describe("scrapeRetailers", () => {
         url: retailer.urls["iphone-17-256gb"],
       },
     ]);
+  });
+
+  it("henter prisen efter gengivelse, når den statiske side mangler JSON-LD", async () => {
+    // PriceRunner-tilfældet: prissammenligninger bygger siden i browseren.
+    const rendered = `<script type="application/ld+json">
+      {"@type":"Product","offers":{"@type":"AggregateOffer","lowPrice":6666}}</script>`;
+
+    const result = await scrapeRetailers([retailer], {
+      fetchHtml: async () => "<div id='app'></div>",
+      renderHtml: async () => rendered,
+      checkRobots: allow,
+    });
+
+    expect(result.prices[0]?.price).toBe(6666);
   });
 
   it("henter ikke siden, når robots.txt forbyder det", async () => {
@@ -79,7 +99,11 @@ describe("scrapeRetailers", () => {
       throw new Error("HTTP 403 for x");
     });
 
-    const result = await scrapeRetailers([retailer], { fetchHtml, checkRobots: allow });
+    const result = await scrapeRetailers([retailer], {
+      fetchHtml,
+      checkRobots: allow,
+      renderHtml: fetchHtml,
+    });
 
     expect(result.warnings[0]).toMatch(/403.*ikke tilgængelig/);
   });
@@ -87,7 +111,11 @@ describe("scrapeRetailers", () => {
   it("advarer, når siden ikke har en pris i JSON-LD", async () => {
     const fetchHtml = vi.fn(async () => "<p>ingen struktureret pris</p>");
 
-    const result = await scrapeRetailers([retailer], { fetchHtml, checkRobots: allow });
+    const result = await scrapeRetailers([retailer], {
+      fetchHtml,
+      checkRobots: allow,
+      renderHtml: renderSame("<p>ingen struktureret pris</p>"),
+    });
 
     expect(result.prices).toEqual([]);
     expect(result.warnings[0]).toMatch(/JSON-LD/);

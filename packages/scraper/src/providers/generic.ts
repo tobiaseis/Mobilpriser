@@ -96,12 +96,17 @@ export function createGenericAdapter(
       let chosen = pickMinPrice(candidates);
       let renderedInBrowser = false;
 
-      // Afgørende at betingelsen er "ingen brugbar pris" og ikke "ingen tal
-      // fundet": et klient-tegnet skelet indeholder gerne pladsholdere som
-      // "Mindstepris i 6 måneder 0 kr.", og så ville et krav om nul fund
-      // aldrig udløse gengivelsen. Statisk hentning kommer stadig først,
-      // fordi den er hurtigere og belaster udbyderen mindre.
-      if (!chosen && looksClientRendered(html)) {
+      // Lagerstatus må kun tros på en færdig side: i et skelet står
+      // "Udsolgt" som pladsholder, uanset om varen er på lager.
+      const outOfStock = !chosen && !looksClientRendered(html) && looksOutOfStock(html);
+
+      // Fandt vi ingen brugbar pris, er gengivelse den eneste mulighed
+      // tilbage, så den forsøges — også når siden har rigelig tekst. En
+      // tærskel for "ser klient-tegnet ud" gættede på, hvor lidt tekst et
+      // skelet har, og et skelet med megen navigation faldt igennem.
+      // Statisk hentning kommer stadig først, fordi den er hurtigere og
+      // belaster udbyderen mindre.
+      if (!chosen && !outOfStock) {
         try {
           html = await renderHtml(ref.url);
           candidates = findMinPriceCandidates(html);
@@ -110,15 +115,13 @@ export function createGenericAdapter(
         } catch (err) {
           return {
             offer: null,
-            warning: `${label}: siden bygges i browseren, og gengivelsen fejlede (${(err as Error).message})`,
+            warning: `${label}: gengivelse i browser fejlede (${(err as Error).message})`,
           };
         }
       }
 
       if (!chosen) {
-        // Lagerstatus må kun tros, når vi ser den færdige side. I et skelet
-        // står "Udsolgt" som pladsholder, uanset om varen er på lager.
-        if (looksOutOfStock(html) && !looksClientRendered(html)) {
+        if (outOfStock || looksOutOfStock(html)) {
           return { offer: null, warning: `${label}: udsolgt hos udbyderen` };
         }
         return {

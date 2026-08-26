@@ -140,15 +140,45 @@ describe("createGenericAdapter.scrape", () => {
   });
 
   it("returnerer en advarsel med de beløb, der faktisk stod på siden", async () => {
+    const page = `<p>${"fyld ".repeat(1200)}Mindstepris: 12 kr.</p>`;
     const adapter = createGenericAdapter("telmore", urls, {
-      fetchHtml: async () => `<p>${"fyld ".repeat(1200)}Mindstepris: 12 kr.</p>`,
-      renderHtml: renderMustNotRun,
+      fetchHtml: async () => page,
+      // Gengivelse hjælper ikke her; siden ser ens ud.
+      renderHtml: async () => page,
     });
 
     const result = await adapter.scrape(ref);
 
     expect(result.offer).toBeNull();
     expect(result.warning).toContain("12 kr.");
+    expect(result.warning).toContain("browser");
+  });
+
+  it("gengiver også en tekstrig side, når prisen ikke kunne findes statisk", async () => {
+    // Norlys-tilfældet: skelettet har rigelig navigationstekst, så en
+    // tærskel for "ser klient-tegnet ud" ville aldrig udløse gengivelsen —
+    // men prisen findes først bagefter.
+    const renderHtml = vi.fn(async () => fixture("rendered-product.html"));
+    const adapter = createGenericAdapter("norlys", urls, {
+      fetchHtml: async () => `<p>${"Menu Mobil Internet Kundeservice ".repeat(300)}</p>`,
+      renderHtml,
+    });
+
+    const result = await adapter.scrape(ref);
+
+    expect(renderHtml).toHaveBeenCalledOnce();
+    expect(result.offer?.minPrice).toBe(7543);
+  });
+
+  it("gengiver ikke en tekstrig side, der udtrykkeligt er udsolgt", async () => {
+    const adapter = createGenericAdapter("telmore", urls, {
+      fetchHtml: async () => fixture("sold-out.html") + `<p>${"tekst ".repeat(1200)}</p>`,
+      renderHtml: renderMustNotRun,
+    });
+
+    await adapter.scrape(ref);
+
+    expect(renderMustNotRun).not.toHaveBeenCalled();
   });
 
   it("returnerer en advarsel ved andre HTTP-fejl i stedet for at kaste", async () => {
