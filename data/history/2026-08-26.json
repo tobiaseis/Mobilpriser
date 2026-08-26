@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T09:32:38.667Z",
+  "generatedAt": "2026-08-26T09:45:49.070Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:29:55.311Z",
+      "scrapedAt": "2026-08-26T09:43:16.879Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,31 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:29:57.387Z",
+      "scrapedAt": "2026-08-26T09:43:18.814Z",
+      "source": "computed",
+      "confidence": "low"
+    },
+    {
+      "id": "yousee:iphone-17-256gb",
+      "provider": "yousee",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender",
+      "minPrice": 7693,
+      "components": {
+        "upfront": 5899,
+        "deviceMonthly": 0,
+        "planName": "Fri Data Mobil",
+        "planMonthly": 299,
+        "dataGb": "unlimited"
+      },
+      "computedMinPrice": 7693,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:43:20.621Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -68,7 +92,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:01.480Z",
+      "scrapedAt": "2026-08-26T09:43:22.578Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -91,7 +115,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:02.856Z",
+      "scrapedAt": "2026-08-26T09:43:23.915Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -114,7 +138,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:16.760Z",
+      "scrapedAt": "2026-08-26T09:43:36.669Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -137,7 +161,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:26.901Z",
+      "scrapedAt": "2026-08-26T09:43:45.656Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -160,7 +184,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:37.585Z",
+      "scrapedAt": "2026-08-26T09:43:55.598Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -183,7 +207,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:47.692Z",
+      "scrapedAt": "2026-08-26T09:44:05.659Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -206,7 +230,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:30:58.044Z",
+      "scrapedAt": "2026-08-26T09:44:15.366Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -229,7 +253,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:31:09.549Z",
+      "scrapedAt": "2026-08-26T09:44:26.521Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -252,7 +276,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:31:20.405Z",
+      "scrapedAt": "2026-08-26T09:44:37.465Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -275,7 +299,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:31:36.484Z",
+      "scrapedAt": "2026-08-26T09:44:51.933Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -298,7 +322,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:31:49.911Z",
+      "scrapedAt": "2026-08-26T09:45:04.600Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -321,7 +345,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:32:04.671Z",
+      "scrapedAt": "2026-08-26T09:45:16.998Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -344,7 +368,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:32:18.814Z",
+      "scrapedAt": "2026-08-26T09:45:30.429Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -367,7 +391,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:32:33.111Z",
+      "scrapedAt": "2026-08-26T09:45:43.760Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -390,7 +414,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:32:35.451Z",
+      "scrapedAt": "2026-08-26T09:45:45.973Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -413,39 +437,12 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:32:37.666Z",
+      "scrapedAt": "2026-08-26T09:45:48.069Z",
       "source": "text-pattern",
       "confidence": "medium"
-    },
-    {
-      "id": "yousee:iphone-17-256gb",
-      "provider": "yousee",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender",
-      "minPrice": 7693,
-      "components": {
-        "upfront": 5899,
-        "deviceMonthly": 0,
-        "planName": "Fri Data Mobil",
-        "planMonthly": 299,
-        "dataGb": "unlimited"
-      },
-      "computedMinPrice": 7693,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:19.661Z",
-      "source": "computed",
-      "confidence": "low",
-      "stale": true
     }
   ],
   "warnings": [
-    "yousee/iphone-17-256gb: kunne ikke afgøre hvilket abonnement tilbuddet gælder. Kendte abonnementer: 50 GB Mobil, Fri Data Mobil",
-    "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
-    "yousee:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)"
+    "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig"
   ]
 }
