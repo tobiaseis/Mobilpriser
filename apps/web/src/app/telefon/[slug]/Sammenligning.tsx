@@ -9,7 +9,7 @@ import {
   type Verdict,
 } from "@mobilpriser/core";
 import { formatDataGb, formatKr, formatKrSigned } from "@/lib/format";
-import { PROVIDER_NAMES, retailerName, type Offer } from "@/lib/model";
+import { PROVIDER_NAMES, retailerName, type ComparisonOffer } from "@/lib/model";
 import { useOwnMonthly } from "@/lib/ownPlan";
 import { barScale } from "@/lib/scale";
 
@@ -25,7 +25,7 @@ export function Sammenligning({
   cashPriceSource,
   cheapestMonthly,
 }: {
-  offers: Offer[];
+  offers: ComparisonOffer[];
   cashPrice: number | undefined;
   cashPriceSource: string | undefined;
   cheapestMonthly: number | null;
@@ -179,7 +179,7 @@ export function Sammenligning({
               </thead>
               <tbody>
                 {offers.map((offer) => {
-                  const planMonthly = offer.components.planMonthly;
+                  const planMonthly = offer.planMonthly;
                   return (
                     <tr key={offer.id}>
                       <th scope="row">
@@ -196,15 +196,11 @@ export function Sammenligning({
                         )}
                       </th>
                       <td>
-                        {offer.components.planName ??
-                          (offer.components.dataGb != null
-                            ? formatDataGb(offer.components.dataGb)
-                            : "—")}
+                        {offer.planName ??
+                          (offer.dataGb != null ? formatDataGb(offer.dataGb) : "—")}
                       </td>
                       <td className="num">
-                        {offer.components.upfront != null
-                          ? formatKr(offer.components.upfront)
-                          : "—"}
+                        {offer.upfront != null ? formatKr(offer.upfront) : "—"}
                       </td>
                       <td className="num">
                         {planMonthly != null ? `${formatKr(planMonthly)}` : "—"}
@@ -215,7 +211,7 @@ export function Sammenligning({
                         )}
                       </td>
                       <td className="num">
-                        {offer.components.setupFee ? formatKr(offer.components.setupFee) : "—"}
+                        {offer.setupFee ? formatKr(offer.setupFee) : "—"}
                       </td>
                       <td className="num total">
                         {formatKr(net(offer.minPrice))}
@@ -276,7 +272,7 @@ function Bjaelke({
   segments,
 }: {
   row: number;
-  offer: Offer;
+  offer: ComparisonOffer;
   value: number;
   cheapest: boolean;
   showListed: boolean;
@@ -290,7 +286,7 @@ function Bjaelke({
         </a>
         <span className="bar-tags">
           {cheapest && <span className="tag tag-best">Billigst</span>}
-          {offer.source === "computed" && (
+          {offer.computed && (
             <span
               className="tag tag-computed"
               title="Udbyderen oplyser ikke en samlet mindstepris. Tallet er regnet ud af telefonpris og abonnement."

@@ -8,80 +8,71 @@ import {
   verdictFor,
 } from "@mobilpriser/core";
 import { formatKr } from "@/lib/format";
-import { offersForPhone, PROVIDER_NAMES, type Offer, type PhoneTarget } from "@/lib/model";
+import type { PhoneCard } from "@/lib/model";
 import { useOwnMonthly } from "@/lib/ownPlan";
 import { referenceBar } from "@/lib/scale";
 
 export function Telefonliste({
-  phones,
-  offers,
-  cashPrices,
+  cards,
   cheapestMonthly,
 }: {
-  phones: PhoneTarget[];
-  offers: Offer[];
-  cashPrices: Record<string, number>;
+  cards: PhoneCard[];
   cheapestMonthly: number | null;
 }) {
   const ownMonthly = useOwnMonthly();
 
   return (
     <div className="phone-grid">
-      {phones.map((phone) => {
-        // Samme beløb trækkes fra alle tilbud, så det billigste tilbud er
-        // det samme uanset hvad der står i feltet.
-        const cheapest = offersForPhone(offers, phone.slug)[0];
-        const cashPrice = cashPrices[phone.slug];
+      {cards.map((card) => (
+        <Link key={card.slug} href={`/telefon/${card.slug}`} className="phone-card">
+          <span className="phone-brand">{card.brand}</span>
+          <span className="phone-model">{card.model}</span>
+          <span className="phone-storage">{card.storage} GB</span>
 
-        // Samme reference som på telefonsiden: kender vi brugerens eget
-        // abonnement, er det telefonens kontantpris — ellers kontantprisen
-        // plus det billigste abonnement, vi har set.
-        const reference =
-          cashPrice == null
-            ? null
-            : ownMonthly != null
-              ? referenceNetOfOwnPlan(cashPrice, ownMonthly)
-              : cheapestMonthly != null
-                ? calculateReference(cashPrice, cheapestMonthly)
-                : null;
-
-        return (
-          <Link key={phone.slug} href={`/telefon/${phone.slug}`} className="phone-card">
-            <span className="phone-brand">{phone.brand}</span>
-            <span className="phone-model">{phone.model}</span>
-            <span className="phone-storage">{phone.storage} GB</span>
-
-            {cheapest ? (
-              <PhonePrice
-                value={ownMonthly != null ? netOfOwnPlan(cheapest.minPrice, ownMonthly) : cheapest.minPrice}
-                listed={cheapest.minPrice}
-                showListed={ownMonthly != null}
-                provider={PROVIDER_NAMES[cheapest.provider]}
-                reference={reference}
-              />
-            ) : (
-              <span className="phone-empty">Ingen priser hentet endnu</span>
-            )}
-          </Link>
-        );
-      })}
+          {card.minPrice == null || card.provider == null ? (
+            <span className="phone-empty">Ingen priser hentet endnu</span>
+          ) : (
+            <PhonePrice
+              listed={card.minPrice}
+              provider={card.provider}
+              cashPrice={card.cashPrice}
+              cheapestMonthly={cheapestMonthly}
+              ownMonthly={ownMonthly}
+            />
+          )}
+        </Link>
+      ))}
     </div>
   );
 }
 
 function PhonePrice({
-  value,
   listed,
-  showListed,
   provider,
-  reference,
+  cashPrice,
+  cheapestMonthly,
+  ownMonthly,
 }: {
-  value: number;
   listed: number;
-  showListed: boolean;
   provider: string;
-  reference: number | null;
+  cashPrice: number | null;
+  cheapestMonthly: number | null;
+  ownMonthly: number | null;
 }) {
+  const value = ownMonthly != null ? netOfOwnPlan(listed, ownMonthly) : listed;
+
+  // Samme reference som på telefonsiden: kender vi brugerens eget
+  // abonnement, er det telefonens kontantpris — ellers kontantprisen plus
+  // det billigste abonnement, vi har set.
+  const reference =
+    cashPrice == null
+      ? null
+      : ownMonthly != null
+        ? referenceNetOfOwnPlan(cashPrice, ownMonthly)
+        : cheapestMonthly != null
+          ? calculateReference(cashPrice, cheapestMonthly)
+          : null;
+
   const bar = reference == null ? null : referenceBar(value, reference);
 
   return (
@@ -89,7 +80,7 @@ function PhonePrice({
       <span className="phone-price">{formatKr(value)}</span>
       <span className="phone-provider">
         billigst hos {provider}
-        {showListed && <span className="was"> · mindstepris {formatKr(listed)}</span>}
+        {ownMonthly != null && <span className="was"> · mindstepris {formatKr(listed)}</span>}
       </span>
 
       {bar && (
@@ -122,14 +113,13 @@ function PhoneVerdict({ value, reference }: { value: number; reference: number |
   }
 
   const verdict = verdictFor(value, reference);
-  const diff = value - reference;
-
   if (verdict === "neutral") {
     return (
       <span className="phone-verdict">Stort set det samme som at købe telefonen selv</span>
     );
   }
 
+  const diff = value - reference;
   return (
     <span className="phone-verdict" data-tone={verdict === "good" ? "gain" : "over"}>
       {verdict === "good"

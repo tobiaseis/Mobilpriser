@@ -35,14 +35,35 @@ function ageInWholeHours(iso: string | null): number | null {
 }
 
 /**
+ * Alderen udregnes én gang og huskes.
+ *
+ * React spørger getSnapshot både under gengivelsen og igen bagefter for at
+ * kontrollere, at svaret holdt sig i ro, og både mærket i toplinjen og
+ * båndet nedenunder spørger hver for sig. Uden det her ville hver af de
+ * fire forespørgsler aflæse uret på ny — og falder timeskiftet midt
+ * imellem to af dem, får React to forskellige svar på det samme spørgsmål.
+ */
+let ageSnapshot: { iso: string | null; hours: number | null } | null = null;
+
+function hoursOldSnapshot(iso: string | null): number | null {
+  if (ageSnapshot === null || ageSnapshot.iso !== iso) {
+    ageSnapshot = { iso, hours: ageInWholeHours(iso) };
+  }
+  return ageSnapshot.hours;
+}
+
+/** Serveren kender ikke den besøgendes ur og svarer null. */
+const onServer = () => null;
+
+/**
  * Serveren kender ikke den besøgendes ur og svarer null, så den byggede
  * HTML aldrig indeholder en advarsel, der er forældet i samme øjeblik.
  */
 function useHoursOld(generatedAt: string | null): number | null {
   return useSyncExternalStore(
     noSubscription,
-    () => ageInWholeHours(generatedAt),
-    () => null,
+    () => hoursOldSnapshot(generatedAt),
+    onServer,
   );
 }
 

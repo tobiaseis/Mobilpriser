@@ -3,7 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EgetAbonnement } from "../../EgetAbonnement";
 import { Sammenligning } from "./Sammenligning";
-import { loadLatest, loadPhones, loadReference, offersForPhone } from "@/lib/data";
+import {
+  loadLatest,
+  loadPhones,
+  loadReference,
+  offersForPhone,
+  toComparisonOffers,
+} from "@/lib/data";
 
 export function generateStaticParams() {
   return loadPhones().map((phone) => ({ slug: phone.slug }));
@@ -31,8 +37,12 @@ export default async function PhonePage({ params }: PhonePageProps) {
 
   const latest = loadLatest();
   const reference = loadReference();
-  const offers = offersForPhone(latest.offers, slug);
-  const computedCount = offers.filter((offer) => offer.source === "computed").length;
+  // Kun de felter, tabellen viser, går over til browseren — resten af
+  // Offer ville blive skrevet ind i sidens HTML uden at blive vist.
+  const offers = toComparisonOffers(offersForPhone(latest.offers, slug));
+
+  let computedCount = 0;
+  for (const offer of offers) if (offer.computed) computedCount++;
 
   return (
     <>

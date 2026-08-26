@@ -2,7 +2,13 @@ import { EgetAbonnement } from "./EgetAbonnement";
 import { Telefonliste } from "./Telefonliste";
 import { loadLatest, loadPhones, loadReference } from "@/lib/data";
 import { formatKr } from "@/lib/format";
-import { offersForPhone, type Offer, type PhoneTarget } from "@/lib/model";
+import {
+  summariseOffers,
+  toPhoneCards,
+  type Offer,
+  type PhoneOfferSummary,
+  type PhoneTarget,
+} from "@/lib/model";
 
 /**
  * Overskriftens tal: den største forskel mellem billigste og dyreste tilbud
@@ -14,18 +20,26 @@ import { offersForPhone, type Offer, type PhoneTarget } from "@/lib/model";
  */
 function largestSpread(
   phones: PhoneTarget[],
-  offers: Offer[],
+  summaries: Map<string, PhoneOfferSummary>,
 ): { kr: number; phone: PhoneTarget; count: number } | null {
   let best: { kr: number; phone: PhoneTarget; count: number } | null = null;
 
   for (const phone of phones) {
-    const sorted = offersForPhone(offers, phone.slug);
-    if (sorted.length < 2) continue;
-    const kr = sorted[sorted.length - 1].minPrice - sorted[0].minPrice;
-    if (!best || kr > best.kr) best = { kr, phone, count: sorted.length };
+    const summary = summaries.get(phone.slug);
+    if (summary === undefined || summary.count < 2) continue;
+
+    const kr = summary.dearest.minPrice - summary.cheapest.minPrice;
+    if (best === null || kr > best.kr) best = { kr, phone, count: summary.count };
   }
 
   return best;
+}
+
+/** Hvor mange udbydere der overhovedet er hentet et tilbud fra. */
+function countProviders(offers: Offer[]): number {
+  const seen = new Set<string>();
+  for (const offer of offers) seen.add(offer.provider);
+  return seen.size;
 }
 
 export default function HomePage() {
@@ -33,8 +47,10 @@ export default function HomePage() {
   const latest = loadLatest();
   const reference = loadReference();
 
-  const spread = largestSpread(phones, latest.offers);
-  const providers = new Set(latest.offers.map((offer) => offer.provider));
+  // Ét gennemløb af tilbuddene dækker både overskriften og alle fem kort.
+  const summaries = summariseOffers(latest.offers);
+  const spread = largestSpread(phones, summaries);
+  const cards = toPhoneCards(phones, summaries, reference.cashPrices);
 
   return (
     <>
@@ -71,14 +87,9 @@ export default function HomePage() {
 
       <section className="section">
         <h2 className="eyebrow">
-          {phones.length} telefoner · {providers.size} udbydere
+          {phones.length} telefoner · {countProviders(latest.offers)} udbydere
         </h2>
-        <Telefonliste
-          phones={phones}
-          offers={latest.offers}
-          cashPrices={reference.cashPrices}
-          cheapestMonthly={reference.cheapestMonthly}
-        />
+        <Telefonliste cards={cards} cheapestMonthly={reference.cheapestMonthly} />
         <p className="prose" style={{ marginTop: 18 }}>
           Beløbet er den billigste mindstepris, vi har hentet for telefonen. Linjen under den
           måler tilbuddet mod forhandlerprisen{" "}

@@ -6,9 +6,16 @@
  * streg tværs gennem dem alle. Under stregen er tilbuddet billigere end at
  * købe selv. Den streg går igen på forsidens kort, i overskriften og i
  * mærket ved siden af navnet, så den samme idé bærer hele sitet.
+ *
+ * Sitet er lyst — også når styresystemet står på mørkt. Det er et valg,
+ * ikke en mangel: color-scheme herunder siger det samme til browseren, så
+ * felter, rullebjælker og datovælgere følger med i stedet for at komme
+ * mørke ind på en lys side.
  */
 
 :root {
+  color-scheme: light;
+
   /* Nordisk papir: køligt, ikke cremet. Kortene er det hvide ovenpå. */
   --paper: #eceeef;
   --surface: #ffffff;
@@ -50,44 +57,6 @@
      dér hvor de står i kolonne — ikke en tredje skrift. */
   --font-display: var(--font-familjen), "Helvetica Neue", Arial, sans-serif;
   --font-prose: var(--font-newsreader), Georgia, "Times New Roman", serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0f1216;
-    --surface: #171b21;
-    --surface-2: #1e232a;
-
-    --ink: #e9ecef;
-    --ink-2: #aeb6bf;
-    --ink-3: #7b838d;
-
-    --line: #282e36;
-    --line-soft: #1f242b;
-
-    --accent: #93b4e8;
-    --accent-wash: #1a2331;
-
-    /* Stregen og en overskridelse er samme røde, og de mødes i bjælken:
-       ét trin, valgt til den mørke flade, frem for to der ligner en fejl. */
-    --ref: #dd6a60;
-    --ref-wash: #2e1c1a;
-
-    --gain: #4fb686;
-    --gain-wash: #13271e;
-
-    --warn: #d9ac5d;
-    --warn-wash: #2a2317;
-
-    --bar: #4e86d8;
-    --bar-track: #232932;
-
-    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 16px -8px rgba(0, 0, 0, 0.6);
-    --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.45), 0 14px 30px -12px rgba(0, 0, 0, 0.7);
-    --hairline: rgba(255, 255, 255, 0.1);
-
-    color-scheme: dark;
-  }
 }
 
 *,
@@ -439,6 +408,19 @@ main {
 .own-plan-input::placeholder {
   color: var(--ink-3);
   font-family: var(--font-display);
+}
+/* Browserens egne op/ned-pile sidder i højre kant — præcis under
+   "kr./md.". Etiketten lader klik gå igennem sig, så et klik ved siden af
+   teksten ramte pilen og satte beløbet op med én. Der er intet at trimme
+   sig frem til her: man skriver sit abonnement, man tæller ikke op til det. */
+.own-plan-input::-webkit-outer-spin-button,
+.own-plan-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.own-plan-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 .own-plan-input:hover {
   border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
