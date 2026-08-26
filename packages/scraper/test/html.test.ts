@@ -138,3 +138,24 @@ describe("pageText", () => {
     expect(pageText("<!DOCTYPE html><html><body><p>Hej</p></body></html>")).toBe("Hej");
   });
 });
+
+describe("beløb skrevet med bindestreg", () => {
+  it("læser OiSTERs '10.000,-' format", () => {
+    // Ordret fra OiSTERs side: de bruger kroner-notation med bindestreg
+    // hele vejen, og et mønster, der kun kendte "kr", fandt ingenting.
+    const html = `<p>0 ,- /md. 40 mdr. OiSTER Afdrag eller 10.000 ,- Kontantpris
+      Mindstepris 10.000,- Login og køb På lager</p>`;
+
+    expect(extractStatedMinPrice(html)).toBe(10000);
+  });
+
+  it("markerer et bindestregsbeløb efterfulgt af /md. som månedsydelse", () => {
+    const candidates = findMinPriceCandidates("<p>Mindstepris 0 ,- /md. 40 mdr. 10.000,-</p>");
+    expect(candidates[0]).toMatchObject({ value: 0, perMonth: true });
+  });
+
+  it("forstår stadig de gængse kr-former", () => {
+    expect(extractStatedMinPrice("<p>Mindstepris 4.499 kr.</p>")).toBe(4499);
+    expect(extractStatedMinPrice("<p>Mindstepris kr. 4.499</p>")).toBe(4499);
+  });
+});

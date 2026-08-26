@@ -65,11 +65,14 @@ export function parseDanishAmount(raw: string): number | null {
 }
 
 /**
- * Beløb skrevet enten som "4.499 kr." eller "kr. 4.499" — begge former
- * er almindelige på danske sider.
+ * Beløb skrevet som "4.499 kr.", "kr. 4.499" eller "10.000,-".
+ *
+ * Den sidste form er den danske kroner-notation med bindestreg, og den er
+ * ikke en sjældenhed: OiSTER skriver hele deres prisblok sådan, og et
+ * mønster, der kun kendte "kr", fandt ingenting på deres sider.
  */
 const AMOUNT_PATTERN =
-  /(?:kr\.?|DKK)\s*(\d[\d.]*(?:,\d{1,2})?)|(\d[\d.]*(?:,\d{1,2})?)\s*(?:kr\b|kr\.|DKK)/gi;
+  /(?:kr\.?|DKK)\s*(\d[\d.]*(?:,\d{1,2})?)|(\d[\d.]*(?:,\d{1,2})?)\s*(?:kr\b|kr\.|DKK)|(\d[\d.]*)\s*,\s*-/gi;
 
 /**
  * Markerer et beløb som en månedsydelse frem for en samlet pris.
@@ -110,7 +113,7 @@ export function findMinPriceCandidates(html: string): MinPriceCandidate[] {
     AMOUNT_PATTERN.lastIndex = 0;
     let amount: RegExpExecArray | null;
     while ((amount = AMOUNT_PATTERN.exec(window)) !== null) {
-      const value = parseDanishAmount(amount[1] ?? amount[2]);
+      const value = parseDanishAmount(amount[1] ?? amount[2] ?? amount[3]);
       if (value == null) continue;
 
       const after = window.slice(amount.index + amount[0].length);
