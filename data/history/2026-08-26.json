@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T09:45:49.070Z",
+  "generatedAt": "2026-08-26T09:56:15.471Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:16.879Z",
+      "scrapedAt": "2026-08-26T09:53:32.062Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:18.814Z",
+      "scrapedAt": "2026-08-26T09:53:34.152Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 7693,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:20.621Z",
+      "scrapedAt": "2026-08-26T09:53:36.100Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -92,7 +92,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:22.578Z",
+      "scrapedAt": "2026-08-26T09:53:38.135Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -115,7 +115,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:23.915Z",
+      "scrapedAt": "2026-08-26T09:53:39.503Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -138,7 +138,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:36.669Z",
+      "scrapedAt": "2026-08-26T09:53:52.687Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -161,7 +161,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:45.656Z",
+      "scrapedAt": "2026-08-26T09:54:02.578Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -184,7 +184,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:43:55.598Z",
+      "scrapedAt": "2026-08-26T09:54:12.570Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -207,7 +207,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:44:05.659Z",
+      "scrapedAt": "2026-08-26T09:54:22.628Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -230,7 +230,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:44:15.366Z",
+      "scrapedAt": "2026-08-26T09:54:32.234Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -253,7 +253,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:44:26.521Z",
+      "scrapedAt": "2026-08-26T09:54:43.796Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -276,7 +276,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:44:37.465Z",
+      "scrapedAt": "2026-08-26T09:54:55.910Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -299,7 +299,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:44:51.933Z",
+      "scrapedAt": "2026-08-26T09:55:13.629Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -322,7 +322,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:04.600Z",
+      "scrapedAt": "2026-08-26T09:55:26.879Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -345,7 +345,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:16.998Z",
+      "scrapedAt": "2026-08-26T09:55:40.278Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -368,7 +368,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:30.429Z",
+      "scrapedAt": "2026-08-26T09:55:54.352Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -391,7 +391,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:43.760Z",
+      "scrapedAt": "2026-08-26T09:56:09.672Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -414,7 +414,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:45.973Z",
+      "scrapedAt": "2026-08-26T09:56:12.228Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -437,7 +437,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T09:45:48.069Z",
+      "scrapedAt": "2026-08-26T09:56:14.469Z",
       "source": "text-pattern",
       "confidence": "medium"
     }
