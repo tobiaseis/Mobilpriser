@@ -33,6 +33,31 @@ phones:
     storage: 256
     slug: iphone-17-pro-256gb
 
+  # Pixel 11-serien blev annonceret 12. august 2026 og kom i handlen den
+  # 20. — seks dage før de her linjer blev skrevet. Udbydernes sider er
+  # derfor helt nye, og flere af URL'erne nedenfor er ikke set hentet
+  # igennem endnu.
+  #
+  # Pixel 11 Pro Fold er med i serien, men står ikke her. De danske
+  # udbydere sælger den i 256 GB, mens forhandlerne fører den i 512 GB —
+  # og uden en forhandlerpris for samme variant er der ikke noget at måle
+  # tilbuddene imod. En reference på 512 GB stillet op mod tilbud på
+  # 256 GB ville ikke være en manglende vurdering, men en forkert.
+  - brand: Google
+    model: Pixel 11
+    storage: 256
+    slug: google-pixel-11-256gb
+
+  - brand: Google
+    model: Pixel 11 Pro
+    storage: 256
+    slug: google-pixel-11-pro-256gb
+
+  - brand: Google
+    model: Pixel 11 Pro XL
+    storage: 256
+    slug: google-pixel-11-pro-xl-256gb
+
 # Pr. udbyder: hvilken produkt-URL svarer til hvilken telefon-slug.
 #
 # URL'er markeret "ikke bekræftet" stammer fra søgeresultater og er ikke set
@@ -53,12 +78,27 @@ providers:
       samsung-galaxy-s26-plus-256gb: https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus
       # ikke bekræftet
       samsung-galaxy-s26-ultra-256gb: https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra
+      # Bekræftet: produktsiden findes med præcis denne farve- og lagerstump.
+      google-pixel-11-pro-256gb: https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-pro-obsidian-256gb
+      # ikke bekræftet — samme mønster som Pro'en, med Telmores egen
+      # variantstump. Telmore fører begge modeller (4.999 kr. for Pixel 11,
+      # 6.999 kr. for Pro XL), men produktsidernes slug er ikke set.
+      google-pixel-11-256gb: https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-obsidian-256gb
+      # ikke bekræftet
+      google-pixel-11-pro-xl-256gb: https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-pro-xl-obsidian-256gb
 
   # Bekræftet: siden oplyser "Mindstepris (6 mdr.) 7.733 kr." i serverleveret HTML.
   telenor:
     urls:
       iphone-17-256gb: https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/
       samsung-galaxy-s26-ultra-256gb: https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/
+      # Bekræftet ved hentning: siden oplyser "Mindstepris 6 mdr.: 6.533,-"
+      # i serverleveret HTML, og komponenterne går op — 4.799 kr. for
+      # telefonen plus 6 x 289 kr. abonnement er præcis de 6.533.
+      google-pixel-11-256gb: https://www.telenor.dk/shop/mobil/google/google-pixel-11-256gb-black/
+      # Samme mønster, fundet i søgeresultaterne med titel og alt.
+      google-pixel-11-pro-256gb: https://www.telenor.dk/shop/mobil/google/google-pixel-11-pro-256gb-black/
+      google-pixel-11-pro-xl-256gb: https://www.telenor.dk/shop/mobil/google/google-pixel-11-pro-xl-256gb-black/
 
   # CBB svarer 403 på vores identificerede bot. Vi omgår ikke afvisningen
   # (hverken med et andet User-Agent eller via browseren), så udbyderen
@@ -66,6 +106,10 @@ providers:
   cbb:
     urls:
       samsung-galaxy-s26-256gb: https://www.cbb.dk/shop/mobiltelefoner/samsung/galaxy-s26/
+      # Begge sider findes; CBB afviser os stadig med 403, så de bliver
+      # markeret "ikke tilgængelig" som de øvrige.
+      google-pixel-11-256gb: https://www.cbb.dk/shop/mobiltelefoner/google/google-pixel-11/
+      google-pixel-11-pro-256gb: https://www.cbb.dk/shop/mobiltelefoner/google/google-pixel-11-pro/
 
   # Call me bygger produktsiden i browseren — serveren udleverer kun menuen.
   # Scraperen falder derfor automatisk tilbage til browser-gengivelse her.
@@ -79,6 +123,11 @@ providers:
     urls:
       samsung-galaxy-s26-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26/
       samsung-galaxy-s26-ultra-256gb: https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/
+      google-pixel-11-pro-256gb: https://www.callme.dk/shop/google/google-pixel-11-pro/
+      google-pixel-11-pro-xl-256gb: https://www.callme.dk/shop/google/google-pixel-11-pro-xl/
+      # ikke bekræftet — Call me fører hele serien, men basismodellens
+      # egen produktside er ikke dukket op i søgningen.
+      google-pixel-11-256gb: https://www.callme.dk/shop/google/google-pixel-11/
 
   # YouSee oplyser ikke en samlet mindstepris for telefon + abonnement på
   # produktsiden — det eneste "Mindstepris" dér hører til tilbehør i en
@@ -91,6 +140,11 @@ providers:
       iphone-17-256gb: https://yousee.dk/shop/mobiltelefoner/apple/apple-iphone-17/256gb-lavender
       samsung-galaxy-s26-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26
       samsung-galaxy-s26-ultra-256gb: https://yousee.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra/256gb-black
+      google-pixel-11-pro-256gb: https://yousee.dk/shop/mobiltelefoner/google/pixel-11-pro
+      # ikke bekræftet — samme mønster uden variantstump, som YouSee også
+      # bruger til Galaxy S26.
+      google-pixel-11-256gb: https://yousee.dk/shop/mobiltelefoner/google/pixel-11
+      google-pixel-11-pro-xl-256gb: https://yousee.dk/shop/mobiltelefoner/google/pixel-11-pro-xl
 
   # Norlys sælger kun telefoner sammen med et abonnement med 6 mdr. binding,
   # hvilket passer præcis til sammenligningen.
@@ -102,7 +156,17 @@ providers:
       samsung-galaxy-s26-ultra-256gb: https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/
       # ikke bekræftet — hash-slug som søgeresultatet angav for S26+
       samsung-galaxy-s26-plus-256gb: https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/
+      google-pixel-11-pro-256gb: https://shop.norlys.dk/shop/google/google-pixel-11-pro/
+      google-pixel-11-pro-xl-256gb: https://shop.norlys.dk/shop/google/google-pixel-11-pro-xl/
+      # ikke bekræftet
+      google-pixel-11-256gb: https://shop.norlys.dk/shop/google/google-pixel-11/
 
+  # 3 står uden Pixel-URL'er med vilje. De øvrige udbyderes sider dukkede
+  # op i søgningen med titel og adresse; 3's gjorde ikke, og der er
+  # forskel på en adresse, der er set, og en der er regnet ud af mønsteret
+  # hos naboen. En URL, der ikke findes, koster kun en advarsel — men den
+  # koster også en kørsel at opdage, og indtil da står 3 opført som en
+  # udbyder, vi har spurgt. Det har vi ikke.
   tre:
     urls:
       iphone-17-256gb: https://www.3.dk/shop/mobiler/apple/iphone-17/

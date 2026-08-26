@@ -29,6 +29,17 @@ retailers:
       # Elgigantens for samme telefon, og springet noteres i kørslen.
       samsung-galaxy-s26-256gb: https://www.pricerunner.dk/pl/1-3457402935/Mobiltelefoner/Samsung-Galaxy-S26-256GB-Sky-Blue-Sammenlign-Priser
       samsung-galaxy-s26-plus-256gb: https://www.pricerunner.dk/pl/1-3456297043/Mobiltelefoner/Samsung-Galaxy-S26-Plus-SM-S947-256GB-12GB-Sammenlign-Priser
+      # Pixel 11-serien. Model og lager står utvetydigt i alle tre URL'er,
+      # hvilket er kravet her efter rodet med S26-serien ovenfor. Farven
+      # varierer mellem opslagene — PriceRunner samler alligevel prisen på
+      # tværs af butikker, og farve flytter ikke prisen nævneværdigt.
+      #
+      # Basismodellens produktnavn er nordisk fælles ("aelypuhelin" er
+      # finsk for smartphone). Det er PriceRunners eget feed-navn og siger
+      # intet om, hvilken butik prisen kommer fra.
+      google-pixel-11-256gb: https://www.pricerunner.dk/pl/1-3561682420/Mobiltelefoner/Google-Pixel-11-aelypuhelin-12-256GB-%28obsidian%29-Sammenlign-Priser
+      google-pixel-11-pro-256gb: https://www.pricerunner.dk/pl/1-3561682916/Mobiltelefoner/Google-Pixel-11-Pro-12-GB-RAM-256-GB-Pink-Sammenlign-Priser
+      google-pixel-11-pro-xl-256gb: https://www.pricerunner.dk/pl/1-3561682901/Mobiltelefoner/Google-Pixel-11-Pro-XL-256-GB-5G-Canyon-Sammenlign-Priser
 
   elgiganten:
     name: Elgiganten
@@ -38,6 +49,14 @@ retailers:
       samsung-galaxy-s26-ultra-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-ultra-5g-smartphone-12256gb-sort/1039737
       samsung-galaxy-s26-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-5g-smartphone-12256gb-sort/1039743
       samsung-galaxy-s26-plus-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/samsung-galaxy-s26-plus-5g-smartphone-12256gb-sort/1039738
+      google-pixel-11-pro-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/google-pixel-11-pro-smartphone-12256-gb-obsidian/1122417
+      # ikke bekræftet — varenummeret 1122446 er set på Elgigantens svenske
+      # site for præcis denne variant, og kæden bruger samme varenummer på
+      # tværs af Norden. Selve den danske adresse er ikke set.
+      google-pixel-11-pro-xl-256gb: https://www.elgiganten.dk/product/mobil-tablet-smartwatch/mobiltelefon/google-pixel-11-pro-xl-smartphone-12256-gb-obsidian/1122446
+      # Basismodellen står her med vilje ikke: Elgiganten ser ud til kun at
+      # føre den i 512 GB, og en 512 GB-pris som reference for et 256 GB-tilbud
+      # ville gøre hvert eneste tilbud til et røverkøb. PriceRunner dækker den.
 
   power:
     name: POWER

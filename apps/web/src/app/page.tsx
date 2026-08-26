@@ -86,10 +86,13 @@ export default function HomePage() {
       <EgetAbonnement />
 
       <section className="section">
-        <h2 className="eyebrow">
-          {phones.length} telefoner · {countProviders(latest.offers)} udbydere
-        </h2>
-        <Telefonliste cards={cards} cheapestMonthly={reference.cheapestMonthly} />
+        {/* Overskriften hører til søgefeltet: den tæller, hvad der står i
+            gitteret, og det tal ændrer sig, når der søges. */}
+        <Telefonliste
+          cards={cards}
+          cheapestMonthly={reference.cheapestMonthly}
+          providerCount={countProviders(latest.offers)}
+        />
         <p className="prose" style={{ marginTop: 18 }}>
           Beløbet er den billigste mindstepris, vi har hentet for telefonen. Linjen under den
           måler tilbuddet mod forhandlerprisen{" "}
