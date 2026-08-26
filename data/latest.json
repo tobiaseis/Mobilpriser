@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T08:18:43.696Z",
+  "generatedAt": "2026-08-26T09:32:38.667Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 4313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:15.880Z",
+      "scrapedAt": "2026-08-26T09:29:55.311Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,9 +45,377 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:17.877Z",
+      "scrapedAt": "2026-08-26T09:29:57.387Z",
       "source": "computed",
       "confidence": "low"
+    },
+    {
+      "id": "telenor:samsung-galaxy-s26-ultra-256gb",
+      "provider": "telenor",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
+      "minPrice": 11633,
+      "components": {
+        "upfront": 9899,
+        "deviceMonthly": 0,
+        "planMonthly": 289,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:01.480Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "telenor:iphone-17-256gb",
+      "provider": "telenor",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
+      "minPrice": 7733,
+      "components": {
+        "upfront": 5999,
+        "deviceMonthly": 0,
+        "planMonthly": 289,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:02.856Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/Samsung/galaxy-s26-white-256gb",
+      "minPrice": 9293,
+      "components": {
+        "upfront": 7499,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:16.760Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-plus-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-plus-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
+      "minPrice": 10793,
+      "components": {
+        "upfront": 8999,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:26.901Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:samsung-galaxy-s26-ultra-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra",
+      "minPrice": 12293,
+      "components": {
+        "upfront": 10499,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:37.585Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:iphone-17-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17",
+      "minPrice": 7543,
+      "components": {
+        "upfront": 5749,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:47.692Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:iphone-17-pro-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
+        "storage": 256,
+        "slug": "iphone-17-pro-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
+      "minPrice": 10993,
+      "components": {
+        "upfront": 9199,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:30:58.044Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
+      "minPrice": 7142,
+      "components": {
+        "upfront": 6499,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:31:09.549Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-ultra-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "minPrice": 7642,
+      "components": {
+        "upfront": 6999,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:31:20.405Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26/",
+      "minPrice": 4772,
+      "components": {
+        "upfront": 3299,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:31:36.484Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-plus-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-plus-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/",
+      "minPrice": 9772,
+      "components": {
+        "upfront": 8299,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:31:49.911Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-ultra-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "minPrice": 11472,
+      "components": {
+        "upfront": 9999,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:32:04.671Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
+      "minPrice": 8072,
+      "components": {
+        "upfront": 6599,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:32:18.814Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-pro-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
+        "storage": 256,
+        "slug": "iphone-17-pro-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/",
+      "minPrice": 9472,
+      "components": {
+        "upfront": 7999,
+        "deviceMonthly": 0,
+        "planMonthly": 229,
+        "setupFee": 99
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:32:33.111Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "tre:samsung-galaxy-s26-256gb",
+      "provider": "tre",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.3.dk/shop/mobiler/samsung/samsung-galaxy-s26/",
+      "minPrice": 8639,
+      "components": {
+        "upfront": 6899,
+        "deviceMonthly": 0,
+        "planMonthly": 290,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:32:35.451Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "tre:iphone-17-256gb",
+      "provider": "tre",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.3.dk/shop/mobiler/apple/iphone-17/",
+      "minPrice": 8139,
+      "components": {
+        "upfront": 6399,
+        "deviceMonthly": 0,
+        "planMonthly": 290,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-08-26T09:32:37.666Z",
+      "source": "text-pattern",
+      "confidence": "medium"
     },
     {
       "id": "yousee:iphone-17-256gb",
@@ -71,387 +439,13 @@
       "bindingMonths": 6,
       "scrapedAt": "2026-08-26T08:16:19.661Z",
       "source": "computed",
-      "confidence": "low"
-    },
-    {
-      "id": "telmore:samsung-galaxy-s26-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/Samsung/galaxy-s26-white-256gb",
-      "minPrice": 9293,
-      "components": {
-        "upfront": 7499,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:38.306Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "telmore:samsung-galaxy-s26-plus-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26+",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-plus-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
-      "minPrice": 10793,
-      "components": {
-        "upfront": 8999,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:46.690Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "telmore:samsung-galaxy-s26-ultra-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-ultra",
-      "minPrice": 12293,
-      "components": {
-        "upfront": 10499,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:16:55.188Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "telmore:iphone-17-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17",
-      "minPrice": 7543,
-      "components": {
-        "upfront": 5749,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:17:04.125Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "telmore:iphone-17-pro-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17 Pro",
-        "storage": 256,
-        "slug": "iphone-17-pro-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
-      "minPrice": 10993,
-      "components": {
-        "upfront": 9199,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:17:12.759Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "callme:samsung-galaxy-s26-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
-      "minPrice": 7142,
-      "components": {
-        "upfront": 6499,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:17:22.500Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "callme:samsung-galaxy-s26-ultra-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "minPrice": 7642,
-      "components": {
-        "upfront": 6999,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:17:31.329Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26/",
-      "minPrice": 4772,
-      "components": {
-        "upfront": 3299,
-        "deviceMonthly": 0,
-        "planMonthly": 229,
-        "setupFee": 99
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:17:55.416Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-plus-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26+",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-plus-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/",
-      "minPrice": 9772,
-      "components": {
-        "upfront": 8299,
-        "deviceMonthly": 0,
-        "planMonthly": 229,
-        "setupFee": 99
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:05.794Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-ultra-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "minPrice": 11472,
-      "components": {
-        "upfront": 9999,
-        "deviceMonthly": 0,
-        "planMonthly": 229,
-        "setupFee": 99
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:16.240Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:iphone-17-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
-      "minPrice": 8072,
-      "components": {
-        "upfront": 6599,
-        "deviceMonthly": 0,
-        "planMonthly": 229,
-        "setupFee": 99
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:25.958Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:iphone-17-pro-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17 Pro",
-        "storage": 256,
-        "slug": "iphone-17-pro-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/",
-      "minPrice": 9472,
-      "components": {
-        "upfront": 7999,
-        "deviceMonthly": 0,
-        "planMonthly": 229,
-        "setupFee": 99
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:38.425Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "tre:samsung-galaxy-s26-256gb",
-      "provider": "tre",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://www.3.dk/shop/mobiler/samsung/samsung-galaxy-s26/",
-      "minPrice": 8639,
-      "components": {
-        "upfront": 6899,
-        "deviceMonthly": 0,
-        "planMonthly": 290,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:40.989Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "tre:iphone-17-256gb",
-      "provider": "tre",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://www.3.dk/shop/mobiler/apple/iphone-17/",
-      "minPrice": 8139,
-      "components": {
-        "upfront": 6399,
-        "deviceMonthly": 0,
-        "planMonthly": 290,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T08:18:42.694Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "telenor:samsung-galaxy-s26-ultra-256gb",
-      "provider": "telenor",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://www.telenor.dk/shop/mobil/samsung/samsung-galaxy-s26-ultra-256gb-black/",
-      "minPrice": 11633,
-      "components": {
-        "upfront": 9899,
-        "deviceMonthly": 0,
-        "planMonthly": 289,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:26.431Z",
-      "source": "text-pattern",
-      "confidence": "low",
-      "stale": true
-    },
-    {
-      "id": "telenor:iphone-17-256gb",
-      "provider": "telenor",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
-      "minPrice": 7733,
-      "components": {
-        "upfront": 5999,
-        "deviceMonthly": 0,
-        "planMonthly": 289,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-08-26T06:48:29.839Z",
-      "source": "text-pattern",
       "confidence": "low",
       "stale": true
     }
   ],
   "warnings": [
-    "telenor/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
-    "telenor/iphone-17-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
+    "yousee/iphone-17-256gb: kunne ikke afgøre hvilket abonnement tilbuddet gælder. Kendte abonnementer: 50 GB Mobil, Fri Data Mobil",
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
-    "oister/samsung-galaxy-s26-ultra-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
-    "oister/iphone-17-256gb: udsolgt hos udbyderen",
-    "oister/iphone-17-pro-256gb: fandt ingen \"mindstepris\" på siden (selv efter gengivelse i browser) — ordlyden kan være en anden",
-    "telenor:samsung-galaxy-s26-ultra-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
-    "telenor:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)"
+    "yousee:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)"
   ]
 }

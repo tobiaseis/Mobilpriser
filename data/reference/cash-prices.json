@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-08-26T08:19:03.274Z",
+  "generatedAt": "2026-08-26T09:33:05.364Z",
   "cashPrices": {
     "iphone-17-256gb": 6890,
-    "samsung-galaxy-s26-ultra-256gb": 11499,
+    "samsung-galaxy-s26-ultra-256gb": 10800,
     "iphone-17-pro-256gb": 9399
   },
   "cashPriceSource": {
     "iphone-17-256gb": "pricerunner",
-    "samsung-galaxy-s26-ultra-256gb": "elgiganten",
+    "samsung-galaxy-s26-ultra-256gb": "oister",
     "iphone-17-pro-256gb": "elgiganten"
   },
   "cashPriceCount": {
-    "iphone-17-256gb": 3,
-    "samsung-galaxy-s26-ultra-256gb": 2,
-    "iphone-17-pro-256gb": 1
+    "iphone-17-256gb": 4,
+    "samsung-galaxy-s26-ultra-256gb": 3,
+    "iphone-17-pro-256gb": 2
   },
   "cheapestMonthly": 99,
   "warnings": [
-    "samsung-galaxy-s26-ultra-256gb: kasserede 7198 kr. fra pricerunner, som ligger langt under næstlaveste 11499 kr. fra elgiganten — sandsynligvis en brugt eller anden variant"
+    "samsung-galaxy-s26-ultra-256gb: kasserede 7198 kr. fra pricerunner, som ligger langt under næstlaveste 10800 kr. fra oister — sandsynligvis en brugt eller anden variant"
   ]
 }
