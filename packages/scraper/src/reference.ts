@@ -17,6 +17,13 @@ import type { RetailerPrice } from "./retailers.js";
  * følge priser, der bevæger sig.
  */
 
+/**
+ * En laveste pris, der ligger under denne andel af den næstlaveste,
+ * regnes som en anden vare — brugt, parallelimporteret eller en anden
+ * variant — frem for et udsalg.
+ */
+const OUTLIER_RATIO = 0.7;
+
 export interface ReferenceData {
   generatedAt: string;
   /** Laveste forhandlerpris pr. telefon. */
@@ -27,6 +34,8 @@ export interface ReferenceData {
   cashPriceCount: Record<string, number>;
   /** Laveste månedspris set blandt de sammenlignede tilbud. */
   cheapestMonthly: number | null;
+  /** Kasserede priser og hvorfor. */
+  warnings: string[];
 }
 
 /**
@@ -38,14 +47,39 @@ export function buildReference(prices: RetailerPrice[], offers: Offer[]): Refere
   const cashPrices: Record<string, number> = {};
   const cashPriceSource: Record<string, string> = {};
   const cashPriceCount: Record<string, number> = {};
+  const warnings: string[] = [];
 
-  for (const { phoneSlug, price, retailer } of prices) {
-    cashPriceCount[phoneSlug] = (cashPriceCount[phoneSlug] ?? 0) + 1;
-    const current = cashPrices[phoneSlug];
-    if (current == null || price < current) {
-      cashPrices[phoneSlug] = price;
-      cashPriceSource[phoneSlug] = retailer;
+  const byPhone = new Map<string, RetailerPrice[]>();
+  for (const price of prices) {
+    byPhone.set(price.phoneSlug, [...(byPhone.get(price.phoneSlug) ?? []), price]);
+  }
+
+  for (const [phoneSlug, observations] of byPhone) {
+    const sorted = [...observations].sort((a, b) => a.price - b.price);
+    cashPriceCount[phoneSlug] = sorted.length;
+
+    // En prissammenligning viser også brugte og parallelimporterede varer,
+    // og deres laveste pris kan ligge langt under, hvad telefonen koster ny
+    // i en dansk butik. Bruges den som reference, vender den dommen på
+    // hvert eneste tilbud for telefonen.
+    let chosen = sorted[0];
+    while (
+      sorted.length > 1 &&
+      chosen === sorted[0] &&
+      sorted[1].price > 0 &&
+      sorted[0].price < sorted[1].price * OUTLIER_RATIO
+    ) {
+      warnings.push(
+        `${phoneSlug}: kasserede ${sorted[0].price} kr. fra ${sorted[0].retailer}, ` +
+          `som ligger langt under næstlaveste ${sorted[1].price} kr. fra ${sorted[1].retailer} — ` +
+          `sandsynligvis en brugt eller anden variant`,
+      );
+      sorted.shift();
+      chosen = sorted[0];
     }
+
+    cashPrices[phoneSlug] = chosen.price;
+    cashPriceSource[phoneSlug] = chosen.retailer;
   }
 
   // Bemærk: dette er den laveste månedspris blandt de tilbud, vi
@@ -62,5 +96,6 @@ export function buildReference(prices: RetailerPrice[], offers: Offer[]): Refere
     cashPriceSource,
     cashPriceCount,
     cheapestMonthly: monthlies.length > 0 ? Math.min(...monthlies) : null,
+    warnings,
   };
 }

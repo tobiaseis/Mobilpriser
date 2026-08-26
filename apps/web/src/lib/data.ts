@@ -68,6 +68,7 @@ export interface ReferenceFile {
   cheapestMonthly: number | null;
   cashPriceSource: Record<string, string>;
   cashPriceCount: Record<string, number>;
+  warnings: string[];
   generatedAt: string | null;
 }
 
@@ -93,6 +94,7 @@ export function loadReference(): ReferenceFile {
     cheapestMonthly: parsed.cheapestMonthly ?? null,
     cashPriceSource: parsed.cashPriceSource ?? {},
     cashPriceCount: parsed.cashPriceCount ?? {},
+    warnings: parsed.warnings ?? [],
     generatedAt: parsed.generatedAt ?? null,
   };
 }

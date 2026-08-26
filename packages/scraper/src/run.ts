@@ -101,6 +101,7 @@ async function run(): Promise<void> {
   });
   warnings.push(...retailerResult.warnings);
   const reference = buildReference(retailerResult.prices, acceptedOffers);
+  warnings.push(...reference.warnings);
   mkdirSync(path.join(DATA_DIR, "reference"), { recursive: true });
   writeFileSync(
     path.join(DATA_DIR, "reference", "cash-prices.json"),

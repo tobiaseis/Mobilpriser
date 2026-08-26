@@ -52,3 +52,46 @@ describe("buildReference", () => {
     expect(result.cheapestMonthly).toBeNull();
   });
 });
+
+describe("buildReference — udslag i forhandlerpriser", () => {
+  it("kasserer en pris, der ligger langt under den næstlaveste", () => {
+    // PriceRunner gav S26 Ultra til 7.198 kr., mens Elgiganten havde den
+    // til 11.499. En prissammenligning viser også brugte varer, og bruges
+    // deres laveste pris, vender den dommen på hvert eneste tilbud.
+    const result = buildReference(
+      [
+        { retailer: "pricerunner", phoneSlug: "ultra", price: 7198, url: "https://p/x" },
+        { retailer: "elgiganten", phoneSlug: "ultra", price: 11499, url: "https://e/x" },
+      ],
+      [],
+    );
+
+    expect(result.cashPrices.ultra).toBe(11499);
+    expect(result.cashPriceSource.ultra).toBe("elgiganten");
+    expect(result.warnings[0]).toContain("7198");
+  });
+
+  it("beholder en pris, der blot er lidt lavere", () => {
+    // 6.890 mod 6.999 er et almindeligt udsalg, ikke en anden vare.
+    const result = buildReference(
+      [
+        { retailer: "pricerunner", phoneSlug: "i17", price: 6890, url: "https://p/x" },
+        { retailer: "power", phoneSlug: "i17", price: 6999, url: "https://po/x" },
+      ],
+      [],
+    );
+
+    expect(result.cashPrices.i17).toBe(6890);
+    expect(result.warnings).toEqual([]);
+  });
+
+  it("accepterer en enlig pris, da der intet er at sammenligne med", () => {
+    const result = buildReference(
+      [{ retailer: "elgiganten", phoneSlug: "pro", price: 9399, url: "https://e/x" }],
+      [],
+    );
+
+    expect(result.cashPrices.pro).toBe(9399);
+    expect(result.warnings).toEqual([]);
+  });
+});

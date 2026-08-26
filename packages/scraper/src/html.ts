@@ -100,7 +100,8 @@ const MINDSTEPRIS_WINDOW = 160;
 export function findMinPriceCandidates(html: string): MinPriceCandidate[] {
   const text = pageText(html);
   const candidates: MinPriceCandidate[] = [];
-  const mindsteprisPattern = /mindstepris/gi;
+  // "Mindste pris" i to ord er lige så almindeligt som ét.
+  const mindsteprisPattern = /mindste\s?pris/gi;
 
   let occurrence: RegExpExecArray | null;
   while ((occurrence = mindsteprisPattern.exec(text)) !== null) {
