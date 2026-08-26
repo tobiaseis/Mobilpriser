@@ -1,41 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Familjen_Grotesk, Newsreader } from "next/font/google";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { FreshnessPill, StaleAlert } from "./Freshness";
+import { loadLatest } from "@/lib/data";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/** Skandinavisk grotesk til navne, tal og knapper. */
+const familjen = Familjen_Grotesk({
+  variable: "--font-familjen",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/** Antikva til de afsnit, der forklarer regnestykket — sitet er en tekst
+ *  lige så meget som en tabel, og skriften siger det. */
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Mobilpriser",
+  title: {
+    default: "Mobilpriser — telefon med abonnement, uden regnestykket",
+    template: "%s · Mobilpriser",
+  },
   description:
-    "Sammenligning af mindsteprisen for 6 måneders binding på telefon med abonnement hos danske teleselskaber.",
+    "Mindsteprisen for de seks måneders binding hos YouSee, Telenor, Telmore, CBB, Call me, Norlys og 3 — stillet op mod, hvad telefonen koster, hvis du bare køber den.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const latest = loadLatest();
+
   return (
-    <html lang="da" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="da" className={`${familjen.variable} ${newsreader.variable}`}>
       <body>
-        <header className="site-header">
-          <Link href="/" className="brand">
-            Mobilpriser
-          </Link>
-          <p className="tagline">Mindstepris for 6 mdr. binding, sammenlignet på tværs af udbydere</p>
+        <header className="topbar">
+          <div className="shell topbar-inner">
+            <Link href="/" className="brand">
+              Mobilpriser
+            </Link>
+            <FreshnessPill generatedAt={latest.generatedAt} />
+          </div>
         </header>
-        <main>{children}</main>
+
+        <StaleAlert generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
+
+        <main>
+          <div className="shell">{children}</div>
+        </main>
+
         <footer className="site-footer">
-          <p>
-            Priser hentes automatisk én gang i døgnet. Bekræft altid prisen hos udbyderen, før
-            du bestiller — priser og kampagner kan ændre sig.
-          </p>
+          <div className="shell">
+            <p>
+              Priserne hentes automatisk én gang i døgnet fra udbydernes egne produktsider.
+              Bekræft prisen hos udbyderen, før du bestiller — kampagner skifter hurtigere,
+              end vi henter.
+            </p>
+          </div>
         </footer>
       </body>
     </html>

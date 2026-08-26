@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EgetAbonnement } from "../../EgetAbonnement";
-import { Freshness } from "../../Freshness";
 import { Sammenligning } from "./Sammenligning";
 import { loadLatest, loadPhones, loadReference, offersForPhone } from "@/lib/data";
 
@@ -13,6 +13,16 @@ interface PhonePageProps {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: PhonePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const phone = loadPhones().find((p) => p.slug === slug);
+  if (!phone) return {};
+  return {
+    title: `${phone.brand} ${phone.model} ${phone.storage} GB`,
+    description: `Mindsteprisen for ${phone.brand} ${phone.model} med abonnement hos danske udbydere, målt mod hvad telefonen koster kontant.`,
+  };
+}
+
 export default async function PhonePage({ params }: PhonePageProps) {
   const { slug } = await params;
   const phones = loadPhones();
@@ -22,39 +32,48 @@ export default async function PhonePage({ params }: PhonePageProps) {
   const latest = loadLatest();
   const reference = loadReference();
   const offers = offersForPhone(latest.offers, slug);
+  const computedCount = offers.filter((offer) => offer.source === "computed").length;
 
   return (
     <>
-      <Link href="/" className="back-link">
-        ← Alle telefoner
-      </Link>
-      <h1>
-        {phone.brand} {phone.model} · {phone.storage} GB
-      </h1>
-      <p className="lede">
-        Mindstepris for de 6 måneders binding hos hver udbyder, sorteret fra billigst til
-        dyrest. Beløbet ved køb plus seks måneders abonnement og eventuelle gebyrer giver
-        mindsteprisen — står felterne tomme, kunne opdelingen ikke udledes med sikkerhed
-        fra udbyderens side.
-      </p>
-      <Freshness generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
+      <div className="page-head">
+        <Link href="/" className="back-link">
+          Alle telefoner
+        </Link>
+        <h1 className="page-title">
+          {phone.brand} {phone.model} <span className="variant">{phone.storage} GB</span>
+        </h1>
+        <p className="page-lede">
+          Hver bjælke er én udbyders mindstepris for hele bindingsperioden — beløbet ved køb,
+          seks måneders abonnement og gebyrer lagt sammen. Den røde streg er, hvad telefonen
+          koster, hvis du bare køber den.
+        </p>
+      </div>
 
       <EgetAbonnement />
 
-      {offers.some((offer) => offer.source === "computed") && (
-        <div className="warning-box">
-          Tal mærket <strong>beregnet</strong> er ikke oplyst af udbyderen, men regnet ud af
-          telefonpris og abonnement. De er mere usikre end de aflæste: en forkert månedspris
-          slår igennem med seks gange fejlen.
+      {computedCount > 0 && (
+        <div className="notice" style={{ marginTop: 20 }}>
+          <div>
+            {computedCount === 1 ? "Ét tal" : `${computedCount} tal`} er mærket{" "}
+            <strong>beregnet</strong>: udbyderen oplyser ikke en samlet mindstepris, så den er
+            regnet ud af telefonpris og abonnement. Den slags tal er mere usikre — en forkert
+            månedspris slår igennem med seks gange fejlen.
+          </div>
         </div>
       )}
 
-      <Sammenligning
-        offers={offers}
-        cashPrice={reference.cashPrices[slug]}
-        cashPriceSource={reference.cashPriceSource[slug]}
-        cheapestMonthly={reference.cheapestMonthly}
-      />
+      <section className="section">
+        <h2 className="eyebrow">
+          {offers.length === 1 ? "1 udbyder" : `${offers.length} udbydere`} · billigst først
+        </h2>
+        <Sammenligning
+          offers={offers}
+          cashPrice={reference.cashPrices[slug]}
+          cashPriceSource={reference.cashPriceSource[slug]}
+          cheapestMonthly={reference.cheapestMonthly}
+        />
+      </section>
     </>
   );
 }

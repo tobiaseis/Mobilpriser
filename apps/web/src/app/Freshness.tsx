@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { formatDate } from "@/lib/format";
+import { formatDate, formatDayMonth } from "@/lib/format";
 
 /**
  * Den daglige kørsel er ikke det samme som en ny udgave af sitet: priserne
@@ -34,37 +34,61 @@ function ageInWholeHours(iso: string | null): number | null {
   return Math.floor((Date.now() - then) / 3_600_000);
 }
 
-export function Freshness({
+/**
+ * Serveren kender ikke den besøgendes ur og svarer null, så den byggede
+ * HTML aldrig indeholder en advarsel, der er forældet i samme øjeblik.
+ */
+function useHoursOld(generatedAt: string | null): number | null {
+  return useSyncExternalStore(
+    noSubscription,
+    () => ageInWholeHours(generatedAt),
+    () => null,
+  );
+}
+
+/** Mærket i toplinjen: hvor gamle priserne på siden er lige nu. */
+export function FreshnessPill({ generatedAt }: { generatedAt: string | null }) {
+  const hoursOld = useHoursOld(generatedAt);
+  const stale = hoursOld != null && hoursOld > STALE_AFTER_HOURS;
+
+  return (
+    <span className="freshness" data-stale={stale}>
+      <span className="freshness-dot" aria-hidden="true" />
+      <span className="freshness-label">Priser hentet</span>
+      <span>{describeAge(hoursOld, generatedAt)}</span>
+    </span>
+  );
+}
+
+function describeAge(hoursOld: number | null, generatedAt: string | null): string {
+  if (generatedAt == null) return "endnu ikke";
+  // Før hydrering kender vi ikke den besøgendes ur, så datoen står tør.
+  if (hoursOld == null) return formatDayMonth(generatedAt);
+  if (hoursOld < 1) return "for lidt siden";
+  if (hoursOld < 24) return `for ${hoursOld} ${hoursOld === 1 ? "time" : "timer"} siden`;
+  const days = Math.floor(hoursOld / 24);
+  return `for ${days} ${days === 1 ? "døgn" : "døgn"} siden`;
+}
+
+/** Båndet under toplinjen, når tallene er gamle nok til at være forkerte. */
+export function StaleAlert({
   generatedAt,
   builtAt,
 }: {
   generatedAt: string | null;
   builtAt: string | null;
 }) {
-  // Serveren kender ikke den besøgendes ur og svarer null, så den byggede
-  // HTML aldrig indeholder en advarsel, der er forældet i samme øjeblik.
-  const hoursOld = useSyncExternalStore(
-    noSubscription,
-    () => ageInWholeHours(generatedAt),
-    () => null,
-  );
-
-  const stale = hoursOld != null && hoursOld > STALE_AFTER_HOURS;
+  const hoursOld = useHoursOld(generatedAt);
+  if (hoursOld == null || hoursOld <= STALE_AFTER_HOURS) return null;
 
   return (
-    <>
-      <p className="meta-line">
-        Priser hentet: {formatDate(generatedAt)}
-        {builtAt && <> · sitet bygget: {formatDate(builtAt)}</>}
-      </p>
-      {stale && (
-        <div className="warning-box">
-          Priserne er <strong>{Math.floor(hoursOld / 24)} døgn gamle</strong>. Enten er den
-          daglige kørsel ikke gennemført, eller også er sitet ikke bygget om siden. Står der
-          et lige så gammelt tidspunkt ved &quot;sitet bygget&quot;, er det bygningen der
-          mangler; er det nyt, er det kørslen.
-        </div>
-      )}
-    </>
+    <div className="notice notice-band">
+      <div className="shell">
+        Priserne er <strong>{Math.floor(hoursOld / 24)} døgn gamle</strong>. Enten er den
+        daglige kørsel ikke gennemført, eller også er sitet ikke bygget om siden. Sitet blev
+        bygget {formatDate(builtAt)} — er det tidspunkt lige så gammelt, mangler bygningen;
+        er det nyt, er det kørslen.
+      </div>
+    </div>
   );
 }
