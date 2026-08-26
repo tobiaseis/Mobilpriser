@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { formatKr } from "@/lib/format";
+import { EgetAbonnement } from "./EgetAbonnement";
 import { Freshness } from "./Freshness";
-import { loadLatest, loadPhones, offersForPhone, PROVIDER_NAMES } from "@/lib/data";
+import { Telefonliste } from "./Telefonliste";
+import { loadLatest, loadPhones } from "@/lib/data";
 
 export default function HomePage() {
   const phones = loadPhones();
@@ -16,28 +16,9 @@ export default function HomePage() {
       </p>
       <Freshness generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
 
-      <div className="phone-grid">
-        {phones.map((phone) => {
-          const offers = offersForPhone(latest.offers, phone.slug);
-          const cheapest = offers[0];
+      <EgetAbonnement />
 
-          return (
-            <Link key={phone.slug} href={`/telefon/${phone.slug}`} className="phone-card">
-              <h2>
-                {phone.brand} {phone.model}
-              </h2>
-              {cheapest ? (
-                <>
-                  <p className="price">{formatKr(cheapest.minPrice)}</p>
-                  <p className="provider">{PROVIDER_NAMES[cheapest.provider]}</p>
-                </>
-              ) : (
-                <p className="empty">Ingen data endnu</p>
-              )}
-            </Link>
-          );
-        })}
-      </div>
+      <Telefonliste phones={phones} offers={latest.offers} />
     </>
   );
 }

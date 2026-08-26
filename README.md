@@ -39,6 +39,41 @@ Udbyderne er forpligtet til selv at oplyse denne mindstepris på produktsiden, s
 scraperen henter det oplyste tal som hovedkilde og regner det samtidig ud fra
 komponenterne som krydstjek. Se `packages/core/src/pricing.ts` og PLAN.md §4 for detaljer.
 
+## Dit eget abonnement
+
+Mindsteprisen indeholder seks måneders abonnement hos udbyderen. Men den, der allerede har
+et abonnement, betaler de penge uanset — de er ikke en merudgift ved at få en ny telefon.
+Skriver man sin egen månedspris ind på sitet, trækkes seks måneder af den fra hver
+mindstepris:
+
+```
+merpris = mindstepris − egen månedspris × 6
+```
+
+To ting følger af det, og begge står på siden:
+
+**Rækkefølgen ændrer sig ikke.** Alle tilbud får det samme beløb trukket fra. Det, der
+ændrer sig, er hvad telefonen koster dig — og hvad tallet skal måles imod.
+
+**Referencen bliver telefonens kontantpris.** Køber man telefonen hos en forhandler,
+beholder man sit abonnement og betaler det samme for det som hidtil, så de seks måneder
+står på begge sider af regnestykket og går ud. Uden en indtastet månedspris måles der som
+før mod kontantpris plus det billigste abonnement, der er set blandt tilbuddene.
+
+Merprisen kan blive negativ. Det er ikke en fejl: er udbyderens abonnement billigere end
+ens eget, betaler man mindre over de seks måneder end i dag og får en telefon oveni.
+
+Beløbet gemmes i browserens `localStorage` og følger med fra forsiden ind på hver
+telefonside. Det sendes ingen steder hen — sitet er statisk og har ingen server at sende
+til. Er lagring slået fra (privat vindue), virker feltet stadig på den side, man står på.
+
+Udbydernes egne abonnementspriser hentes af scraperen og står i tabellen, med forskellen
+til ens eget abonnement under: `299 kr./md.` og `+150 kr. mod i dag`. De er udledt, ikke
+aflæst — se `packages/scraper/src/components.ts`: et par (telefonpris, månedspris)
+accepteres kun, når begge tal står på siden **og** regnestykket rammer den mindstepris,
+udbyderen selv oplyser. Selve merprisen afhænger ikke af dem, kun af det beløb, man selv
+skriver ind.
+
 ## Kom i gang lokalt
 
 Kræver Node 22+ og [pnpm](https://pnpm.io) (`corepack enable` er nok, hvis pnpm ikke

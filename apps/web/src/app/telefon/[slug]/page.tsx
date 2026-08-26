@@ -1,42 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { calculateReference, verdictFor, type Verdict } from "@mobilpriser/core";
-import { formatDataGb, formatKr } from "@/lib/format";
+import { EgetAbonnement } from "../../EgetAbonnement";
 import { Freshness } from "../../Freshness";
-import {
-  loadLatest,
-  loadPhones,
-  loadReference,
-  offersForPhone,
-  PROVIDER_NAMES,
-  type Offer,
-} from "@/lib/data";
+import { Sammenligning } from "./Sammenligning";
+import { loadLatest, loadPhones, loadReference, offersForPhone } from "@/lib/data";
 
 export function generateStaticParams() {
   return loadPhones().map((phone) => ({ slug: phone.slug }));
-}
-
-const VERDICT_LABEL: Record<Verdict, string> = {
-  good: "Under reference",
-  neutral: "Neutral",
-  bad: "Over reference",
-};
-
-function VerdictBadge({ offer, cashPrice, cheapestMonthly }: {
-  offer: Offer;
-  cashPrice: number | undefined;
-  cheapestMonthly: number | null;
-}) {
-  if (cashPrice == null || cheapestMonthly == null) {
-    return <span className="badge badge-unknown">Ingen reference endnu</span>;
-  }
-
-  const reference = calculateReference(cashPrice, cheapestMonthly);
-  const verdict = verdictFor(offer.minPrice, reference);
-  const className =
-    verdict === "good" ? "badge-good" : verdict === "bad" ? "badge-bad" : "badge-neutral";
-
-  return <span className={`badge ${className}`}>{VERDICT_LABEL[verdict]}</span>;
 }
 
 interface PhonePageProps {
@@ -52,12 +22,6 @@ export default async function PhonePage({ params }: PhonePageProps) {
   const latest = loadLatest();
   const reference = loadReference();
   const offers = offersForPhone(latest.offers, slug);
-
-  const cashPrice = reference.cashPrices[slug];
-  const referenceTotal =
-    cashPrice != null && reference.cheapestMonthly != null
-      ? calculateReference(cashPrice, reference.cheapestMonthly)
-      : null;
 
   return (
     <>
@@ -75,6 +39,8 @@ export default async function PhonePage({ params }: PhonePageProps) {
       </p>
       <Freshness generatedAt={latest.generatedAt} builtAt={process.env.BUILD_TIME ?? null} />
 
+      <EgetAbonnement />
+
       {offers.some((offer) => offer.source === "computed") && (
         <div className="warning-box">
           Tal mærket <strong>beregnet</strong> er ikke oplyst af udbyderen, men regnet ud af
@@ -83,83 +49,12 @@ export default async function PhonePage({ params }: PhonePageProps) {
         </div>
       )}
 
-      {referenceTotal != null ? (
-        <p className="meta-line">
-          Reference: {formatKr(reference.cashPrices[slug]!)} kontant for telefonen plus{" "}
-          {formatKr(reference.cheapestMonthly!)}/md. i 6 mdr. ={" "}
-          <strong>{formatKr(referenceTotal)}</strong>. Et tilbud under det beløb er billigere
-          end at købe telefonen selv og tage det billigste abonnement ved siden af.
-        </p>
-      ) : (
-        <div className="warning-box">
-          Ingen kontantpris er endnu opsamlet for denne telefon, så vurderingskolonnen kan ikke
-          sige, om tilbuddene reelt er billige — kun hvordan de rangerer indbyrdes.
-        </div>
-      )}
-
-      {offers.length === 0 ? (
-        <p>Ingen tilbud indsamlet for denne telefon endnu.</p>
-      ) : (
-        <div className="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Udbyder</th>
-                <th>Abonnement</th>
-                <th>Betal ved køb</th>
-                <th>Abonnement pr. md.</th>
-                <th>Gebyrer</th>
-                <th>Mindstepris 6 mdr.</th>
-                <th>Vurdering</th>
-              </tr>
-            </thead>
-            <tbody>
-              {offers.map((offer) => (
-                <tr key={offer.id}>
-                  <td>
-                    <a href={offer.url} target="_blank" rel="noopener noreferrer">
-                      {PROVIDER_NAMES[offer.provider]}
-                    </a>
-                    {offer.stale && <span className="badge badge-stale" style={{ marginLeft: 8 }}>Ikke opdateret i dag</span>}
-                  </td>
-                  <td>
-                    {offer.components.planName ??
-                      (offer.components.dataGb != null
-                        ? formatDataGb(offer.components.dataGb)
-                        : "—")}
-                  </td>
-                  <td className="num">
-                    {offer.components.upfront != null ? formatKr(offer.components.upfront) : "—"}
-                  </td>
-                  <td className="num">
-                    {offer.components.planMonthly != null
-                      ? `${formatKr(offer.components.planMonthly)}/md.`
-                      : "—"}
-                  </td>
-                  <td className="num">
-                    {offer.components.setupFee ? formatKr(offer.components.setupFee) : "—"}
-                  </td>
-                  <td className="num min-price">
-                    {formatKr(offer.minPrice)}
-                    {offer.source === "computed" && (
-                      <span className="badge badge-computed" title="Udbyderen oplyser ikke en samlet mindstepris. Tallet er regnet ud af telefonpris og abonnement.">
-                        beregnet
-                      </span>
-                    )}
-                  </td>
-                  <td>
-                    <VerdictBadge
-                      offer={offer}
-                      cashPrice={reference.cashPrices[offer.phone.slug]}
-                      cheapestMonthly={reference.cheapestMonthly}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+      <Sammenligning
+        offers={offers}
+        cashPrice={reference.cashPrices[slug]}
+        cashPriceSource={reference.cashPriceSource[slug]}
+        cheapestMonthly={reference.cheapestMonthly}
+      />
     </>
   );
 }

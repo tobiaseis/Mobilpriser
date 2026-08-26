@@ -88,3 +88,40 @@ export function verdictFor(minPrice: number, reference: number): Verdict {
   if (diff > VERDICT_NEUTRAL_BAND_KR) return "bad";
   return "neutral";
 }
+
+/**
+ * Merprisen: hvad telefonen koster ud over det abonnement, man betaler i
+ * forvejen.
+ *
+ * Mindsteprisen indeholder seks måneders abonnement hos udbyderen. For
+ * den, der allerede har et abonnement, er de penge ikke en ny udgift —
+ * de var brugt uanset om telefonen blev købt. Trækkes de fra, står
+ * tilbage, hvad telefonen faktisk koster ekstra.
+ *
+ * Tallet kan blive negativt, og det er ikke en fejl: er udbyderens
+ * abonnement billigere end ens eget, betaler man mindre over de seks
+ * måneder end i dag og får en telefon oveni.
+ *
+ * Beløbet er det samme for alle udbydere, så rækkefølgen mellem tilbuddene
+ * ændrer sig ikke. Det, der ændrer sig, er hvad tallet betyder, og hvad
+ * det skal måles imod — se referenceNetOfOwnPlan.
+ */
+export function netOfOwnPlan(total: number, ownMonthly: number): number {
+  return total - ownMonthly * BINDING_MONTHS;
+}
+
+/**
+ * Referencen, når man kender sit eget abonnement: telefonens kontantpris.
+ *
+ * Køber man telefonen hos en forhandler, beholder man sit nuværende
+ * abonnement og betaler det samme for det som hidtil. De seks måneders
+ * abonnement står altså på begge sider af regnestykket og går ud med
+ * hinanden.
+ *
+ * Det er skrevet ud som netop det regnestykke — referencen med egen
+ * månedspris, minus den samme månedspris — frem for forkortet til
+ * `cashPrice`, så det er til at se, hvorfor de to ting er sammenlignelige.
+ */
+export function referenceNetOfOwnPlan(cashPrice: number, ownMonthly: number): number {
+  return netOfOwnPlan(calculateReference(cashPrice, ownMonthly), ownMonthly);
+}

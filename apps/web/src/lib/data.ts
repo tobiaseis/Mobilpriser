@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { parse as parseYaml } from "yaml";
+import type { LatestFile, PhoneTarget, ReferenceFile } from "./model";
 
 /**
  * Data læses fra repo-rodens data/ og config/ mapper — websitet er
@@ -9,67 +10,7 @@ import { parse as parseYaml } from "yaml";
  */
 const REPO_ROOT = path.join(process.cwd(), "..", "..");
 
-export type ProviderId =
-  | "yousee"
-  | "telenor"
-  | "telmore"
-  | "cbb"
-  | "callme"
-  | "norlys"
-  | "tre";
-
-export interface PhoneTarget {
-  brand: string;
-  model: string;
-  storage: number;
-  slug: string;
-}
-
-export interface OfferComponents {
-  upfront?: number;
-  deviceMonthly?: number;
-  planName?: string;
-  planMonthly?: number;
-  campaignMonthly?: number;
-  campaignMonths?: number;
-  dataGb?: number | "unlimited";
-  setupFee?: number;
-  shippingFee?: number;
-  addons?: string[];
-}
-
-export interface Offer {
-  id: string;
-  provider: ProviderId;
-  phone: PhoneTarget;
-  url: string;
-  minPrice: number;
-  components: OfferComponents;
-  computedMinPrice: number | null;
-  bindingMonths: 6;
-  scrapedAt: string;
-  source: string;
-  confidence: "high" | "medium" | "low";
-  /** Sat af scraperen, når dagens kørsel ikke kunne opdatere tilbuddet. */
-  stale?: boolean;
-}
-
-export interface LatestFile {
-  generatedAt: string | null;
-  offers: Offer[];
-  warnings: string[];
-}
-
-export interface ReferenceFile {
-  /** Laveste forhandlerpris pr. telefon — fra PriceRunner, Elgiganten m.fl., ikke fra udbyderne. */
-  cashPrices: Record<string, number>;
-  /** Laveste månedspris set på tværs af alle tilbud. */
-  cheapestMonthly: number | null;
-  cashPriceSource: Record<string, string>;
-  cashPriceCount: Record<string, number>;
-  warnings: string[];
-  generatedAt: string | null;
-}
+export * from "./model";
 
 export function loadPhones(): PhoneTarget[] {
   const raw = readFileSync(path.join(REPO_ROOT, "config", "phones.yaml"), "utf-8");
@@ -97,19 +38,3 @@ export function loadReference(): ReferenceFile {
     generatedAt: parsed.generatedAt ?? null,
   };
 }
-
-export function offersForPhone(offers: Offer[], slug: string): Offer[] {
-  return offers
-    .filter((offer) => offer.phone.slug === slug)
-    .sort((a, b) => a.minPrice - b.minPrice);
-}
-
-export const PROVIDER_NAMES: Record<ProviderId, string> = {
-  yousee: "YouSee",
-  telenor: "Telenor",
-  telmore: "Telmore",
-  cbb: "CBB",
-  callme: "Call me",
-  norlys: "Norlys",
-  tre: "3",
-};

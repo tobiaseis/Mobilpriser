@@ -4,6 +4,8 @@ import {
   computeMinPriceFromComponents,
   crossCheckDeltaKr,
   crossCheckPasses,
+  netOfOwnPlan,
+  referenceNetOfOwnPlan,
   subscriptionCostOverBinding,
   verdictFor,
 } from "../src/pricing.js";
@@ -139,5 +141,60 @@ describe("verdictFor", () => {
 
   it("vipper til 'good' lige uden for båndet", () => {
     expect(verdictFor(reference - 301, reference)).toBe("good");
+  });
+});
+
+describe("netOfOwnPlan", () => {
+  it("trækker seks måneders eget abonnement fra mindsteprisen", () => {
+    // YouSees Galaxy S26: 4.313 kr. i mindstepris. Betaler man i forvejen
+    // 149 kr./md., er 894 kr. af det penge, man havde brugt alligevel.
+    expect(netOfOwnPlan(4313, 149)).toBe(3419);
+  });
+
+  it("lader mindsteprisen stå, når man intet betaler i dag", () => {
+    expect(netOfOwnPlan(4313, 0)).toBe(4313);
+  });
+
+  it("giver et negativt beløb, når udbyderens abonnement er billigere end ens eget", () => {
+    // Call me: 7.142 kr. for telefon plus 6 x 99 kr. Betaler man selv
+    // 1.400 kr./md., er de seks måneder alene 8.400 kr. værd — man ender
+    // med at betale mindre end i dag og få en telefon oveni.
+    expect(netOfOwnPlan(7142, 1400)).toBe(-1258);
+  });
+
+  it("trækker det samme fra alle tilbud, så rækkefølgen ikke ændrer sig", () => {
+    const minPriser = [4313, 4772, 7142, 8639, 9293];
+    const efter = minPriser.map((p) => netOfOwnPlan(p, 199));
+
+    expect(efter).toEqual([...efter].sort((a, b) => a - b));
+    expect(efter[1] - efter[0]).toBe(minPriser[1] - minPriser[0]);
+  });
+});
+
+describe("referenceNetOfOwnPlan", () => {
+  it("er telefonens kontantpris, fordi abonnementet går ud på begge sider", () => {
+    // Køber man telefonen selv, beholder man sit abonnement og betaler det
+    // samme for det som hidtil. Så er det telefonens pris alene, tilbuddene
+    // skal slå.
+    expect(referenceNetOfOwnPlan(6890, 149)).toBe(6890);
+    expect(referenceNetOfOwnPlan(6890, 0)).toBe(6890);
+    expect(referenceNetOfOwnPlan(6890, 1400)).toBe(6890);
+  });
+
+  it("dømmer et tilbud mod kontantprisen, ikke mod kontantpris plus abonnement", () => {
+    // Telmores iPhone 17 til 7.543 kr. mod 6.890 kr. kontant hos
+    // forhandleren. Med et eget abonnement på 299 kr./md. er merprisen
+    // 5.749 kr. — under kontantprisen, så tilbuddet er det billigste.
+    const merpris = netOfOwnPlan(7543, 299);
+    expect(merpris).toBe(5749);
+    expect(verdictFor(merpris, referenceNetOfOwnPlan(6890, 299))).toBe("good");
+  });
+
+  it("dømmer hårdere, når ens eget abonnement er billigt", () => {
+    // Med 79 kr./md. er der kun 474 kr. at trække fra, og de samme 7.543 kr.
+    // bliver til 7.069 kr. — over kontantprisen på 6.890 kr.
+    const merpris = netOfOwnPlan(7543, 79);
+    expect(merpris).toBe(7069);
+    expect(verdictFor(merpris, referenceNetOfOwnPlan(6890, 79))).toBe("neutral");
   });
 });

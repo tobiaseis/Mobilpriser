@@ -267,3 +267,84 @@ td.min-price {
   font-size: 0.85rem;
   margin-bottom: 24px;
 }
+
+/* Feltet til ens eget abonnement, og de tal det ændrer. */
+.own-plan {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+.own-plan-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.own-plan-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.own-plan-input {
+  width: 7.5rem;
+  padding: 8px 10px;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+}
+.own-plan-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.own-plan-unit {
+  color: var(--ink-3);
+  font-size: 0.9rem;
+}
+.own-plan-reset {
+  margin-left: 4px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  background: var(--rule-soft);
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.own-plan-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.own-plan-note {
+  margin-top: 10px;
+  color: var(--ink-3);
+  font-size: 0.85rem;
+  max-width: 68ch;
+}
+.own-plan-error {
+  color: var(--bad);
+}
+
+/* Det oprindelige tal, når et afledt tal har taget hovedpladsen. */
+.cell-note {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.phone-card .price-before {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
