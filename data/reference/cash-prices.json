@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-27T16:35:01.571Z",
+  "generatedAt": "2026-08-28T17:31:15.375Z",
   "cashPrices": {
-    "iphone-17-256gb": 6995,
+    "iphone-17-256gb": 6330,
     "samsung-galaxy-s26-ultra-256gb": 7198,
-    "samsung-galaxy-s26-256gb": 4918,
-    "samsung-galaxy-s26-plus-256gb": 5999,
-    "google-pixel-11-256gb": 7699,
+    "samsung-galaxy-s26-256gb": 4978,
+    "samsung-galaxy-s26-plus-256gb": 5955,
+    "google-pixel-11-256gb": 7698,
     "google-pixel-11-pro-256gb": 9338,
     "google-pixel-11-pro-xl-256gb": 10838,
     "iphone-17-pro-256gb": 9399
@@ -33,6 +33,6 @@
   "cheapestMonthly": 99,
   "warnings": [
     "samsung-galaxy-s26-ultra-256gb: referencen 7198 kr. fra pricerunner ligger markant under næstlaveste 10800 kr. fra oister — sandsynligvis parallelimport",
-    "samsung-galaxy-s26-256gb: referencen 4918 kr. fra pricerunner ligger markant under næstlaveste 7999 kr. fra elgiganten — sandsynligvis parallelimport"
+    "samsung-galaxy-s26-256gb: referencen 4978 kr. fra pricerunner ligger markant under næstlaveste 7999 kr. fra elgiganten — sandsynligvis parallelimport"
   ]
 }
