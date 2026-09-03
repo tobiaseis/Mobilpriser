@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-02T09:38:22.441Z",
+  "generatedAt": "2026-09-03T09:48:34.971Z",
   "cashPrices": {
     "iphone-17-256gb": 6330,
-    "samsung-galaxy-s26-ultra-256gb": 7498,
-    "samsung-galaxy-s26-256gb": 5199,
-    "samsung-galaxy-s26-plus-256gb": 6155,
+    "samsung-galaxy-s26-ultra-256gb": 7539,
+    "samsung-galaxy-s26-256gb": 5418,
+    "samsung-galaxy-s26-plus-256gb": 6305,
     "google-pixel-11-256gb": 7698,
     "google-pixel-11-pro-256gb": 9338,
     "google-pixel-11-pro-xl-256gb": 10838,
-    "iphone-17-pro-256gb": 8299
+    "iphone-17-pro-256gb": 10000
   },
   "cashPriceSource": {
     "iphone-17-256gb": "pricerunner",
@@ -18,21 +18,18 @@
     "google-pixel-11-256gb": "pricerunner",
     "google-pixel-11-pro-256gb": "pricerunner",
     "google-pixel-11-pro-xl-256gb": "pricerunner",
-    "iphone-17-pro-256gb": "elgiganten"
+    "iphone-17-pro-256gb": "oister"
   },
   "cashPriceCount": {
-    "iphone-17-256gb": 4,
-    "samsung-galaxy-s26-ultra-256gb": 3,
-    "samsung-galaxy-s26-256gb": 2,
-    "samsung-galaxy-s26-plus-256gb": 2,
+    "iphone-17-256gb": 3,
+    "samsung-galaxy-s26-ultra-256gb": 2,
+    "samsung-galaxy-s26-256gb": 1,
+    "samsung-galaxy-s26-plus-256gb": 1,
     "google-pixel-11-256gb": 1,
-    "google-pixel-11-pro-256gb": 2,
-    "google-pixel-11-pro-xl-256gb": 2,
-    "iphone-17-pro-256gb": 2
+    "google-pixel-11-pro-256gb": 1,
+    "google-pixel-11-pro-xl-256gb": 1,
+    "iphone-17-pro-256gb": 1
   },
   "cheapestMonthly": 99,
-  "warnings": [
-    "samsung-galaxy-s26-256gb: referencen 5199 kr. fra pricerunner ligger markant under næstlaveste 7999 kr. fra elgiganten — sandsynligvis parallelimport",
-    "samsung-galaxy-s26-plus-256gb: referencen 6155 kr. fra pricerunner ligger markant under næstlaveste 9999 kr. fra elgiganten — sandsynligvis parallelimport"
-  ]
+  "warnings": []
 }
