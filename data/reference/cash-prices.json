@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-14T10:12:31.117Z",
+  "generatedAt": "2026-10-15T09:55:41.361Z",
   "cashPrices": {
-    "iphone-17-256gb": 7582,
+    "iphone-17-256gb": 7579,
     "samsung-galaxy-s26-ultra-256gb": 7899,
     "samsung-galaxy-s26-256gb": 5799,
     "samsung-galaxy-s26-plus-256gb": 6999,
-    "google-pixel-11-256gb": 6659,
-    "google-pixel-11-pro-256gb": 9179,
+    "google-pixel-11-256gb": 6669,
+    "google-pixel-11-pro-256gb": 9135,
     "google-pixel-11-pro-xl-256gb": 10838,
     "iphone-17-pro-256gb": 10000
   },
