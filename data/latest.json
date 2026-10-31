@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T11:30:51.233Z",
+  "generatedAt": "2026-10-31T10:58:12.962Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 8713,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:43.005Z",
+      "scrapedAt": "2026-10-31T10:54:10.686Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 12113,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:44.939Z",
+      "scrapedAt": "2026-10-31T10:54:12.564Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 8593,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:46.965Z",
+      "scrapedAt": "2026-10-31T10:54:14.429Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -93,7 +93,7 @@
       },
       "computedMinPrice": 5313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:48.691Z",
+      "scrapedAt": "2026-10-31T10:54:16.091Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -117,7 +117,7 @@
       },
       "computedMinPrice": 10013,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:50.290Z",
+      "scrapedAt": "2026-10-31T10:54:17.768Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -141,7 +141,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:52.041Z",
+      "scrapedAt": "2026-10-31T10:54:19.390Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -164,7 +164,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:53.856Z",
+      "scrapedAt": "2026-10-31T10:54:21.051Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -187,7 +187,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:55.374Z",
+      "scrapedAt": "2026-10-31T10:54:24.329Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -210,7 +210,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:56.886Z",
+      "scrapedAt": "2026-10-31T10:54:26.326Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -233,7 +233,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:58.381Z",
+      "scrapedAt": "2026-10-31T10:54:27.506Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -256,30 +256,76 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:21:59.809Z",
+      "scrapedAt": "2026-10-31T10:54:29.200Z",
       "source": "text-pattern",
       "confidence": "low"
     },
     {
-      "id": "telmore:iphone-17-pro-256gb",
+      "id": "telmore:samsung-galaxy-s26-plus-256gb",
       "provider": "telmore",
       "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17 Pro",
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
         "storage": 256,
-        "slug": "iphone-17-pro-256gb"
+        "slug": "samsung-galaxy-s26-plus-256gb"
       },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
-      "minPrice": 8793,
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
+      "minPrice": 10793,
       "components": {
-        "upfront": 6999,
+        "upfront": 8999,
         "deviceMonthly": 0,
         "planMonthly": 299,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:26:51.311Z",
+      "scrapedAt": "2026-10-31T10:55:01.914Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:google-pixel-11-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11",
+        "storage": 256,
+        "slug": "google-pixel-11-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-obsidian-256gb",
+      "minPrice": 5993,
+      "components": {
+        "upfront": 4199,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-10-31T10:56:09.329Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "telmore:google-pixel-11-pro-xl-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11 Pro XL",
+        "storage": 256,
+        "slug": "google-pixel-11-pro-xl-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-pro-xl-obsidian-256gb",
+      "minPrice": 8293,
+      "components": {
+        "upfront": 6499,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-10-31T10:56:54.515Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -302,7 +348,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:01.222Z",
+      "scrapedAt": "2026-10-31T10:57:20.585Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -325,7 +371,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:09.969Z",
+      "scrapedAt": "2026-10-31T10:57:29.550Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -348,7 +394,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:21.161Z",
+      "scrapedAt": "2026-10-31T10:57:40.788Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -371,7 +417,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:32.756Z",
+      "scrapedAt": "2026-10-31T10:57:53.553Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -394,7 +440,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:34.573Z",
+      "scrapedAt": "2026-10-31T10:57:55.405Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -417,7 +463,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:36.668Z",
+      "scrapedAt": "2026-10-31T10:57:57.490Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -440,7 +486,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:38.605Z",
+      "scrapedAt": "2026-10-31T10:57:59.522Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -463,7 +509,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:40.799Z",
+      "scrapedAt": "2026-10-31T10:58:01.482Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -486,7 +532,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:42.461Z",
+      "scrapedAt": "2026-10-31T10:58:03.155Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -509,7 +555,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:44.288Z",
+      "scrapedAt": "2026-10-31T10:58:05.192Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -532,7 +578,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:46.018Z",
+      "scrapedAt": "2026-10-31T10:58:06.900Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -555,7 +601,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:48.522Z",
+      "scrapedAt": "2026-10-31T10:58:09.533Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -578,30 +624,30 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-30T11:30:50.232Z",
+      "scrapedAt": "2026-10-31T10:58:11.960Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
     {
-      "id": "telmore:samsung-galaxy-s26-plus-256gb",
+      "id": "telmore:iphone-17-pro-256gb",
       "provider": "telmore",
       "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26+",
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
         "storage": 256,
-        "slug": "samsung-galaxy-s26-plus-256gb"
+        "slug": "iphone-17-pro-256gb"
       },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
-      "minPrice": 10793,
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
+      "minPrice": 8793,
       "components": {
-        "upfront": 8999,
+        "upfront": 6999,
         "deviceMonthly": 0,
         "planMonthly": 299,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-10-29T11:30:01.889Z",
+      "scrapedAt": "2026-10-30T11:26:51.311Z",
       "source": "text-pattern",
       "confidence": "medium",
       "stale": true
@@ -631,30 +677,6 @@
       "stale": true
     },
     {
-      "id": "telmore:google-pixel-11-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11",
-        "storage": 256,
-        "slug": "google-pixel-11-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-obsidian-256gb",
-      "minPrice": 5993,
-      "components": {
-        "upfront": 4199,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-10-29T11:30:36.657Z",
-      "source": "text-pattern",
-      "confidence": "medium",
-      "stale": true
-    },
-    {
       "id": "telmore:google-pixel-11-pro-256gb",
       "provider": "telmore",
       "phone": {
@@ -674,30 +696,6 @@
       "computedMinPrice": null,
       "bindingMonths": 6,
       "scrapedAt": "2026-10-29T11:30:45.845Z",
-      "source": "text-pattern",
-      "confidence": "medium",
-      "stale": true
-    },
-    {
-      "id": "telmore:google-pixel-11-pro-xl-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11 Pro XL",
-        "storage": 256,
-        "slug": "google-pixel-11-pro-xl-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-pro-xl-obsidian-256gb",
-      "minPrice": 8293,
-      "components": {
-        "upfront": 6499,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-10-29T11:30:54.637Z",
       "source": "text-pattern",
       "confidence": "medium",
       "stale": true
@@ -795,22 +793,17 @@
     }
   ],
   "warnings": [
-    "telmore/samsung-galaxy-s26-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
-    "telmore/samsung-galaxy-s26-plus-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
     "telmore/samsung-galaxy-s26-ultra-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
-    "telmore/iphone-17-256gb: kunne ikke hente siden (HTTP 502 for https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17)",
-    "telmore/google-pixel-11-256gb: gengivelse i browser fejlede (page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.telmore.dk/shop/mobiltelefoner/google/pixel-11-obsidian-256gb\", waiting until \"domcontentloaded\"\n)",
+    "telmore/iphone-17-pro-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
     "telmore/google-pixel-11-pro-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
-    "telmore/google-pixel-11-pro-xl-256gb: gengivelse i browser fejlede (page.waitForTimeout: Page crashed)",
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "cbb/google-pixel-11-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "cbb/google-pixel-11-pro-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
+    "telmore: kasserede 8793 kr., som blev fundet identisk for samsung-galaxy-s26-256gb, iphone-17-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
     "callme: kasserede 7142 kr., som blev fundet identisk for samsung-galaxy-s26-256gb, google-pixel-11-pro-xl-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
-    "telmore:samsung-galaxy-s26-plus-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
+    "telmore:iphone-17-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:samsung-galaxy-s26-ultra-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
-    "telmore:google-pixel-11-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:google-pixel-11-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
-    "telmore:google-pixel-11-pro-xl-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:samsung-galaxy-s26-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "callme:samsung-galaxy-s26-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
