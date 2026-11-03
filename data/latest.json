@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T13:31:17.497Z",
+  "generatedAt": "2026-11-03T12:48:07.629Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 8713,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:11.821Z",
+      "scrapedAt": "2026-11-03T12:45:14.287Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:13.765Z",
+      "scrapedAt": "2026-11-03T12:45:16.213Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 8593,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:15.863Z",
+      "scrapedAt": "2026-11-03T12:45:17.983Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -93,7 +93,7 @@
       },
       "computedMinPrice": 8513,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:17.696Z",
+      "scrapedAt": "2026-11-03T12:45:19.682Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -117,7 +117,7 @@
       },
       "computedMinPrice": 5813,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:19.696Z",
+      "scrapedAt": "2026-11-03T12:45:21.509Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -141,7 +141,7 @@
       },
       "computedMinPrice": 11613,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:21.389Z",
+      "scrapedAt": "2026-11-03T12:45:23.247Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -164,7 +164,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:23.379Z",
+      "scrapedAt": "2026-11-03T12:45:25.123Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -187,7 +187,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:24.713Z",
+      "scrapedAt": "2026-11-03T12:45:28.283Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -210,7 +210,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:26.749Z",
+      "scrapedAt": "2026-11-03T12:45:29.437Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -233,7 +233,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:27.945Z",
+      "scrapedAt": "2026-11-03T12:45:31.202Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -256,7 +256,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:29.789Z",
+      "scrapedAt": "2026-11-03T12:45:32.365Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -279,7 +279,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:28:51.035Z",
+      "scrapedAt": "2026-11-03T12:45:50.308Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -302,7 +302,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:29:21.983Z",
+      "scrapedAt": "2026-11-03T12:46:15.623Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -325,7 +325,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:29:53.041Z",
+      "scrapedAt": "2026-11-03T12:46:41.334Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -348,7 +348,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:30:18.392Z",
+      "scrapedAt": "2026-11-03T12:47:04.118Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -362,16 +362,16 @@
         "slug": "google-pixel-11-256gb"
       },
       "url": "https://www.callme.dk/shop/google/google-pixel-11/",
-      "minPrice": 5542,
+      "minPrice": 3042,
       "components": {
-        "upfront": 4899,
+        "upfront": 1200,
         "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
+        "planMonthly": 300,
+        "setupFee": 42
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:30:29.747Z",
+      "scrapedAt": "2026-11-03T12:47:12.500Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -394,7 +394,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:30:42.562Z",
+      "scrapedAt": "2026-11-03T12:47:25.542Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -417,7 +417,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:30:58.167Z",
+      "scrapedAt": "2026-11-03T12:47:46.706Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -440,7 +440,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:00.313Z",
+      "scrapedAt": "2026-11-03T12:47:48.681Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -454,16 +454,16 @@
         "slug": "samsung-galaxy-s26-ultra-256gb"
       },
       "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "minPrice": 8783,
+      "minPrice": 6883,
       "components": {
-        "upfront": 8099,
+        "upfront": 6199,
         "deviceMonthly": 0,
         "planMonthly": 99,
         "setupFee": 90
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:02.558Z",
+      "scrapedAt": "2026-11-03T12:47:50.973Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -486,7 +486,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:04.567Z",
+      "scrapedAt": "2026-11-03T12:47:54.893Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -500,16 +500,16 @@
         "slug": "iphone-17-pro-256gb"
       },
       "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/",
-      "minPrice": 8483,
+      "minPrice": 7983,
       "components": {
-        "upfront": 7799,
+        "upfront": 7299,
         "deviceMonthly": 0,
         "planMonthly": 99,
         "setupFee": 90
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:06.499Z",
+      "scrapedAt": "2026-11-03T12:47:56.663Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -523,16 +523,16 @@
         "slug": "google-pixel-11-256gb"
       },
       "url": "https://shop.norlys.dk/shop/google/google-pixel-11/",
-      "minPrice": 5483,
+      "minPrice": 2683,
       "components": {
-        "upfront": 4799,
+        "upfront": 1999,
         "deviceMonthly": 0,
         "planMonthly": 99,
         "setupFee": 90
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:08.280Z",
+      "scrapedAt": "2026-11-03T12:47:58.331Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -555,7 +555,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:10.201Z",
+      "scrapedAt": "2026-11-03T12:48:00.370Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -578,7 +578,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:11.934Z",
+      "scrapedAt": "2026-11-03T12:48:02.057Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -601,7 +601,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:14.706Z",
+      "scrapedAt": "2026-11-03T12:48:04.979Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -624,7 +624,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-02T13:31:16.496Z",
+      "scrapedAt": "2026-11-03T12:48:06.627Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
