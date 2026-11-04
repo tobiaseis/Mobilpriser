@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T12:48:07.629Z",
+  "generatedAt": "2026-11-04T13:01:02.301Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 8713,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:14.287Z",
+      "scrapedAt": "2026-11-04T12:57:49.585Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 7313,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:16.213Z",
+      "scrapedAt": "2026-11-04T12:57:51.641Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 8593,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:17.983Z",
+      "scrapedAt": "2026-11-04T12:57:53.703Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -93,7 +93,7 @@
       },
       "computedMinPrice": 8513,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:19.682Z",
+      "scrapedAt": "2026-11-04T12:57:55.500Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -117,7 +117,7 @@
       },
       "computedMinPrice": 5813,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:21.509Z",
+      "scrapedAt": "2026-11-04T12:57:57.182Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -141,7 +141,7 @@
       },
       "computedMinPrice": 11613,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:23.247Z",
+      "scrapedAt": "2026-11-04T12:57:58.900Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -164,7 +164,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:25.123Z",
+      "scrapedAt": "2026-11-04T12:58:01.080Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -178,16 +178,16 @@
         "slug": "iphone-17-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/apple/apple-iphone-17-256gb-purple/",
-      "minPrice": 8733,
+      "minPrice": 8033,
       "components": {
-        "upfront": 6999,
+        "upfront": 6299,
         "deviceMonthly": 0,
         "planMonthly": 289,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:28.283Z",
+      "scrapedAt": "2026-11-04T12:58:02.441Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -201,16 +201,16 @@
         "slug": "google-pixel-11-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/google/google-pixel-11-256gb-black/",
-      "minPrice": 5533,
+      "minPrice": 8533,
       "components": {
-        "upfront": 3799,
+        "upfront": 6799,
         "deviceMonthly": 0,
         "planMonthly": 289,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:29.437Z",
+      "scrapedAt": "2026-11-04T12:58:05.419Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -224,16 +224,16 @@
         "slug": "google-pixel-11-pro-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/google/google-pixel-11-pro-256gb-black/",
-      "minPrice": 6533,
+      "minPrice": 10033,
       "components": {
-        "upfront": 4799,
+        "upfront": 8299,
         "deviceMonthly": 0,
         "planMonthly": 289,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:31.202Z",
+      "scrapedAt": "2026-11-04T12:58:07.674Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -247,16 +247,16 @@
         "slug": "google-pixel-11-pro-xl-256gb"
       },
       "url": "https://www.telenor.dk/shop/mobil/google/google-pixel-11-pro-xl-256gb-black/",
-      "minPrice": 11533,
+      "minPrice": 7233,
       "components": {
-        "upfront": 9799,
+        "upfront": 5499,
         "deviceMonthly": 0,
         "planMonthly": 289,
         "setupFee": 0
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:32.365Z",
+      "scrapedAt": "2026-11-04T12:58:09.041Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -270,18 +270,18 @@
         "slug": "samsung-galaxy-s26-plus-256gb"
       },
       "url": "https://www.telmore.dk/shop/mobiltelefoner/samsung/galaxy-s26-plus",
-      "minPrice": 10793,
+      "minPrice": 895,
       "components": {
-        "upfront": 8999,
+        "upfront": 800,
         "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
+        "planMonthly": 1,
+        "setupFee": 89
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:45:50.308Z",
+      "scrapedAt": "2026-11-04T12:58:33.612Z",
       "source": "text-pattern",
-      "confidence": "medium"
+      "confidence": "low"
     },
     {
       "id": "telmore:iphone-17-pro-256gb",
@@ -302,7 +302,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:46:15.623Z",
+      "scrapedAt": "2026-11-04T12:59:03.508Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -325,7 +325,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:46:41.334Z",
+      "scrapedAt": "2026-11-04T12:59:35.371Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -348,7 +348,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:04.118Z",
+      "scrapedAt": "2026-11-04T13:00:00.991Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -371,7 +371,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:12.500Z",
+      "scrapedAt": "2026-11-04T13:00:11.440Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -394,7 +394,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:25.542Z",
+      "scrapedAt": "2026-11-04T13:00:25.121Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -417,7 +417,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:46.706Z",
+      "scrapedAt": "2026-11-04T13:00:41.329Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -440,7 +440,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:48.681Z",
+      "scrapedAt": "2026-11-04T13:00:43.325Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -463,7 +463,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:50.973Z",
+      "scrapedAt": "2026-11-04T13:00:45.553Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -486,7 +486,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:54.893Z",
+      "scrapedAt": "2026-11-04T13:00:47.620Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -509,7 +509,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:56.663Z",
+      "scrapedAt": "2026-11-04T13:00:49.725Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -532,7 +532,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:47:58.331Z",
+      "scrapedAt": "2026-11-04T13:00:51.783Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -555,7 +555,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:48:00.370Z",
+      "scrapedAt": "2026-11-04T13:00:53.737Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -578,7 +578,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:48:02.057Z",
+      "scrapedAt": "2026-11-04T13:00:55.724Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -601,7 +601,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:48:04.979Z",
+      "scrapedAt": "2026-11-04T13:00:59.054Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -624,7 +624,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-03T12:48:06.627Z",
+      "scrapedAt": "2026-11-04T13:01:01.299Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
