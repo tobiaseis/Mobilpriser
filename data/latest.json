@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T14:00:58.142Z",
+  "generatedAt": "2026-11-21T13:28:58.278Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 10113,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:13.829Z",
+      "scrapedAt": "2026-11-21T13:26:03.404Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 13613,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:15.673Z",
+      "scrapedAt": "2026-11-21T13:26:05.183Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 10293,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:17.630Z",
+      "scrapedAt": "2026-11-21T13:26:07.096Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -93,7 +93,7 @@
       },
       "computedMinPrice": 9113,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:19.325Z",
+      "scrapedAt": "2026-11-21T13:26:08.754Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -117,7 +117,7 @@
       },
       "computedMinPrice": 10713,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:21.003Z",
+      "scrapedAt": "2026-11-21T13:26:10.394Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -141,7 +141,7 @@
       },
       "computedMinPrice": 12213,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:22.583Z",
+      "scrapedAt": "2026-11-21T13:26:12.089Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -164,7 +164,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:24.274Z",
+      "scrapedAt": "2026-11-21T13:26:13.893Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -187,7 +187,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:25.560Z",
+      "scrapedAt": "2026-11-21T13:26:15.180Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -210,7 +210,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:26.729Z",
+      "scrapedAt": "2026-11-21T13:26:16.343Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -233,7 +233,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:27.892Z",
+      "scrapedAt": "2026-11-21T13:26:17.508Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -256,7 +256,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:29.046Z",
+      "scrapedAt": "2026-11-21T13:26:18.673Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -279,352 +279,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:58:38.311Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "telmore:iphone-17-pro-256gb",
-      "provider": "telmore",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17 Pro",
-        "storage": 256,
-        "slug": "iphone-17-pro-256gb"
-      },
-      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
-      "minPrice": 10593,
-      "components": {
-        "upfront": 8799,
-        "deviceMonthly": 0,
-        "planMonthly": 299,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:59:15.985Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "callme:samsung-galaxy-s26-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
-      "minPrice": 7142,
-      "components": {
-        "upfront": 6499,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T13:59:56.184Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "callme:samsung-galaxy-s26-ultra-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "minPrice": 11142,
-      "components": {
-        "upfront": 10499,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:09.121Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "callme:google-pixel-11-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11",
-        "storage": 256,
-        "slug": "google-pixel-11-256gb"
-      },
-      "url": "https://www.callme.dk/shop/google/google-pixel-11/",
-      "minPrice": 3042,
-      "components": {
-        "upfront": 1200,
-        "deviceMonthly": 0,
-        "planMonthly": 300,
-        "setupFee": 42
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:18.229Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "callme:google-pixel-11-pro-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11 Pro",
-        "storage": 256,
-        "slug": "google-pixel-11-pro-256gb"
-      },
-      "url": "https://www.callme.dk/shop/google/google-pixel-11-pro/",
-      "minPrice": 9142,
-      "components": {
-        "upfront": 8499,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:28.455Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "callme:google-pixel-11-pro-xl-256gb",
-      "provider": "callme",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11 Pro XL",
-        "storage": 256,
-        "slug": "google-pixel-11-pro-xl-256gb"
-      },
-      "url": "https://www.callme.dk/shop/google/google-pixel-11-pro-xl/",
-      "minPrice": 10642,
-      "components": {
-        "upfront": 9999,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 49
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:37.264Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26/",
-      "minPrice": 4983,
-      "components": {
-        "upfront": 4299,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:39.890Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-plus-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26+",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-plus-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/",
-      "minPrice": 8983,
-      "components": {
-        "upfront": 8299,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:41.879Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:samsung-galaxy-s26-ultra-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26 Ultra",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-ultra-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
-      "minPrice": 6883,
-      "components": {
-        "upfront": 6199,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:44.085Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:iphone-17-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
-      "minPrice": 7583,
-      "components": {
-        "upfront": 6899,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:46.309Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:google-pixel-11-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11",
-        "storage": 256,
-        "slug": "google-pixel-11-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/google/google-pixel-11/",
-      "minPrice": 2683,
-      "components": {
-        "upfront": 1999,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:49.721Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:google-pixel-11-pro-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11 Pro",
-        "storage": 256,
-        "slug": "google-pixel-11-pro-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/google/google-pixel-11-pro/",
-      "minPrice": 8683,
-      "components": {
-        "upfront": 7999,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:51.748Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "norlys:google-pixel-11-pro-xl-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Google",
-        "model": "Pixel 11 Pro XL",
-        "storage": 256,
-        "slug": "google-pixel-11-pro-xl-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/google/google-pixel-11-pro-xl/",
-      "minPrice": 9683,
-      "components": {
-        "upfront": 8999,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:53.627Z",
-      "source": "text-pattern",
-      "confidence": "low"
-    },
-    {
-      "id": "tre:samsung-galaxy-s26-256gb",
-      "provider": "tre",
-      "phone": {
-        "brand": "Samsung",
-        "model": "Galaxy S26",
-        "storage": 256,
-        "slug": "samsung-galaxy-s26-256gb"
-      },
-      "url": "https://www.3.dk/shop/mobiler/samsung/samsung-galaxy-s26/",
-      "minPrice": 8639,
-      "components": {
-        "upfront": 6899,
-        "deviceMonthly": 0,
-        "planMonthly": 290,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:55.390Z",
-      "source": "text-pattern",
-      "confidence": "medium"
-    },
-    {
-      "id": "tre:iphone-17-256gb",
-      "provider": "tre",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://www.3.dk/shop/mobiler/apple/iphone-17/",
-      "minPrice": 8239,
-      "components": {
-        "upfront": 6499,
-        "deviceMonthly": 0,
-        "planMonthly": 290,
-        "setupFee": 0
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-20T14:00:57.140Z",
+      "scrapedAt": "2026-11-21T13:26:28.191Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -647,10 +302,32 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-19T14:23:04.981Z",
+      "scrapedAt": "2026-11-21T13:26:40.190Z",
       "source": "text-pattern",
-      "confidence": "low",
-      "stale": true
+      "confidence": "low"
+    },
+    {
+      "id": "telmore:iphone-17-pro-256gb",
+      "provider": "telmore",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17 Pro",
+        "storage": 256,
+        "slug": "iphone-17-pro-256gb"
+      },
+      "url": "https://www.telmore.dk/shop/mobiltelefoner/apple/iphone-17-pro",
+      "minPrice": 10593,
+      "components": {
+        "upfront": 8799,
+        "deviceMonthly": 0,
+        "planMonthly": 299,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:27:07.166Z",
+      "source": "text-pattern",
+      "confidence": "medium"
     },
     {
       "id": "telmore:google-pixel-11-pro-xl-256gb",
@@ -671,10 +348,331 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-19T14:23:57.409Z",
+      "scrapedAt": "2026-11-21T13:27:35.215Z",
       "source": "text-pattern",
-      "confidence": "medium",
-      "stale": true
+      "confidence": "medium"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26/",
+      "minPrice": 7142,
+      "components": {
+        "upfront": 6499,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:27:49.078Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:samsung-galaxy-s26-ultra-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://www.callme.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "minPrice": 11142,
+      "components": {
+        "upfront": 10499,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:02.218Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:google-pixel-11-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11",
+        "storage": 256,
+        "slug": "google-pixel-11-256gb"
+      },
+      "url": "https://www.callme.dk/shop/google/google-pixel-11/",
+      "minPrice": 3042,
+      "components": {
+        "upfront": 1200,
+        "deviceMonthly": 0,
+        "planMonthly": 300,
+        "setupFee": 42
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:12.354Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:google-pixel-11-pro-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11 Pro",
+        "storage": 256,
+        "slug": "google-pixel-11-pro-256gb"
+      },
+      "url": "https://www.callme.dk/shop/google/google-pixel-11-pro/",
+      "minPrice": 9142,
+      "components": {
+        "upfront": 8499,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:25.776Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "callme:google-pixel-11-pro-xl-256gb",
+      "provider": "callme",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11 Pro XL",
+        "storage": 256,
+        "slug": "google-pixel-11-pro-xl-256gb"
+      },
+      "url": "https://www.callme.dk/shop/google/google-pixel-11-pro-xl/",
+      "minPrice": 10642,
+      "components": {
+        "upfront": 9999,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 49
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:36.548Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26/",
+      "minPrice": 4983,
+      "components": {
+        "upfront": 4299,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:39.784Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-plus-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26+",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-plus-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-a5f38568/",
+      "minPrice": 8983,
+      "components": {
+        "upfront": 8299,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:41.713Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:samsung-galaxy-s26-ultra-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26 Ultra",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-ultra-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/samsung/samsung-galaxy-s26-ultra/",
+      "minPrice": 6883,
+      "components": {
+        "upfront": 6199,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:43.809Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
+      "minPrice": 7583,
+      "components": {
+        "upfront": 6899,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:45.830Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:google-pixel-11-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11",
+        "storage": 256,
+        "slug": "google-pixel-11-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/google/google-pixel-11/",
+      "minPrice": 2683,
+      "components": {
+        "upfront": 1999,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:48.871Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:google-pixel-11-pro-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11 Pro",
+        "storage": 256,
+        "slug": "google-pixel-11-pro-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/google/google-pixel-11-pro/",
+      "minPrice": 8683,
+      "components": {
+        "upfront": 7999,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:50.780Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:google-pixel-11-pro-xl-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Google",
+        "model": "Pixel 11 Pro XL",
+        "storage": 256,
+        "slug": "google-pixel-11-pro-xl-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/google/google-pixel-11-pro-xl/",
+      "minPrice": 9683,
+      "components": {
+        "upfront": 8999,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:52.578Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "tre:samsung-galaxy-s26-256gb",
+      "provider": "tre",
+      "phone": {
+        "brand": "Samsung",
+        "model": "Galaxy S26",
+        "storage": 256,
+        "slug": "samsung-galaxy-s26-256gb"
+      },
+      "url": "https://www.3.dk/shop/mobiler/samsung/samsung-galaxy-s26/",
+      "minPrice": 8639,
+      "components": {
+        "upfront": 6899,
+        "deviceMonthly": 0,
+        "planMonthly": 290,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:55.490Z",
+      "source": "text-pattern",
+      "confidence": "medium"
+    },
+    {
+      "id": "tre:iphone-17-256gb",
+      "provider": "tre",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://www.3.dk/shop/mobiler/apple/iphone-17/",
+      "minPrice": 8239,
+      "components": {
+        "upfront": 6499,
+        "deviceMonthly": 0,
+        "planMonthly": 290,
+        "setupFee": 0
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-21T13:28:57.277Z",
+      "source": "text-pattern",
+      "confidence": "medium"
     },
     {
       "id": "telmore:google-pixel-11-pro-256gb",
@@ -802,11 +800,8 @@
     "cbb/google-pixel-11-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "cbb/google-pixel-11-pro-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "norlys/iphone-17-pro-256gb: kunne ikke hente siden (HTTP 404 for https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/)",
-    "telmore: kasserede 11793 kr., som blev fundet identisk for samsung-galaxy-s26-plus-256gb, google-pixel-11-pro-xl-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
     "telmore: kasserede 6793 kr., som blev fundet identisk for samsung-galaxy-s26-ultra-256gb, google-pixel-11-pro-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
     "telmore: kasserede 8793 kr., som blev fundet identisk for iphone-17-256gb, google-pixel-11-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
-    "telmore:samsung-galaxy-s26-plus-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
-    "telmore:google-pixel-11-pro-xl-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:google-pixel-11-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "norlys:iphone-17-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:samsung-galaxy-s26-ultra-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
