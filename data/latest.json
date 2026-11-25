@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T15:53:34.131Z",
+  "generatedAt": "2026-11-25T15:35:50.048Z",
   "offers": [
     {
       "id": "yousee:samsung-galaxy-s26-256gb",
@@ -21,7 +21,7 @@
       },
       "computedMinPrice": 10113,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:08.144Z",
+      "scrapedAt": "2026-11-25T15:32:38.743Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -45,7 +45,7 @@
       },
       "computedMinPrice": 13613,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:10.125Z",
+      "scrapedAt": "2026-11-25T15:32:40.788Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -69,7 +69,7 @@
       },
       "computedMinPrice": 10293,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:12.241Z",
+      "scrapedAt": "2026-11-25T15:32:42.766Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -93,7 +93,7 @@
       },
       "computedMinPrice": 9113,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:13.967Z",
+      "scrapedAt": "2026-11-25T15:32:44.580Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -117,7 +117,7 @@
       },
       "computedMinPrice": 10713,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:15.750Z",
+      "scrapedAt": "2026-11-25T15:32:46.407Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -141,7 +141,7 @@
       },
       "computedMinPrice": 12213,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:17.360Z",
+      "scrapedAt": "2026-11-25T15:32:48.065Z",
       "source": "computed",
       "confidence": "low"
     },
@@ -164,7 +164,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:19.334Z",
+      "scrapedAt": "2026-11-25T15:32:50.076Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -187,7 +187,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:20.665Z",
+      "scrapedAt": "2026-11-25T15:32:51.443Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -210,7 +210,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:21.848Z",
+      "scrapedAt": "2026-11-25T15:32:52.651Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -233,7 +233,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:23.034Z",
+      "scrapedAt": "2026-11-25T15:32:53.845Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -256,7 +256,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:24.217Z",
+      "scrapedAt": "2026-11-25T15:32:55.064Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -279,7 +279,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:34.499Z",
+      "scrapedAt": "2026-11-25T15:33:07.890Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -302,7 +302,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:48:47.103Z",
+      "scrapedAt": "2026-11-25T15:33:21.380Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -325,7 +325,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:49:15.332Z",
+      "scrapedAt": "2026-11-25T15:33:53.814Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -348,7 +348,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:49:44.698Z",
+      "scrapedAt": "2026-11-25T15:34:25.974Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -371,7 +371,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:49:59.110Z",
+      "scrapedAt": "2026-11-25T15:34:40.374Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -394,7 +394,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:50:09.547Z",
+      "scrapedAt": "2026-11-25T15:34:51.993Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -417,7 +417,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:50:19.341Z",
+      "scrapedAt": "2026-11-25T15:35:02.430Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -440,7 +440,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:51:37.222Z",
+      "scrapedAt": "2026-11-25T15:35:14.415Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -463,7 +463,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:51:47.425Z",
+      "scrapedAt": "2026-11-25T15:35:25.230Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -486,7 +486,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:51:50.354Z",
+      "scrapedAt": "2026-11-25T15:35:28.986Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -509,7 +509,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:51:52.426Z",
+      "scrapedAt": "2026-11-25T15:35:31.089Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -532,7 +532,30 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:51:54.634Z",
+      "scrapedAt": "2026-11-25T15:35:33.149Z",
+      "source": "text-pattern",
+      "confidence": "low"
+    },
+    {
+      "id": "norlys:iphone-17-256gb",
+      "provider": "norlys",
+      "phone": {
+        "brand": "Apple",
+        "model": "iPhone 17",
+        "storage": 256,
+        "slug": "iphone-17-256gb"
+      },
+      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
+      "minPrice": 7583,
+      "components": {
+        "upfront": 6899,
+        "deviceMonthly": 0,
+        "planMonthly": 99,
+        "setupFee": 90
+      },
+      "computedMinPrice": null,
+      "bindingMonths": 6,
+      "scrapedAt": "2026-11-25T15:35:35.211Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -555,7 +578,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:53:23.509Z",
+      "scrapedAt": "2026-11-25T15:35:38.503Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -578,7 +601,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:53:25.553Z",
+      "scrapedAt": "2026-11-25T15:35:40.464Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -601,7 +624,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:53:28.362Z",
+      "scrapedAt": "2026-11-25T15:35:42.245Z",
       "source": "text-pattern",
       "confidence": "low"
     },
@@ -624,7 +647,7 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:53:30.715Z",
+      "scrapedAt": "2026-11-25T15:35:45.876Z",
       "source": "text-pattern",
       "confidence": "medium"
     },
@@ -647,33 +670,9 @@
       },
       "computedMinPrice": null,
       "bindingMonths": 6,
-      "scrapedAt": "2026-11-24T15:53:33.129Z",
+      "scrapedAt": "2026-11-25T15:35:49.047Z",
       "source": "text-pattern",
       "confidence": "medium"
-    },
-    {
-      "id": "norlys:iphone-17-256gb",
-      "provider": "norlys",
-      "phone": {
-        "brand": "Apple",
-        "model": "iPhone 17",
-        "storage": 256,
-        "slug": "iphone-17-256gb"
-      },
-      "url": "https://shop.norlys.dk/shop/apple/apple-iphone-17/",
-      "minPrice": 7583,
-      "components": {
-        "upfront": 6899,
-        "deviceMonthly": 0,
-        "planMonthly": 99,
-        "setupFee": 90
-      },
-      "computedMinPrice": null,
-      "bindingMonths": 6,
-      "scrapedAt": "2026-11-23T15:57:46.854Z",
-      "source": "text-pattern",
-      "confidence": "low",
-      "stale": true
     },
     {
       "id": "telmore:google-pixel-11-pro-256gb",
@@ -800,11 +799,9 @@
     "cbb/samsung-galaxy-s26-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "cbb/google-pixel-11-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
     "cbb/google-pixel-11-pro-256gb: udbyderen afviser vores bot (HTTP 403) — ikke tilgængelig",
-    "norlys/iphone-17-256gb: kunne ikke hente siden (HTTP 404 for https://shop.norlys.dk/shop/apple/apple-iphone-17/)",
     "norlys/iphone-17-pro-256gb: kunne ikke hente siden (HTTP 404 for https://shop.norlys.dk/shop/apple/apple-iphone-17-pro/)",
     "telmore: kasserede 6793 kr., som blev fundet identisk for samsung-galaxy-s26-ultra-256gb, google-pixel-11-pro-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
     "telmore: kasserede 8793 kr., som blev fundet identisk for iphone-17-256gb, google-pixel-11-256gb — et beløb, der er ens på tværs af modeller, hører til siden og ikke til telefonen",
-    "norlys:iphone-17-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:google-pixel-11-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "norlys:iphone-17-pro-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
     "telmore:samsung-galaxy-s26-ultra-256gb: intet nyt tilbud i dag — beholder gårsdagens data (markeret stale)",
